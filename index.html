@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.1">
@@ -86,12 +86,12 @@
   .search-pop-overlay, .sidebar-nav { display: none; }
   .sidebar-panel { display: block; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <main class="main">
@@ -265,7 +265,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-07-20 11:39:35 / Modified: 11:40:17" itemprop="dateCreated datePublished" datetime="2020-07-20T11:39:35+08:00">2020-07-20</time>
+              <time title="Created: 2020-07-20 11:39:35 / Modified: 17:25:20" itemprop="dateCreated datePublished" datetime="2020-07-20T11:39:35+08:00">2020-07-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -288,7 +288,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h2 id="参考书目章节"><a href="#参考书目章节" class="headerlink" title="参考书目章节"></a>参考书目章节</h2><ol>
+<li>Introduction to linear algebra: <em>P239</em>, The Factorization A = QR</li>
+<li>Iterative Methods for Sparse Linear systems: <em>P11</em>, Gram-schmidt<h2 id="一：Gram-Schmidt"><a href="#一：Gram-Schmidt" class="headerlink" title="一：Gram-Schmidt"></a>一：Gram-Schmidt</h2><blockquote>
+<p>Interesting: gilbert strang said:”i don’t know what schmidt did in this greatful process”<br>在很多工作中，我们需要用到一组向量空间的正交基来简化计算（如简化求解Ax=b的最小二乘解的过程）。Gram-Schmidt就是<strong>正交化</strong>一种经典方法，掌握了<strong>投影</strong>后，gram-schmidt就很好理解了。</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p><strong>prerequisite</strong>: A的column space’s projection matrix is <img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%85%AC%E5%BC%8F.png" alt="A对应投影矩阵公式" title="P = A(A^TA)^{-1}A^T"></p>
+</blockquote>
+<blockquote>
+<h3 id="1-首先以二维为例"><a href="#1-首先以二维为例" class="headerlink" title="1. 首先以二维为例"></a>1. 首先以二维为例</h3><p><code>(x1, x2)</code>是线性无关的列向量，现需找出<code>orthonormal的(q1, q2)</code>来表示(x1,x2)的<code>列空间</code>。第一步:<code>q1=x1/norm2(x1)</code>。问题是如何依据x2找到q2使<code>&lt;q1, q2&gt; = 0</code>。 <img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim2.png" alt="二维Gram_Schmidt" title="二维Gram_Schmidt"></p>
+</blockquote>
+<blockquote>
+<p>如图所示，<code>x2</code>在<code>q1</code>上的投影<code>p=&lt;q1, x2&gt;q1</code>，而我们需要的部分是<code>e(error) = x2-p</code>(# 注为啥叫error在投影那一章节有记录)。从而令<code>q2 = e/norm2(e)</code>。<strong>用人话</strong>来说就是，第n维的目标向量<code>(qn)</code>是第n维的已知向量<code>(xn)</code>依次减去其在<code>q1 -&gt; qn-1</code>上的投影，最后单位化。</p>
+</blockquote>
+<blockquote>
+<h3 id="2-三维图示"><a href="#2-三维图示" class="headerlink" title="2. 三维图示"></a>2. 三维图示</h3><p><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim3.png" alt="三维Gram_Schmidt" title="三维Gram_Schmidt"></p>
+</blockquote>
+<blockquote>
+<p>由此可推到出Gram_Schmidt的公式：<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt%E5%85%AC%E5%BC%8F.png" alt="Gram_Schmidt公式" title="Gram_Schmidt公式"></p>
+</blockquote>
+<blockquote>
+<h3 id="3-Pseudo-Code-of-Gram-Schmidt"><a href="#3-Pseudo-Code-of-Gram-Schmidt" class="headerlink" title="3. Pseudo Code of Gram-Schmidt"></a>3. Pseudo Code of Gram-Schmidt</h3><p><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Algorithm.png" alt="Gram_Schmidt_Algorithm" title="Gram_Schmidt_Algorithm"></p>
+</blockquote>
+<h2 id="二：A-QR与Gram-Schmidt的关系"><a href="#二：A-QR与Gram-Schmidt的关系" class="headerlink" title="二：A=QR与Gram-Schmidt的关系"></a>二：A=QR与Gram-Schmidt的关系</h2><blockquote>
+<p>实际上这也是A=QR的第一种推理方式，即从<code>Gram-Schmidt</code>的推理过程得出<code>A=QR</code>。现假设我们已经通过Gram-Schmidt得到了前j个q<code>(q1,q2...qj)</code>，这样我们就可以得到<img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E5%88%86%E8%A7%A3xj.png" alt="分解xj" title="分解xj">,即将<code>xj</code>分解至每一个正交基上。用矩阵的语言进行表达，即<code>X=QR</code>,<code>X=[x1, x2...,xr]</code>,<code>Q=[q1,q2,...,qr]</code>。如下图所示<img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA.png" alt="A=QR矩阵表示" title="A=QR矩阵表示"></p>
+</blockquote>
+<h2 id="三：从行列空间规律得出A-QR"><a href="#三：从行列空间规律得出A-QR" class="headerlink" title="三：从行列空间规律得出A=QR"></a>三：从行列空间规律得出A=QR</h2><blockquote>
+<p>这是<code>A=QR</code>的第二种推理方式，C(A)是<code>independent</code>的，在Gram-Schmidt中，我们的目的是找出<code>orthonormal的Q</code>，从目的而言，Q与A的列向量代表的向量空间肯定是一样的，即<code>C(A) = C(Q)</code>，根据线代的基础知识我们知道，肯定存在一个矩阵R，使得<code>A=QR</code>(A与Q的列向量空间相同)。若A is <code>Square</code>，那么<code>A and Q both are invertiable</code>。从而<code>R=Q^(-1)A</code>，又<code>Q is orthonormal</code>，so <code>Q^(-1) = Q^T</code>，so <code>R = Q^TA</code>，这样就求出了R，如下图所示。</p>
+<blockquote>
+<p><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%E4%BA%8C.png" alt="A=QR矩阵表示方法二" title="A=QR矩阵表示方法二"></p>
+</blockquote>
+</blockquote>
+<h2 id="四：A-QR的应用"><a href="#四：A-QR的应用" class="headerlink" title="四：A=QR的应用"></a>四：A=QR的应用</h2><blockquote>
+<p>gilbert Strang教授在书上说过：<code>&quot;the matrix factorization is of most importance in linear algebra&quot;</code>,<code>A=QR</code>作为一种矩阵分解，可以把线性独立的矩阵，分解成QR，Q是<code>orthonormal</code>,<code>R</code>又是<code>upper triangle</code>，特别是<code>orthonormal</code>给计算提供了很好的性质，目前接触到的就是在<code>least square solution</code>中的投影矩阵部分，<code>逆</code>的那一块直接为单位矩阵了，大大节约了计算时间成本。</p>
+</blockquote>
+
       
     </div>
 
@@ -781,7 +818,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
   
@@ -799,6 +836,8 @@
 
 
 
+
+  
 
   
 
