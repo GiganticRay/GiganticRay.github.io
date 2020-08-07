@@ -191,7 +191,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -236,6 +236,140 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chao">
+      <meta itemprop="description" content="Parallel Computing ITer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lei Chao's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/07/A-QR-HouseHolder-Defactorization/" class="post-title-link" itemprop="url">A=QR_HouseHolder_Defactorization</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-07 17:24:17 / Modified: 23:30:00" itemprop="dateCreated datePublished" datetime="2020-08-07T17:24:17+08:00">2020-08-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linear-Algebra/" itemprop="url" rel="index"><span itemprop="name">Linear Algebra</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>参考章节目录</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>Iteriative Methods for Sparse Linear Systems P12</li>
+<li>MATH 5330: Computational Methods of Linear Algebra–Lecture Note 10: Householder Transformation–Xianyi Zeng–Department of Mathematical Sciences, UTEP</li>
+</ol>
+</blockquote>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><blockquote>
+<p>关于A=QR的分解，有三种方法：**<a href="https://giganticray.github.io/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" target="_blank" rel="noopener">Gram、Givens</a>、Householder**，Givens我不熟悉、但好像和旋转有关、可以保留A’s columns的长度。HouseHolder也有这个优点。</p>
+</blockquote>
+<h2 id="大致了解"><a href="#大致了解" class="headerlink" title="大致了解"></a>大致了解</h2><blockquote>
+<p>Gram-Schmidt的方法是通过一步一步地将新的列A<sub>j</sub>，减去其在已正交化的q<sub>1</sub>，q<sub>2</sub>，q<sub>(j-1)</sub>的投影从而得到新的正交项以此构成Q，<strong>HouseHolder</strong>采取了另外一种完全的方法，其一步一步地将待分解矩阵A，分解成<strong>Echelon matrix</strong>，当然这个分解过程不是简单的<strong>Gaussian Decomposition</strong>，而是用了<strong>HouseHolder算子</strong>，下面翻译一下参考书目1中的分解步骤</p>
+</blockquote>
+<h2 id="什么是Householder算子（Householder矩阵的几何表示）"><a href="#什么是Householder算子（Householder矩阵的几何表示）" class="headerlink" title="什么是Householder算子（Householder矩阵的几何表示）"></a>什么是Householder算子（Householder矩阵的几何表示）</h2><blockquote>
+<p>Householder算子是一个矩阵，其形式是<strong>P = I - 2ww<sup>T</sup>**，这里我一般记作</strong>P<sub>w</sub>**，因为P是由w决定的，后续我们也是针对待分解矩阵的每一列来构造对应的w，从而得出针对每一列的P。</p>
+<p>易证，<code>P是Ortogonal矩阵、且是Symmetric矩阵</code>：<strong>P<sup>T</sup>=P，P<sup>T</sup>P=I</strong>。</p>
+</blockquote>
+<blockquote>
+<p>注意，我们后续在选择w的时候，要让其是2-norm unity的向量。</p>
+</blockquote>
+<blockquote>
+<p>从几何上来看，Px表示的就是x,关于空间{w}<sup>⊥</sup>的镜像。画图表示就是<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/HouseholderMatrix%E7%9A%84%E5%87%A0%E4%BD%95%E8%A1%A8%E7%A4%BA.png" alt="HouseholderMatrix的几何表示" title="HouseholderMatrix的几何表示"></p>
+</blockquote>
+<blockquote>
+<p>v就是上文中的w、H<sub>v</sub>就是上文中的P<sub>w</sub>。</p>
+</blockquote>
+<h2 id="如何为每一列Xj构造每一个HouseHolder矩阵Pj"><a href="#如何为每一列Xj构造每一个HouseHolder矩阵Pj" class="headerlink" title="如何为每一列Xj构造每一个HouseHolder矩阵Pj"></a>如何为每一列X<sub>j</sub>构造每一个HouseHolder矩阵P<sub>j</sub></h2><ul>
+<li>针对向量x、构造其P<sub>w</sub><blockquote>
+<p>一直在强调，HouseHolder矩阵P<sub>j</sub>的作用就相当于Gaussian Elimination的消除矩阵（应该这么叫吧）。下面以第一列为例，假设第一列是x，那么目的肯定是<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.15.1.png" alt="1.15.1" title="1.15.1"><br>α是一个张量，后面我们会知道其实就是x的长度。现在将P的表达式代入:<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.16.png" alt="1.16" title="1.16"><br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/%E6%8E%A8%E5%AF%BC1.png" alt="推导1" title="推导1"><br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/%E6%8E%A8%E5%AF%BC2.png" alt="推导2" title="推导2"></p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>**至此、我们就用通过x、求得了一个w，使得x在P<sub>w</sub>的作用下可以变换至||x||e<sub>1</sub>**，w的表达式如下<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/w1_Expression.png" alt="w1_Expression" title="w1_Expression"></p>
+</blockquote>
+<ul>
+<li>针对矩阵的每一列，进行构造P<blockquote>
+<p>先看矩阵的第一列x<sub>1</sub>，我们直接用x<sub>1</sub>替换掉<code>1.17</code>中的x，即得出w<sub>1</sub>，从而得出P<sub>1</sub>。记X<sub>1</sub>是第一次HouseHolder变换后的矩阵（形如已经完成一次Gaussian Elimination的矩阵）<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/X1.png" alt="X1" title="X1"><br>X<sub>1</sub>的第一个元素为α，其余元素为0。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>现在我们看一下第<code>k</code>次HouseHolder变换的情况，操作对象当然是已经完成<code>k-1</code>次的矩阵了鸭。表达式如下：<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Xk.png" alt="Xk" title="Xk"></p>
+</blockquote>
+<blockquote>
+<p>矩阵在列k-1前是一个上三角矩阵。进行下一步时，<code>前k-1列</code>保持不变，根据第<code>k</code>列的向量**x<sub>k</sub>**，确定一个w，然后生成P。w的形状是<code>1至k-1</code>个元素都是0，这样才保证了前k-1列不变。P<sub>k</sub>的推导如下<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Pk.png" alt="Pk" title="Pk"></p>
+</blockquote>
+<blockquote>
+<p>当k=0时，即第一次变换的P，此时的**β=αe<sub>1</sub>**，符合上文的描述。</p>
+</blockquote>
+<h2 id="构造A-QR"><a href="#构造A-QR" class="headerlink" title="构造A=QR"></a>构造A=QR</h2><blockquote>
+<p>到这里，我们就描述完了整个X的分解过程，使得x可以分解成<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.22.png" alt="1.22" title="1.22"><br>这里仅需要一小步、就可以将上式变成A=QR的美丽式子了鸭。(下面这个过程，即将R那部分中的0，转移到P中去，形成Q).我们将<code>1.22</code>表示成下面的式子<code>1.23</code>，R是<code>mxm</code>的矩阵。<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.jpg" alt="1.23" title="1.23"></p>
+</blockquote>
+<blockquote>
+<p>我们在前面给出了P<sub>i</sub>是<code>对称、且正交</code>的，所以我们把P放到右边:<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.1.png" alt="1.23.1" title="1.23.1"></p>
+</blockquote>
+<blockquote>
+<p>我们用**E<sub>m</sub>**表示I的前m列，shape=(n,m)。可表示如下<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.2.png" alt="1.23.2" title="1.23.2"></p>
+</blockquote>
+<blockquote>
+<p>令Q=P<sup>T</sup>E<sub>m</sub>，这表示取P<sup>T</sup>的前m列。我们可以验证：<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.3.png" alt="1.23.3" title="1.23.3"></p>
+</blockquote>
+<blockquote>
+<p>所以，Q是我们想要的Q(Orthonomal)。分解成功！</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
