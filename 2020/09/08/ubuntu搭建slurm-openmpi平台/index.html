@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -19,7 +19,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta name="description" content="目的：在初步学习之后，已了解slurm平台工作流程，slurm实则是一个计算节点之间的管理工具，其本身并无计算能力，要实现计算的功能还需另外安装mpi的实现，此处安装openMPI。 准备：注意版本，slurm-17.02.11；openmpi-4.0.5，这套配置能够解决依赖问题。  一：准备工作 1.前三步骤见 https:&#x2F;&#x2F;giganticray.github.io&#x2F;2020&#x2F;07&#x2F;13">
@@ -181,7 +181,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一：准备工作"><span class="nav-number">1.</span> <span class="nav-text">一：准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二：配置slurm"><span class="nav-number">2.</span> <span class="nav-text">二：配置slurm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三：配置openmpi"><span class="nav-number">3.</span> <span class="nav-text">三：配置openmpi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-问题汇总"><span class="nav-number">4.</span> <span class="nav-text">四: 问题汇总</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%EF%BC%9A%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">一：准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%EF%BC%9A%E9%85%8D%E7%BD%AEslurm"><span class="nav-number">2.</span> <span class="nav-text">二：配置slurm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%EF%BC%9A%E9%85%8D%E7%BD%AEopenmpi"><span class="nav-number">3.</span> <span class="nav-text">三：配置openmpi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">4.</span> <span class="nav-text">四: 问题汇总</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -195,7 +195,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -297,33 +297,25 @@
 <li>准备：注意版本，slurm-17.02.11；openmpi-4.0.5，这套配置能够解决依赖问题。</li>
 </ul>
 <h2 id="一：准备工作"><a href="#一：准备工作" class="headerlink" title="一：准备工作"></a>一：准备工作</h2><blockquote>
-<p>1.前三步骤见 <a href="https://giganticray.github.io/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/" target="_blank" rel="noopener">https://giganticray.github.io/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/</a></p>
-</blockquote>
-<h2 id="二：配置slurm"><a href="#二：配置slurm" class="headerlink" title="二：配置slurm"></a>二：配置slurm</h2><blockquote>
-<p>2.配置slurm<br>在slurm官方下载页面下载slurm（注意版本），在/opt下新建Slurm文件夹，默认是在/usr/local下的，但这样容易与其他程序搞混，故放在/opt下。二者差别可看<a href="https://qastack.cn/unix/11544/what-is-the-difference-between-opt-and-usr-local" target="_blank" rel="noopener">这里</a>。将下载的包解压，在解压目录执行</p>
+<p>1.前三步骤见 <a target="_blank" rel="noopener" href="https://giganticray.github.io/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/">https://giganticray.github.io/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/</a></p>
+<h2 id="二：配置slurm"><a href="#二：配置slurm" class="headerlink" title="二：配置slurm"></a>二：配置slurm</h2><p>2.配置slurm<br>在slurm官方下载页面下载slurm（注意版本），在/opt下新建Slurm文件夹，默认是在/usr/local下的，但这样容易与其他程序搞混，故放在/opt下。二者差别可看<a target="_blank" rel="noopener" href="https://qastack.cn/unix/11544/what-is-the-difference-between-opt-and-usr-local">这里</a>。将下载的包解压，在解压目录执行</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. # 安装依赖</span><br><span class="line">apt-get install hwloc libhwloc-dev libmunge-dev libmunge2 munge mariadb-server libmysqlclient-dev（slave节点不需要最后两个sql）</span><br><span class="line">2. .&#x2F;configure --prefix&#x3D;&#x2F;opt&#x2F;Slurm (即指定目录安装)</span><br><span class="line">3. sudo make install</span><br><span class="line">4. # 安装完成后进入 slurm-xxxx&#x2F;etc</span><br><span class="line">cp slurm.conf.example slurm.conf, 然后根据上述博客进行配置，配置完成后将slurm.conf拷贝到集群所有节点上面</span><br><span class="line">scp slurm.conf slave1@192.168.1.105:&#x2F;tmp</span><br><span class="line">5. # 在slave1节点将slurm.conf文件拷贝进入安装目录</span><br><span class="line">cp &#x2F;tmp&#x2F;slurm.conf &#x2F;home&#x2F;slave1&#x2F;slurmxxxx&#x2F;etc</span><br><span class="line">6. 将&#x2F;opt&#x2F;Slurm&#x2F;sbin与&#x2F;opt&#x2F;Slurm&#x2F;bin添加进环境变量 &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>配置文件解释可在<a href="https://blog.csdn.net/datuqiqi/article/details/50827040" target="_blank" rel="noopener">这里</a></p>
-</blockquote>
-<blockquote>
+<p>配置文件解释可在<a target="_blank" rel="noopener" href="https://blog.csdn.net/datuqiqi/article/details/50827040">这里</a></p>
 <p>注意，见slurm.conf中有两个slurmctld.log与slurmd.log日志文件，需要自己手动创建。到这里slurm配置完成。</p>
-</blockquote>
-<blockquote>
 <p>另外，可以在/opt/Slurm/sbin下执行sudo ./slurmctld -D(主节点)。sudo ./slurmd -D(计算节点)来验证是否成功。</p>
 </blockquote>
 <h2 id="三：配置openmpi"><a href="#三：配置openmpi" class="headerlink" title="三：配置openmpi"></a>三：配置openmpi</h2><blockquote>
-<p>这就是为啥要选用slurm17版本的原因，slurm17x之后（具体多少搞忘了），其吧pmi.h分离了出去，我原先用slurm20版本的始终无法安装openmpi成功，吐了。<br>在openmpi官方下载包，新建/opt/OpenMPI</p>
+<p>这就是为啥要选用slurm17版本的原因，slurm17x之后（具体多少搞忘了），其吧pmi.h分离了出去，我原先用slurm20版本的始终无法安装openmpi成功，吐了。<br>在openmpi官方下载包，新建/opt/OpenMPI<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 解压后在解压目录执行 </span><br><span class="line">2. sudo .&#x2F;configure --with-pmi&#x3D;&#x2F;opt&#x2F;Slurm&#x2F;include&#x2F;slurm --with-pmi-libdir&#x3D;&#x2F;opt&#x2F;Slurm&#x2F;lib --prefix&#x3D;&#x2F;opt&#x2F;OpenMPI CPPFLAGS&#x3D;-I&#x2F;opt&#x2F;Slurm&#x2F;include&#x2F;slurm LDFLAGS&#x3D;-L&#x2F;opt&#x2F;Slurm&#x2F;lib</span><br><span class="line">3. sudo make install</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 解压后在解压目录执行 </span><br><span class="line">2. sudo .&#x2F;configure --with-pmi&#x3D;&#x2F;opt&#x2F;Slurm&#x2F;include&#x2F;slurm --with-pmi-libdir&#x3D;&#x2F;opt&#x2F;Slurm&#x2F;lib --prefix&#x3D;&#x2F;opt&#x2F;OpenMPI CPPFLAGS&#x3D;-I&#x2F;opt&#x2F;Slurm&#x2F;include&#x2F;slurm LDFLAGS&#x3D;-L&#x2F;opt&#x2F;Slurm&#x2F;lib</span><br><span class="line">3. sudo make install</span><br></pre></td></tr></table></figure>
-
 <h2 id="四-问题汇总"><a href="#四-问题汇总" class="headerlink" title="四: 问题汇总"></a>四: 问题汇总</h2><ol>
 <li><p>版本不匹配问题</p>
 <blockquote>
 <p>在slurm17以后，安装之后在/*/include/slurm下总是没有pmi.h，这样在安装openmpi的时候就会找不到pmi.h文件，安装失败，遂降低版本，查阅文件发现在slurm17以后，slurm官方就把pmi.h分离出来了，需要的话要另外编译，此处为了偷懒，就直接用以前的版本了。</p>
 </blockquote>
 </li>
-<li><p>openmpi编译成功后，但是在intall阶段处，出现缺少pmi.h的错误，查资料，在<a href="https://users.open-mpi.narkive.com/hCh7Xook/ompi-users-issue-compiling-openmpi-3-2-1-with-pmi-and-slurm" target="_blank" rel="noopener">这里</a>发现在编译openmpi的时候要另外加两个参数，遂加上，编译成功。</p>
+<li><p>openmpi编译成功后，但是在intall阶段处，出现缺少pmi.h的错误，查资料，在<a target="_blank" rel="noopener" href="https://users.open-mpi.narkive.com/hCh7Xook/ompi-users-issue-compiling-openmpi-3-2-1-with-pmi-and-slurm">这里</a>发现在编译openmpi的时候要另外加两个参数，遂加上，编译成功。</p>
 </li>
 </ol>
 
@@ -347,7 +339,10 @@
     <a href="/2020/08/21/Finite-Difference-Methods-%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86%E6%96%B9%E6%B3%95/" rel="prev" title="Finite Difference Methods(有限差分方法)">
       <i class="fa fa-chevron-left"></i> Finite Difference Methods(有限差分方法)
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/14/Linear-Transformation%E8%A1%A5%E5%85%85/" rel="next" title="Linear Transformation补充">
+      Linear Transformation补充 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     

@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -19,7 +19,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta name="description" content="参考书：[Introduction to Linear Algebra] 概念汇总 这一节内容真实非常奇妙啊，简直是线代精华，用线代可以描述世间万物。空间、基、坐标表示、线性变换这四个术语息息相关，这里来阐述其关系。   空间  这个很好理解，从小我们就知道：点，线，面，体。这就对应着0维、1维、2维、3维空间，我们所处的就是三维空间。（PS:三体中的二向箔，莫非就是说明了宇宙是数字化出来的，歌者">
@@ -187,7 +187,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念汇总"><span class="nav-number">1.</span> <span class="nav-text">概念汇总</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">概念汇总</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -201,7 +201,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -321,28 +321,24 @@
 </li>
 <li><p>坐标表示</p>
 <blockquote>
-<p>我们平时所画的那个三维坐标轴x,y,z笛卡尔坐标系。常用3个数字来表述一个位置，如<code>p1=(12,34,56)</code>。这实则用完整的语言表述是：<strong>p1点，在基<code>b1(1,0,0) b2(0,1,0) b3(0,0,1)</code>所表示的三维空间下的坐标为(12,34,56)**，用矩阵的表述语言如<img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" alt="坐标与基" title="坐标与基">。</strong>同一空间下相同的点，在不同的基下其坐标表示会不一样。**</p>
+<p>我们平时所画的那个三维坐标轴x,y,z笛卡尔坐标系。常用3个数字来表述一个位置，如<code>p1=(12,34,56)</code>。这实则用完整的语言表述是：<strong>p1点，在基<code>b1(1,0,0) b2(0,1,0) b3(0,0,1)</code>所表示的三维空间下的坐标为(12,34,56)</strong>，用矩阵的表述语言如<img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" alt="坐标与基" title="坐标与基">。<strong>同一空间下相同的点，在不同的基下其坐标表示会不一样。</strong></p>
 </blockquote>
 </li>
 <li><p>线性变换 (Linear Transformation)</p>
 <blockquote>
-<p>线性变换的定义就不再赘述了，<a href="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" target="_blank" rel="noopener" title="坐标与基">1</a>中<code>P405</code>提出：<strong>任何从V=R<sup>n</sup>到W=R<sup>m</sup>的线性变换，都对应着其矩阵表达。</strong>(V是n维输入空间，W是m维输出空间。)</p>
+<p>线性变换的定义就不再赘述了，<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" title="坐标与基">1</a>中<code>P405</code>提出：<strong>任何从V=R<sup>n</sup>到W=R<sup>m</sup>的线性变换，都对应着其矩阵表达。</strong>(V是n维输入空间，W是m维输出空间。)</p>
 </blockquote>
 </li>
 </ul>
 <blockquote>
 <p>思考问题：<br>从V=R<sup>n</sup>到W=R<sup>m</sup>的线性变换的矩阵表达A<strong>是唯一的吗？</strong></p>
-</blockquote>
-<blockquote>
 <p>answer: <strong>不是唯一的，变换肯定是在空间中进行的，而无关于基的选择。基的选择会确定该变换矩阵表达A。</strong></p>
-</blockquote>
-<blockquote>
 <p>解释：我们用顺时针旋转90度来举例子，V=R<sup>2</sup>到W=R<sup>2</sup>，那么，不管我们怎么选择V=(v1,v2)与W=(w1,w2)，顺时针旋转90<sup>。</sup>始终表示顺时针旋转<sup>。</sup>。只是我们对基的选择，会决定该变换的矩阵表达A。<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%86%B3%E5%AE%9A%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5A%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0.png" alt="决定变换矩阵A的三要素" title="决定变换矩阵A的三要素"></p>
 </blockquote>
 <ul>
 <li><p>基变换矩阵</p>
 <blockquote>
-<p>这个其实相当于特殊的线性变换，即<strong>Basis<sub>in</sub> -&gt; Basis<sub>out</sub>的identitic transformation</strong>。说人话就是，我们只变换一下空间的基的表示而已。我们以<a href="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" target="_blank" rel="noopener" title="坐标与基">1</a>中<strong>p412</strong>举例。<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation1.png" alt="basisTransformation1" title="basisTransformation1"><br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation2.png" alt="basisTransformation2" title="basisTransformation2"><br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation3.png" alt="basisTransformation3" title="basisTransformation3"></p>
+<p>这个其实相当于特殊的线性变换，即<strong>Basis<sub>in</sub> -&gt; Basis<sub>out</sub>的identitic transformation</strong>。说人话就是，我们只变换一下空间的基的表示而已。我们以<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" title="坐标与基">1</a>中<strong>p412</strong>举例。<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation1.png" alt="basisTransformation1" title="basisTransformation1"><br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation2.png" alt="basisTransformation2" title="basisTransformation2"><br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation3.png" alt="basisTransformation3" title="basisTransformation3"></p>
 </blockquote>
 </li>
 <li><p>如何选择<strong>好的基</strong>，使得该变换T在这组input basis与output basis下的矩阵表示比较简单？</p>

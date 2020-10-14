@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -19,7 +19,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta name="description" content="Parallel Computing ITer">
@@ -191,7 +191,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -236,6 +236,112 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/Linear-Transformation%E8%A1%A5%E5%85%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chao">
+      <meta itemprop="description" content="Parallel Computing ITer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lei Chao's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/14/Linear-Transformation%E8%A1%A5%E5%85%85/" class="post-title-link" itemprop="url">Linear Transformation补充</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-10-14 14:26:45 / Modified: 18:14:21" itemprop="dateCreated datePublished" datetime="2020-10-14T14:26:45+08:00">2020-10-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linear-Algebra/" itemprop="url" rel="index"><span itemprop="name">Linear Algebra</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><blockquote>
+<p>今天上完liao(致敬)李保滨老师的矩阵分析课程，对线性变换有了更进一步的理解，李老师与Gilbert的课程还是有差异的，个人感觉Gilbert老师的18.06对线代的基础（4个基本子空间）讲的更透彻，而李老师再线性变换处更明了</p>
+</blockquote>
+<h3 id="prerequisite"><a href="#prerequisite" class="headerlink" title="prerequisite"></a>prerequisite</h3><blockquote>
+<p>矩阵乘法AB=C的意义、C的行列与A、B行列的关系、线性变换、向量空间。这要搞清楚，这里不展开。</p>
+</blockquote>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><blockquote>
+<p>首先我们想一个问题，<code>如何表示一个物体</code>，其实小时候大家都做过这样的数学题，在坐标轴<em>（笛卡尔棒棒）</em>上对一些坐标标点，最后把这些点连起来，最终就会得到一个可爱的猫猫啦。可见，坐标可以用来描述物体。<code>但是</code>，仅仅是坐标就足够了吗。look, here’s the deal<em>（poor Biden…）</em>，当然不是的，题目给出坐标时，默认了我们都在空间的标准基<code>(standard basis)</code>里。所以，除了坐标之外，我们还需要空间的基。</p>
+<p>比如说，我们说一点<code>(object)</code>的<code>coordinate</code>是<code>c = (1,2,3)</code>，实际上我们默认是在说这个<code>object = c1*e1 + c2*e2 + c3*e3</code>。只是我们选择的基太<code>tricky</code>了，所以可以用<code>coordinate stand for that object directly</code><strong>(important)</strong>。</p>
+<p>这样，用<code>基</code>和<code>坐标</code>,就可以表述出我们的猫猫（客观物体<code>object</code>）了。</p>
+<p>tips：Gilbert的书中貌似有点说不清楚<code>object</code>与<code>coordinate</code>的关系<em>(当然是我太菜了)</em>，李老师证明了：<code>在给定基下，每一个线性变换都有其矩阵表示</code>。</p>
+</blockquote>
+<h3 id="Prove-在给定基下，每一个线性变换都有其矩阵表示"><a href="#Prove-在给定基下，每一个线性变换都有其矩阵表示" class="headerlink" title="Prove: 在给定基下，每一个线性变换都有其矩阵表示"></a>Prove: 在给定基下，每一个线性变换都有其矩阵表示</h3><blockquote>
+<p>证明思路：联想到普通情况，令{e1, e2, e3}为$R^3$的基，我们如何证明在$R^3$空间中的任一目标，都能表示出来呢？obviously，令一个系数向量C(3x1)代表坐标，一个矩阵代表基B(3x3)，那么，BC就可以唯一表示这个object了。同理，李老师的证明过程如下：</p>
+</blockquote>
+<ol>
+<li>$U$与$V$分别代表两个向量空间$U=R^n$, $V=R^m$，把从<code>U-&gt;V</code>的所有线性变换放到一个集合里，记作<code>L(U, V)</code>，那么<code>L(U, V)</code>是一个向量空间。</li>
+<li>令$U$、$V$的基分别是<code>B</code>={u<sub>1</sub>, u<sub>2</sub>,…,u<sub>n</sub>}、<code>B&#39;</code>={v<sub>1</sub>, v<sub>2</sub>,…,v<sub>m</sub>}。定义$T_{ji}(u)=\xi_jv_i$，$(\xi_1, \xi_2…\xi_n)^T=[u]_B$(tips: 即object u在基B下的坐标表示)`，那么，我们可以得出下面结论3:</li>
+<li>$ T_L = \left \{ T_{ji}\right \}_{j=1…n}^{i=1…m} $是<code>L(U, V)</code>的一组基。</li>
+<li>如果有了结论3，那么得证。 即给定空间U、V的基，任意一个从<code>U -&gt; V</code>的线性变换，我们都可以用这组基$T_L$来表示，而表示的坐标<code>coordinate</code>，即是：<strong>在U、V的给定基下，从U -&gt; V线性变换T的矩阵表示</strong>。</li>
+</ol>
+<h4 id="证明-T-L-left-T-ji-right-j-1…n-i-1…m-是L-U-V-的一组基"><a href="#证明-T-L-left-T-ji-right-j-1…n-i-1…m-是L-U-V-的一组基" class="headerlink" title="证明$ T_L = \left \{ T_{ji}\right \}_{j=1…n}^{i=1…m} $是L(U, V)的一组基"></a>证明$ T_L = \left \{ T_{ji}\right \}_{j=1…n}^{i=1…m} $是<code>L(U, V)</code>的一组基</h4><blockquote>
+<p>证明思路：1.$T_L$是线性无关的。2.$L(U, V)$中的任意一个元素，都能用$T_L$中的元素表示。</p>
+</blockquote>
+<p>1.根据定义即证明$\sum_{j,i}\eta_{ji}T_{ji} = 0$中的所有$\eta_{ji}只能等于0$。这个鬼东西怎么证明呢，用到了一个小trick<em>（tips:我这非数学专业就不去想那些老头子怎么想出来的了）</em><br>\begin{equation}\label{1}<br>T_{ji}(u_k) = \left\{\begin{matrix}<br> v_i &amp; j=k\\<br> 0 &amp; j≠k<br>\end{matrix}\right.<br>\end{equation}</p>
+<blockquote>
+<p>现在把要证的等式两端同时乘以$u_k$，即基组$U$的第k个基，得到<br>\begin{equation}\label{2}<br>(\sum_{j,i}\eta_{ji}T_{ji})(u_k) = 0<br>\end{equation}<br>去括号，相当于把$u_k$做${T_{ji}}$变换。<br>\begin{equation}\label{3}<br>\sum_{j,i}\eta_{ji}T_{ji}(u_k) = 0<br>\end{equation}<br>结合公式1，即可得出<br>\begin{equation}\label{4}<br>\sum_{i=1}^{m}\eta_{ki}v_i = 0<br>\end{equation}<br>因为${v_1,v_2,v_3..v_m}$是输出空间空间$V$的一组基底，所以<code>所有</code> $\eta$ <code>都等于0</code>，得证。</p>
+</blockquote>
+<h4 id="要证第二个，首先要搞清楚-L-U-V-中的元素是什么-exactly。这个集合里面存放的是：从-U-gt-V-的所有线性变换。"><a href="#要证第二个，首先要搞清楚-L-U-V-中的元素是什么-exactly。这个集合里面存放的是：从-U-gt-V-的所有线性变换。" class="headerlink" title="要证第二个，首先要搞清楚$L(U, V)$中的元素是什么,exactly。这个集合里面存放的是：从$U$ -&gt; $V$的所有线性变换。"></a>要证第二个，首先要搞清楚$L(U, V)$中的元素是什么,exactly。这个集合里面存放的是：从$U$ -&gt; $V$的所有线性变换。</h4><blockquote>
+<p>现从$L(U,V)$中任取一个元素$T’$，now, enjoying this formulation,hahaha<br>\begin{equation}\label{5}<br>T(u) = T(\sum_{j=1}^{n}\xi_ju_j) = \sum_{j=1}^{n}\xi_jT(u_j) = \sum_{j=1}^{n}\xi_j \sum_{i=1}^{m}\alpha_{ij}v_i = \sum_{i, j}\alpha_{ij}\xi_jv_i = \sum_{i, j}T_{ji}(u)<br>\end{equation}<br>非常漂亮的过程。</p>
+</blockquote>
+<h4 id="现在，我们想证明的都证明完了，就可以说-在给定输入空间-U-、输出空间-V-，以及他们自个的基-B-、-B’-下，每一个从-U-到-V-的线性变换都有其矩阵表示。"><a href="#现在，我们想证明的都证明完了，就可以说-在给定输入空间-U-、输出空间-V-，以及他们自个的基-B-、-B’-下，每一个从-U-到-V-的线性变换都有其矩阵表示。" class="headerlink" title="现在，我们想证明的都证明完了，就可以说, 在给定输入空间$U$、输出空间$V$，以及他们自个的基$B$、$B’$下，每一个从$U$到$V$的线性变换都有其矩阵表示。"></a>现在，我们想证明的都证明完了，就可以说, 在给定输入空间$U$、输出空间$V$，以及他们自个的基$B$、$B’$下，每一个从$U$到$V$的线性变换都有其矩阵表示。</h4><h4 id="Brain-Expansion"><a href="#Brain-Expansion" class="headerlink" title="Brain Expansion"></a>Brain Expansion</h4><blockquote>
+<p>上述表述有一个flaw我没有提，你看那个第3点，为什么我们要把$T_{ji}(u)=\xi_jv_i$, $(\xi_1, \xi_2…\xi_n)^T=[u]_B$, $ T_L = \left \{ T_{ji}\right \}_{j=1…n}^{i=1…m} $作为<code>L(U, V)</code>的一组基呢，它代表着啥含义。这点老师上课也没有讲(or 我走神了?)下面我简单分析一下</p>
+<p>首先我们看一下这个表达式<br>\begin{equation}\label{6}<br>T_{ji}(u_k) = \left\{\begin{matrix}<br> v_i &amp; j=k\\<br> 0 &amp; j≠k<br>\end{matrix}\right.<br>\end{equation}</p>
+<p>将上面三个带入就发现这是成立的，即经过$T_{ki}$变换，$u_k$变换成了$v_i$，并且这个$T_{ki}$将其他的基$u_z(z≠k)$变成了0。穷举法，任意一个变换可能将原来空间的基$u_{1,2…n}$，变换成任意一个输出空间基的倍数$v_{1,2…m}$。所以，将这mxn<code>朴素变换</code><em>(我瞎说的词)</em>进行线性组合，既可以组合成任意<strong>在给定输入空间$U$、输出空间$V$，以及他们自个的基$B$、$B’$下，从$U$到$V$的线性变换</strong>。想出这个证明的人，我愿称之为现代王！</p>
+</blockquote>
+<h3 id="再往下延拓就是如何将这个变换用矩阵表示出来了，具体做法也很简单，这里就不说了"><a href="#再往下延拓就是如何将这个变换用矩阵表示出来了，具体做法也很简单，这里就不说了" class="headerlink" title="再往下延拓就是如何将这个变换用矩阵表示出来了，具体做法也很简单，这里就不说了"></a>再往下延拓就是如何将这个变换用矩阵表示出来了，具体做法也很简单，这里就不说了</h3><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><blockquote>
+<p>我在读Gilbert<Introduction to linear algebra>的setction 8的时候，总是分不清其表达式$T(u)=u$的这两个u到底是代表的object还是coordinate。但是李老师讲解的过程$T(u)$很明确，就是说对object u 进行 $T$变换。不过遗憾的是，李老师这堂课的视频并没有放出来，我上面的东西估计只有我自己能看懂hhh，(tips: 大家不妨试试@一下UCAS的教务处^-^)。（再tips:上课已一月有余，北京的冷空气让我的厚衣服屁用都没有了)。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -293,33 +399,25 @@
 <li>准备：注意版本，slurm-17.02.11；openmpi-4.0.5，这套配置能够解决依赖问题。</li>
 </ul>
 <h2 id="一：准备工作"><a href="#一：准备工作" class="headerlink" title="一：准备工作"></a>一：准备工作</h2><blockquote>
-<p>1.前三步骤见 <a href="https://giganticray.github.io/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/" target="_blank" rel="noopener">https://giganticray.github.io/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/</a></p>
-</blockquote>
-<h2 id="二：配置slurm"><a href="#二：配置slurm" class="headerlink" title="二：配置slurm"></a>二：配置slurm</h2><blockquote>
-<p>2.配置slurm<br>在slurm官方下载页面下载slurm（注意版本），在/opt下新建Slurm文件夹，默认是在/usr/local下的，但这样容易与其他程序搞混，故放在/opt下。二者差别可看<a href="https://qastack.cn/unix/11544/what-is-the-difference-between-opt-and-usr-local" target="_blank" rel="noopener">这里</a>。将下载的包解压，在解压目录执行</p>
+<p>1.前三步骤见 <a target="_blank" rel="noopener" href="https://giganticray.github.io/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/">https://giganticray.github.io/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/</a></p>
+<h2 id="二：配置slurm"><a href="#二：配置slurm" class="headerlink" title="二：配置slurm"></a>二：配置slurm</h2><p>2.配置slurm<br>在slurm官方下载页面下载slurm（注意版本），在/opt下新建Slurm文件夹，默认是在/usr/local下的，但这样容易与其他程序搞混，故放在/opt下。二者差别可看<a target="_blank" rel="noopener" href="https://qastack.cn/unix/11544/what-is-the-difference-between-opt-and-usr-local">这里</a>。将下载的包解压，在解压目录执行</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. # 安装依赖</span><br><span class="line">apt-get install hwloc libhwloc-dev libmunge-dev libmunge2 munge mariadb-server libmysqlclient-dev（slave节点不需要最后两个sql）</span><br><span class="line">2. .&#x2F;configure --prefix&#x3D;&#x2F;opt&#x2F;Slurm (即指定目录安装)</span><br><span class="line">3. sudo make install</span><br><span class="line">4. # 安装完成后进入 slurm-xxxx&#x2F;etc</span><br><span class="line">cp slurm.conf.example slurm.conf, 然后根据上述博客进行配置，配置完成后将slurm.conf拷贝到集群所有节点上面</span><br><span class="line">scp slurm.conf slave1@192.168.1.105:&#x2F;tmp</span><br><span class="line">5. # 在slave1节点将slurm.conf文件拷贝进入安装目录</span><br><span class="line">cp &#x2F;tmp&#x2F;slurm.conf &#x2F;home&#x2F;slave1&#x2F;slurmxxxx&#x2F;etc</span><br><span class="line">6. 将&#x2F;opt&#x2F;Slurm&#x2F;sbin与&#x2F;opt&#x2F;Slurm&#x2F;bin添加进环境变量 &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>配置文件解释可在<a href="https://blog.csdn.net/datuqiqi/article/details/50827040" target="_blank" rel="noopener">这里</a></p>
-</blockquote>
-<blockquote>
+<p>配置文件解释可在<a target="_blank" rel="noopener" href="https://blog.csdn.net/datuqiqi/article/details/50827040">这里</a></p>
 <p>注意，见slurm.conf中有两个slurmctld.log与slurmd.log日志文件，需要自己手动创建。到这里slurm配置完成。</p>
-</blockquote>
-<blockquote>
 <p>另外，可以在/opt/Slurm/sbin下执行sudo ./slurmctld -D(主节点)。sudo ./slurmd -D(计算节点)来验证是否成功。</p>
 </blockquote>
 <h2 id="三：配置openmpi"><a href="#三：配置openmpi" class="headerlink" title="三：配置openmpi"></a>三：配置openmpi</h2><blockquote>
-<p>这就是为啥要选用slurm17版本的原因，slurm17x之后（具体多少搞忘了），其吧pmi.h分离了出去，我原先用slurm20版本的始终无法安装openmpi成功，吐了。<br>在openmpi官方下载包，新建/opt/OpenMPI</p>
+<p>这就是为啥要选用slurm17版本的原因，slurm17x之后（具体多少搞忘了），其吧pmi.h分离了出去，我原先用slurm20版本的始终无法安装openmpi成功，吐了。<br>在openmpi官方下载包，新建/opt/OpenMPI<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 解压后在解压目录执行 </span><br><span class="line">2. sudo .&#x2F;configure --with-pmi&#x3D;&#x2F;opt&#x2F;Slurm&#x2F;include&#x2F;slurm --with-pmi-libdir&#x3D;&#x2F;opt&#x2F;Slurm&#x2F;lib --prefix&#x3D;&#x2F;opt&#x2F;OpenMPI CPPFLAGS&#x3D;-I&#x2F;opt&#x2F;Slurm&#x2F;include&#x2F;slurm LDFLAGS&#x3D;-L&#x2F;opt&#x2F;Slurm&#x2F;lib</span><br><span class="line">3. sudo make install</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 解压后在解压目录执行 </span><br><span class="line">2. sudo .&#x2F;configure --with-pmi&#x3D;&#x2F;opt&#x2F;Slurm&#x2F;include&#x2F;slurm --with-pmi-libdir&#x3D;&#x2F;opt&#x2F;Slurm&#x2F;lib --prefix&#x3D;&#x2F;opt&#x2F;OpenMPI CPPFLAGS&#x3D;-I&#x2F;opt&#x2F;Slurm&#x2F;include&#x2F;slurm LDFLAGS&#x3D;-L&#x2F;opt&#x2F;Slurm&#x2F;lib</span><br><span class="line">3. sudo make install</span><br></pre></td></tr></table></figure>
-
 <h2 id="四-问题汇总"><a href="#四-问题汇总" class="headerlink" title="四: 问题汇总"></a>四: 问题汇总</h2><ol>
 <li><p>版本不匹配问题</p>
 <blockquote>
 <p>在slurm17以后，安装之后在/*/include/slurm下总是没有pmi.h，这样在安装openmpi的时候就会找不到pmi.h文件，安装失败，遂降低版本，查阅文件发现在slurm17以后，slurm官方就把pmi.h分离出来了，需要的话要另外编译，此处为了偷懒，就直接用以前的版本了。</p>
 </blockquote>
 </li>
-<li><p>openmpi编译成功后，但是在intall阶段处，出现缺少pmi.h的错误，查资料，在<a href="https://users.open-mpi.narkive.com/hCh7Xook/ompi-users-issue-compiling-openmpi-3-2-1-with-pmi-and-slurm" target="_blank" rel="noopener">这里</a>发现在编译openmpi的时候要另外加两个参数，遂加上，编译成功。</p>
+<li><p>openmpi编译成功后，但是在intall阶段处，出现缺少pmi.h的错误，查资料，在<a target="_blank" rel="noopener" href="https://users.open-mpi.narkive.com/hCh7Xook/ompi-users-issue-compiling-openmpi-3-2-1-with-pmi-and-slurm">这里</a>发现在编译openmpi的时候要另外加两个参数，遂加上，编译成功。</p>
 </li>
 </ol>
 
@@ -391,12 +489,10 @@
       
           <blockquote>
 <p>最近半月都在练习驾照、Iterative methods也间断地看完了第一章（期间配合着Gilbert的Linear圣经夯实了线代的基础）。今天学习Discretization of PDES。</p>
-</blockquote>
-<blockquote>
 <p>参考书籍：Iterative methods for sparse linear system</p>
 </blockquote>
 <h2 id="一：初识"><a href="#一：初识" class="headerlink" title="一：初识"></a>一：初识</h2><blockquote>
-<p>本章大致是在讲对偏微分方程进行离散化求近似解(当然，精确解我们能够用数值计算方法计算得出)。离散化的意思是用<code>Taylor series expansion</code>，将一个方程用幂函数之和来表示。关于Taylor series的解释，<a href="https://www.zhihu.com/question/25627482" target="_blank" rel="noopener">这个知乎问题</a>下的高赞回答简直是经典！<code>section 2.1</code>介绍了两个经典的微分方程：椭圆操作器的<code>Poisson方程</code>、<code>Convection Diffusion equation（对流扩散方程）</code>。然后2.2开始介绍<code>有限差分法</code>，根据<a href="https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86%E6%B3%95" target="_blank" rel="noopener">维基百科</a>的定义，有限差分法即通过有限差分来近似导数、，从而求微分方程的近似解。</p>
+<p>本章大致是在讲对偏微分方程进行离散化求近似解(当然，精确解我们能够用数值计算方法计算得出)。离散化的意思是用<code>Taylor series expansion</code>，将一个方程用幂函数之和来表示。关于Taylor series的解释，<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/25627482">这个知乎问题</a>下的高赞回答简直是经典！<code>section 2.1</code>介绍了两个经典的微分方程：椭圆操作器的<code>Poisson方程</code>、<code>Convection Diffusion equation（对流扩散方程）</code>。然后2.2开始介绍<code>有限差分法</code>，根据<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86%E6%B3%95">维基百科</a>的定义，有限差分法即通过有限差分来近似导数、，从而求微分方程的近似解。</p>
 </blockquote>
 <h2 id="二：搁置"><a href="#二：搁置" class="headerlink" title="二：搁置"></a>二：搁置</h2><p>在阅读的过程中发现对新的数学基础有要求、先修一下ma691课程。</p>
 
@@ -474,30 +570,22 @@
       
           <blockquote>
 <p>参考章节目录</p>
-</blockquote>
-<blockquote>
 <ol>
 <li>Iteriative Methods for Sparse Linear Systems P12</li>
-<li>MATH 5330: Computational Methods of Linear Algebra–Lecture Note 10: Householder Transformation–Xianyi Zeng–Department of Mathematical Sciences, UTEP</li>
+<li>MATH 5330: Computational Methods of Linear Algebra—Lecture Note 10: Householder Transformation—Xianyi Zeng—Department of Mathematical Sciences, UTEP</li>
 </ol>
 </blockquote>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><blockquote>
-<p>关于A=QR的分解，有三种方法：**<a href="https://giganticray.github.io/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" target="_blank" rel="noopener">Gram、Givens</a>、Householder**，Givens我不熟悉、但好像和旋转有关、可以保留A’s columns的长度。HouseHolder也有这个优点。</p>
+<p>关于A=QR的分解，有三种方法：<strong><a target="_blank" rel="noopener" href="https://giganticray.github.io/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">Gram、Givens</a>、Householder</strong>，Givens我不熟悉、但好像和旋转有关、可以保留A’s columns的长度。HouseHolder也有这个优点。</p>
 </blockquote>
 <h2 id="大致了解"><a href="#大致了解" class="headerlink" title="大致了解"></a>大致了解</h2><blockquote>
 <p>Gram-Schmidt的方法是通过一步一步地将新的列A<sub>j</sub>，减去其在已正交化的q<sub>1</sub>，q<sub>2</sub>，q<sub>(j-1)</sub>的投影从而得到新的正交项以此构成Q，<strong>HouseHolder</strong>采取了另外一种完全的方法，其一步一步地将待分解矩阵A，分解成<strong>Echelon matrix</strong>，当然这个分解过程不是简单的<strong>Gaussian Decomposition</strong>，而是用了<strong>HouseHolder算子</strong>，下面翻译一下参考书目1中的分解步骤</p>
 </blockquote>
 <h2 id="什么是Householder算子（Householder矩阵的几何表示）"><a href="#什么是Householder算子（Householder矩阵的几何表示）" class="headerlink" title="什么是Householder算子（Householder矩阵的几何表示）"></a>什么是Householder算子（Householder矩阵的几何表示）</h2><blockquote>
-<p>Householder算子是一个矩阵，其形式是<strong>P = I - 2ww<sup>T</sup>**，这里我一般记作</strong>P<sub>w</sub>**，因为P是由w决定的，后续我们也是针对待分解矩阵的每一列来构造对应的w，从而得出针对每一列的P。</p>
+<p>Householder算子是一个矩阵，其形式是<strong>P = I - 2ww<sup>T</sup></strong>，这里我一般记作<strong>P<sub>w</sub></strong>，因为P是由w决定的，后续我们也是针对待分解矩阵的每一列来构造对应的w，从而得出针对每一列的P。</p>
 <p>易证，<code>P是Ortogonal矩阵、且是Symmetric矩阵</code>：<strong>P<sup>T</sup>=P，P<sup>T</sup>P=I</strong>。</p>
-</blockquote>
-<blockquote>
 <p>注意，我们后续在选择w的时候，要让其是2-norm unity的向量。</p>
-</blockquote>
-<blockquote>
 <p>从几何上来看，Px表示的就是x,关于空间{w}<sup>⊥</sup>的镜像。画图表示就是<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/HouseholderMatrix%E7%9A%84%E5%87%A0%E4%BD%95%E8%A1%A8%E7%A4%BA.png" alt="HouseholderMatrix的几何表示" title="HouseholderMatrix的几何表示"></p>
-</blockquote>
-<blockquote>
 <p>v就是上文中的w、H<sub>v</sub>就是上文中的P<sub>w</sub>。</p>
 </blockquote>
 <h2 id="如何为每一列Xj构造每一个HouseHolder矩阵Pj"><a href="#如何为每一列Xj构造每一个HouseHolder矩阵Pj" class="headerlink" title="如何为每一列Xj构造每一个HouseHolder矩阵Pj"></a>如何为每一列X<sub>j</sub>构造每一个HouseHolder矩阵P<sub>j</sub></h2><ul>
@@ -507,7 +595,7 @@
 </li>
 </ul>
 <blockquote>
-<p>**至此、我们就用通过x、求得了一个w，使得x在P<sub>w</sub>的作用下可以变换至||x||e<sub>1</sub>**，w的表达式如下<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/w1_Expression.png" alt="w1_Expression" title="w1_Expression"></p>
+<p><strong>至此、我们就用通过x、求得了一个w，使得x在P<sub>w</sub>的作用下可以变换至||x||e<sub>1</sub></strong>，w的表达式如下<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/w1_Expression.png" alt="w1_Expression" title="w1_Expression"></p>
 </blockquote>
 <ul>
 <li>针对矩阵的每一列，进行构造P<blockquote>
@@ -517,26 +605,14 @@
 </ul>
 <blockquote>
 <p>现在我们看一下第<code>k</code>次HouseHolder变换的情况，操作对象当然是已经完成<code>k-1</code>次的矩阵了鸭。表达式如下：<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Xk.png" alt="Xk" title="Xk"></p>
-</blockquote>
-<blockquote>
-<p>矩阵在列k-1前是一个上三角矩阵。进行下一步时，<code>前k-1列</code>保持不变，根据第<code>k</code>列的向量**x<sub>k</sub>**，确定一个w，然后生成P。w的形状是<code>1至k-1</code>个元素都是0，这样才保证了前k-1列不变。P<sub>k</sub>的推导如下<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Pk.png" alt="Pk" title="Pk"></p>
-</blockquote>
-<blockquote>
-<p>当k=0时，即第一次变换的P，此时的**β=αe<sub>1</sub>**，符合上文的描述。</p>
+<p>矩阵在列k-1前是一个上三角矩阵。进行下一步时，<code>前k-1列</code>保持不变，根据第<code>k</code>列的向量<strong>x<sub>k</sub></strong>，确定一个w，然后生成P。w的形状是<code>1至k-1</code>个元素都是0，这样才保证了前k-1列不变。P<sub>k</sub>的推导如下<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Pk.png" alt="Pk" title="Pk"></p>
+<p>当k=0时，即第一次变换的P，此时的<strong>β=αe<sub>1</sub></strong>，符合上文的描述。</p>
 </blockquote>
 <h2 id="构造A-QR"><a href="#构造A-QR" class="headerlink" title="构造A=QR"></a>构造A=QR</h2><blockquote>
 <p>到这里，我们就描述完了整个X的分解过程，使得x可以分解成<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.22.png" alt="1.22" title="1.22"><br>这里仅需要一小步、就可以将上式变成A=QR的美丽式子了鸭。(下面这个过程，即将R那部分中的0，转移到P中去，形成Q).我们将<code>1.22</code>表示成下面的式子<code>1.23</code>，R是<code>mxm</code>的矩阵。<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.jpg" alt="1.23" title="1.23"></p>
-</blockquote>
-<blockquote>
 <p>我们在前面给出了P<sub>i</sub>是<code>对称、且正交</code>的，所以我们把P放到右边:<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.1.png" alt="1.23.1" title="1.23.1"></p>
-</blockquote>
-<blockquote>
-<p>我们用**E<sub>m</sub>**表示I的前m列，shape=(n,m)。可表示如下<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.2.png" alt="1.23.2" title="1.23.2"></p>
-</blockquote>
-<blockquote>
+<p>我们用<strong>E<sub>m</sub></strong>表示I的前m列，shape=(n,m)。可表示如下<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.2.png" alt="1.23.2" title="1.23.2"></p>
 <p>令Q=P<sup>T</sup>E<sub>m</sub>，这表示取P<sup>T</sup>的前m列。我们可以验证：<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.3.png" alt="1.23.3" title="1.23.3"></p>
-</blockquote>
-<blockquote>
 <p>所以，Q是我们想要的Q(Orthonomal)。分解成功！</p>
 </blockquote>
 <h1 id="Pseudo-Code"><a href="#Pseudo-Code" class="headerlink" title="Pseudo Code"></a>Pseudo Code</h1><p><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Householder_pseudoCode.png" alt="Householder_pseudoCode" title="Householder_pseudoCode"></p>
@@ -608,7 +684,7 @@
 
       
           <p>参考书籍：《统计学习方法》</p>
-<p>参考网络资源：<a href="https://blog.csdn.net/m0_38024592/article/details/82317369" target="_blank" rel="noopener">信息增益比</a>details/82317369</p>
+<p>参考网络资源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38024592/article/details/82317369">信息增益比</a>details/82317369</p>
 <h2 id="熵的意义"><a href="#熵的意义" class="headerlink" title="熵的意义"></a>熵的意义</h2><blockquote>
 <p>书中P60描述，熵是表示随机变量<strong>不确定性</strong>的度量。that’s right，经常看见什么：“宇宙是熵增的”这种句子，实际上是在说，宇宙的发展过程，是慢慢从有序的状态，发展至无序的状态。这里熵的定义，就不难理解了，一个随机变量<strong>越随机</strong>，它的熵就<strong>越大</strong>。聪明的Rudolf Clausius归纳了这样一个表达式（将可见的现象，用抽象的数学公式表达出来，厉害）<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/something-about-%E5%86%B3%E7%AD%96%E6%A0%91-%E7%86%B5/%E7%86%B5%E7%9A%84%E5%AE%9A%E4%B9%89%E8%A1%A8%E8%BE%BE%E5%BC%8F.png" alt="熵的定义表达式" title="熵的定义表达式"><br>关于这个表达式，承认就是了，书上P60给了一个很直观的例子，即随机变量X只有两个取值，每个取值的概率都是1/2的情况。很好理解</p>
 </blockquote>
@@ -623,14 +699,8 @@
 </blockquote>
 <h2 id="信息增益比"><a href="#信息增益比" class="headerlink" title="信息增益比"></a>信息增益比</h2><blockquote>
 <p>决策树对应有几个经典的算法，区别就是他们采用的计算<strong>“信息增益”</strong>的方式不一样，c4.5采用的就是信息增益比的方式。</p>
-</blockquote>
-<blockquote>
-<p>这里我们要承认一点：信息增益的方法，存在偏向于选择取值较多的特征的问题。如<a href="https://blog.csdn.net/m0_38024592/article/details/82317369" target="_blank" rel="noopener">上文</a>的例子中，如果以日期作为候选特征，那么它的信息增益很大（一想就通嘛，每天一个日期，就分出来了一个分支，分支下只有一个样本，那肯定是有序的啊），但是很明显，这样划分并没有什么用。造成这个的原因就是： <strong>日期这个特征，可选择的取值较多</strong>。</p>
-</blockquote>
-<blockquote>
+<p>这里我们要承认一点：信息增益的方法，存在偏向于选择取值较多的特征的问题。如<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38024592/article/details/82317369">上文</a>的例子中，如果以日期作为候选特征，那么它的信息增益很大（一想就通嘛，每天一个日期，就分出来了一个分支，分支下只有一个样本，那肯定是有序的啊），但是很明显，这样划分并没有什么用。造成这个的原因就是： <strong>日期这个特征，可选择的取值较多</strong>。</p>
 <p>解决办法：<strong>增加一个惩罚项</strong>。通常来说，增加一个惩罚项是用加法嘛，比如取值越多的特征，就给其信息增益减去一个数值。信息增益比这里用了除法。</p>
-</blockquote>
-<blockquote>
 <p>惩罚原则：首先还是要保持<strong>要选择能够增益信息较大的特征</strong>，同时<strong>特征可选择的值越多，那么惩罚越大</strong>，把惩罚放到分母上，即<strong>分母越小</strong>。惩罚项是<strong>“A的内部信息(intrinsic information of an attribution)”</strong>，在我看来，这个惩罚项可以用D关于A的条件熵来替代吧，因为A的可取值选择越多、理应H(D|A)越小（即在A的帮助下D变得不再凌乱了）。或许只是H(D|A)计算麻烦才没有使用罢了。</p>
 </blockquote>
 
@@ -723,28 +793,24 @@
 </li>
 <li><p>坐标表示</p>
 <blockquote>
-<p>我们平时所画的那个三维坐标轴x,y,z笛卡尔坐标系。常用3个数字来表述一个位置，如<code>p1=(12,34,56)</code>。这实则用完整的语言表述是：<strong>p1点，在基<code>b1(1,0,0) b2(0,1,0) b3(0,0,1)</code>所表示的三维空间下的坐标为(12,34,56)**，用矩阵的表述语言如<img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" alt="坐标与基" title="坐标与基">。</strong>同一空间下相同的点，在不同的基下其坐标表示会不一样。**</p>
+<p>我们平时所画的那个三维坐标轴x,y,z笛卡尔坐标系。常用3个数字来表述一个位置，如<code>p1=(12,34,56)</code>。这实则用完整的语言表述是：<strong>p1点，在基<code>b1(1,0,0) b2(0,1,0) b3(0,0,1)</code>所表示的三维空间下的坐标为(12,34,56)</strong>，用矩阵的表述语言如<img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" alt="坐标与基" title="坐标与基">。<strong>同一空间下相同的点，在不同的基下其坐标表示会不一样。</strong></p>
 </blockquote>
 </li>
 <li><p>线性变换 (Linear Transformation)</p>
 <blockquote>
-<p>线性变换的定义就不再赘述了，<a href="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" target="_blank" rel="noopener" title="坐标与基">1</a>中<code>P405</code>提出：<strong>任何从V=R<sup>n</sup>到W=R<sup>m</sup>的线性变换，都对应着其矩阵表达。</strong>(V是n维输入空间，W是m维输出空间。)</p>
+<p>线性变换的定义就不再赘述了，<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" title="坐标与基">1</a>中<code>P405</code>提出：<strong>任何从V=R<sup>n</sup>到W=R<sup>m</sup>的线性变换，都对应着其矩阵表达。</strong>(V是n维输入空间，W是m维输出空间。)</p>
 </blockquote>
 </li>
 </ul>
 <blockquote>
 <p>思考问题：<br>从V=R<sup>n</sup>到W=R<sup>m</sup>的线性变换的矩阵表达A<strong>是唯一的吗？</strong></p>
-</blockquote>
-<blockquote>
 <p>answer: <strong>不是唯一的，变换肯定是在空间中进行的，而无关于基的选择。基的选择会确定该变换矩阵表达A。</strong></p>
-</blockquote>
-<blockquote>
 <p>解释：我们用顺时针旋转90度来举例子，V=R<sup>2</sup>到W=R<sup>2</sup>，那么，不管我们怎么选择V=(v1,v2)与W=(w1,w2)，顺时针旋转90<sup>。</sup>始终表示顺时针旋转<sup>。</sup>。只是我们对基的选择，会决定该变换的矩阵表达A。<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%86%B3%E5%AE%9A%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5A%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0.png" alt="决定变换矩阵A的三要素" title="决定变换矩阵A的三要素"></p>
 </blockquote>
 <ul>
 <li><p>基变换矩阵</p>
 <blockquote>
-<p>这个其实相当于特殊的线性变换，即<strong>Basis<sub>in</sub> -&gt; Basis<sub>out</sub>的identitic transformation</strong>。说人话就是，我们只变换一下空间的基的表示而已。我们以<a href="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" target="_blank" rel="noopener" title="坐标与基">1</a>中<strong>p412</strong>举例。<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation1.png" alt="basisTransformation1" title="basisTransformation1"><br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation2.png" alt="basisTransformation2" title="basisTransformation2"><br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation3.png" alt="basisTransformation3" title="basisTransformation3"></p>
+<p>这个其实相当于特殊的线性变换，即<strong>Basis<sub>in</sub> -&gt; Basis<sub>out</sub>的identitic transformation</strong>。说人话就是，我们只变换一下空间的基的表示而已。我们以<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" title="坐标与基">1</a>中<strong>p412</strong>举例。<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation1.png" alt="basisTransformation1" title="basisTransformation1"><br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation2.png" alt="basisTransformation2" title="basisTransformation2"><br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation3.png" alt="basisTransformation3" title="basisTransformation3"></p>
 </blockquote>
 </li>
 <li><p>如何选择<strong>好的基</strong>，使得该变换T在这组input basis与output basis下的矩阵表示比较简单？</p>
@@ -825,14 +891,10 @@
 </blockquote>
 <h2 id="为啥需要KD-Tree"><a href="#为啥需要KD-Tree" class="headerlink" title="为啥需要KD-Tree"></a>为啥需要KD-Tree</h2><blockquote>
 <p>KD-Tree是存储训练数据的一种结构，因为K近邻算法<code>没有显示的学习过程</code>，所以每次对<code>目标点</code>进行分类的时候，都需要借助已知的训练数据。而类似感知机这种<code>具有显示的学习过程</code>的算法，会根据训练数据，得出一个模型<code>sign(&lt;w,x&gt;+B)</code>，后续预测直接用训练好的模型进行预测就行了。</p>
-</blockquote>
-<blockquote>
 <p>因为这个特性，所以如果不采取特殊的数据结构对数据进行存储，那么每一次<code>分类目标点</code>的时候，都要遍历所有的训练数据，<code>时间不可控</code>。对此，<code>KD-Tree</code>就出来了，其实KD-Tree听名字就是一棵树，可以参考二分查找的过程。</p>
 </blockquote>
 <h2 id="什么是KD-Tree"><a href="#什么是KD-Tree" class="headerlink" title="什么是KD-Tree"></a>什么是KD-Tree</h2><blockquote>
 <p>这里先给出一颗KD-Tree的例子，后续再对KD-tree的Construction与Searching进行论述。<img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/KD-Tree/KD-Tree.png" alt="KD-Tree" title="KD-Tree"><br>每一个节点对应着一个<code>划分</code>(就是一个大饼被刀切了)，如图所示，<code>根节点(30,40)</code>对应了整个输入空间（整个饼），根节点将整个输入控件分为了<code>两类</code>，分别是<code>x&lt;30, x&gt;30</code>，由其两个分支表示。<em>（解释为啥是x，这与选择的特征有关，看图根节点左边是选的x，所以对比x）</em>。这样不断往下划分，最终得到了整个输入空间的划分（左边），对应的数据结构如<code>右边</code>所示。</p>
-</blockquote>
-<blockquote>
 <p>闲话：其实通过上面描述应该就知道KD-Tree存储的什么东西了，它将数据的信息（具体特征的数值大小）表示在了结构上。其与排序二叉树十分类似嘛。</p>
 </blockquote>
 <h2 id="KD-Tree’s-Construction"><a href="#KD-Tree’s-Construction" class="headerlink" title="KD-Tree’s Construction"></a>KD-Tree’s Construction</h2><ul>
@@ -840,25 +902,17 @@
 </ul>
 <blockquote>
 <ol>
-<li>随机选择一点(30, 40)，作为<code>根节点</code>，x&lt;30的(5,25) (10, 12)位于根节点左子树上。大于的就位于右子树。</li>
+<li><p>随机选择一点(30, 40)，作为<code>根节点</code>，x&lt;30的(5,25) (10, 12)位于根节点左子树上。大于的就位于右子树。</p>
+</li>
+<li><p>在左子树中，随机选择一点作为<code>左子树的根节点</code>，这里选择了(5, 25)。然后y<25的位于其左子树，y>25的位于右子树</p>
+</li>
+<li><p>这样不断迭代，最终形成了树的模样。</p>
+</li>
+<li><p>根据构造出来的树画图：根据<code>判别条件</code>画垂直的线。如根节点，根据x来判别的，那么就在这一点上，垂直与x轴，将其代表的<code>划分</code>(根节点是整个输入空间嘛)，一分为二。</p>
+</li>
 </ol>
 </blockquote>
-<blockquote>
-<ol start="2">
-<li>在左子树中，随机选择一点作为<code>左子树的根节点</code>，这里选择了(5, 25)。然后y&lt;25的位于其左子树，y&gt;25的位于右子树</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="3">
-<li>这样不断迭代，最终形成了树的模样。</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="4">
-<li>根据构造出来的树画图：根据<code>判别条件</code>画垂直的线。如根节点，根据x来判别的，那么就在这一点上，垂直与x轴，将其代表的<code>划分</code>(根节点是整个输入空间嘛)，一分为二。</li>
-</ol>
-</blockquote>
-<p>** 由上可知，整个过程中存在着3个问题尚未解决：我们在划分时应该选取哪个维度？划分时我们应该选择哪一个值来划分？什么时候停止划分？ **</p>
+<p><strong> 由上可知，整个过程中存在着3个问题尚未解决：我们在划分时应该选取哪个维度？划分时我们应该选择哪一个值来划分？什么时候停止划分？ </strong></p>
 <ul>
 <li><p>应该选择哪一个维度？</p>
 <blockquote>
@@ -867,17 +921,14 @@
 </li>
 <li><p>维度确定了我们应该选择哪一个点当作划分点？</p>
 <blockquote>
-<p>这个其实理论上来说当然是选择搜索路径最短的那个点，但是这好像不是很容易达到。《统计学习方法》中采用的方法是<code>采用中位数当作划分点</code>，这样可以保证整个树是平衡的。如上述第一步骤中，x的中位数是(30, 40) *(以左边为基准的话)*。那么根节点就是(30, 40)。</p>
+<p>这个其实理论上来说当然是选择搜索路径最短的那个点，但是这好像不是很容易达到。《统计学习方法》中采用的方法是<code>采用中位数当作划分点</code>，这样可以保证整个树是平衡的。如上述第一步骤中，x的中位数是(30, 40) <em>(以左边为基准的话)</em>。那么根节点就是(30, 40)。</p>
 </blockquote>
 </li>
 <li><p>我们什么时候停止划分?</p>
 <blockquote>
 <p>这是我们自己设定阈值，我们知道，每一个点对应一个划分区域，那么我们可设定 <code>threshold = 10</code>，表示如果这个划分区域中，</p>
-</blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> num(point_In_Split) &lt; threshold</span><br><span class="line">	End Spliting.</span><br></pre></td></tr></table></figure>
-
-
-
+</blockquote>
 </li>
 </ul>
 <h2 id="KD-Tree’s-Searching"><a href="#KD-Tree’s-Searching" class="headerlink" title="KD-Tree’s Searching"></a>KD-Tree’s Searching</h2><blockquote>
@@ -950,13 +1001,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="1-奇异值分解：A-UΣV-T-其中，U是AA-T的特征向量，Σ-2是AA-T的特征值，V是A-TA的特征向量，目的即将图片weights-x-heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。"><a href="#1-奇异值分解：A-UΣV-T-其中，U是AA-T的特征向量，Σ-2是AA-T的特征值，V是A-TA的特征向量，目的即将图片weights-x-heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。" class="headerlink" title="1. 奇异值分解：A=UΣV^T, 其中，U是AA^T的特征向量，Σ^2是AA^T的特征值，V是A^TA的特征向量，目的即将图片weights x heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。"></a>1. 奇异值分解：A=UΣV^T, 其中，U是AA^T的特征向量，Σ^2是AA^T的特征值，V是A^TA的特征向量，目的即将图片weights x heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># psuedo Code</span></span><br><span class="line">    <span class="comment"># 1. 加载图片成width x height的数组A</span></span><br><span class="line">    <span class="comment"># 2. 计算A^TA，算出其lambda^2, lambda是SIGMA, 对应特征向量是V1，V2；再根据(1):解AA^T的eigen vector作为U；（2）或者解AV/SIGMA得出U。</span></span><br><span class="line">    <span class="comment"># 3. 从大到小排列SIGMA以及对应U，V得出分解内容。</span></span><br><span class="line">    <span class="comment"># 4. 分析结论</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. 得出矩阵A_TA</span></span><br><span class="line">    Img = Image.open(<span class="string">'./test.jpg'</span>)</span><br><span class="line">    Img_array = np.array(Img)</span><br><span class="line">    A = Img_array[:,:,<span class="number">0</span>]</span><br><span class="line">    A_T = A.transpose()</span><br><span class="line">    A_TA = np.dot(A_T, A)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 计算出对应特征值及对应特征向量，并排好序（in order of importance）</span></span><br><span class="line">    eigenvalues,eigenVectors = np.linalg.eig(A_TA)</span><br><span class="line">    tmp = np.column_stack((eigenvalues, eigenVectors))</span><br><span class="line">    tmp = tmp[np.argsort(-(tmp[:,<span class="number">0</span>]))]</span><br><span class="line">    singularValues, singularVectorsV = np.nan_to_num(np.power(tmp[:, <span class="number">0</span>], <span class="number">0.5</span>)), tmp[:, <span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 用AV/SIGMA = U 计算U</span></span><br><span class="line">    singularVectorsU = np.dot(A, singularVectorsV)/singularValues</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置阈值为99%</span></span><br><span class="line">    threshold = <span class="number">0.99</span></span><br><span class="line">    SigmaSum = np.sum(singularValues)</span><br><span class="line">    tmp = singularValues[<span class="number">0</span>]</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(tmp/SigmaSum &lt;= threshold):</span><br><span class="line">        tmp += singularValues[i]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    reConstructImgArray = np.dot(</span><br><span class="line">        np.dot(singularVectorsU[:, <span class="number">0</span>:i+<span class="number">1</span>], np.diag(singularValues[<span class="number">0</span>:i+<span class="number">1</span>])), </span><br><span class="line">        np.transpose(singularVectorsV[:, <span class="number">0</span>:i+<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    reConstructImg = Image.fromarray(reConstructImgArray)</span><br><span class="line">    reConstructImg.show()</span><br><span class="line">    <span class="comment"># 结果为i=1257, 即压缩为了1257*(1980+2640), 原图是1980*2640, 这样压缩保留了99%的信息</span></span><br><span class="line">    print(<span class="string">"good luck"</span>)</span><br></pre></td></tr></table></figure>
+          <h3 id="1-奇异值分解：A-UΣV-T-其中，U是AA-T的特征向量，Σ-2是AA-T的特征值，V是A-TA的特征向量，目的即将图片weights-x-heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。"><a href="#1-奇异值分解：A-UΣV-T-其中，U是AA-T的特征向量，Σ-2是AA-T的特征值，V是A-TA的特征向量，目的即将图片weights-x-heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。" class="headerlink" title="1. 奇异值分解：A=UΣV^T, 其中，U是AA^T的特征向量，Σ^2是AA^T的特征值，V是A^TA的特征向量，目的即将图片weights x heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。"></a>1. 奇异值分解：A=UΣV^T, 其中，U是AA^T的特征向量，Σ^2是AA^T的特征值，V是A^TA的特征向量，目的即将图片weights x heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># psuedo Code</span></span><br><span class="line">    <span class="comment"># 1. 加载图片成width x height的数组A</span></span><br><span class="line">    <span class="comment"># 2. 计算A^TA，算出其lambda^2, lambda是SIGMA, 对应特征向量是V1，V2；再根据(1):解AA^T的eigen vector作为U；（2）或者解AV/SIGMA得出U。</span></span><br><span class="line">    <span class="comment"># 3. 从大到小排列SIGMA以及对应U，V得出分解内容。</span></span><br><span class="line">    <span class="comment"># 4. 分析结论</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. 得出矩阵A_TA</span></span><br><span class="line">    Img = Image.open(<span class="string">&#x27;./test.jpg&#x27;</span>)</span><br><span class="line">    Img_array = np.array(Img)</span><br><span class="line">    A = Img_array[:,:,<span class="number">0</span>]</span><br><span class="line">    A_T = A.transpose()</span><br><span class="line">    A_TA = np.dot(A_T, A)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 计算出对应特征值及对应特征向量，并排好序（in order of importance）</span></span><br><span class="line">    eigenvalues,eigenVectors = np.linalg.eig(A_TA)</span><br><span class="line">    tmp = np.column_stack((eigenvalues, eigenVectors))</span><br><span class="line">    tmp = tmp[np.argsort(-(tmp[:,<span class="number">0</span>]))]</span><br><span class="line">    singularValues, singularVectorsV = np.nan_to_num(np.power(tmp[:, <span class="number">0</span>], <span class="number">0.5</span>)), tmp[:, <span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 用AV/SIGMA = U 计算U</span></span><br><span class="line">    singularVectorsU = np.dot(A, singularVectorsV)/singularValues</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置阈值为99%</span></span><br><span class="line">    threshold = <span class="number">0.99</span></span><br><span class="line">    SigmaSum = np.sum(singularValues)</span><br><span class="line">    tmp = singularValues[<span class="number">0</span>]</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(tmp/SigmaSum &lt;= threshold):</span><br><span class="line">        tmp += singularValues[i]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    reConstructImgArray = np.dot(</span><br><span class="line">        np.dot(singularVectorsU[:, <span class="number">0</span>:i+<span class="number">1</span>], np.diag(singularValues[<span class="number">0</span>:i+<span class="number">1</span>])), </span><br><span class="line">        np.transpose(singularVectorsV[:, <span class="number">0</span>:i+<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    reConstructImg = Image.fromarray(reConstructImgArray)</span><br><span class="line">    reConstructImg.show()</span><br><span class="line">    <span class="comment"># 结果为i=1257, 即压缩为了1257*(1980+2640), 原图是1980*2640, 这样压缩保留了99%的信息</span></span><br><span class="line">    print(<span class="string">&quot;good luck&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="2-左为重构，右为原图"><a href="#2-左为重构，右为原图" class="headerlink" title="2. 左为重构，右为原图"></a>2. 左为重构，右为原图</h3><p><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/SVD/SVD%E4%BB%A3%E7%A0%81%E6%95%88%E6%9E%9C%E7%A4%BA%E4%BE%8B%E5%9B%BE.jpg" alt="SVD_Sample_Pic" title="SVD_Sample_Pic"></p>
-<h3 id="3-结果说明"><a href="#3-结果说明" class="headerlink" title="3. 结果说明"></a>3. 结果说明</h3><blockquote>
-<p>原图大小是 1980<em>2640</em>3(带color channel)，现经过SVD压缩为了(1257*(1980+2640)*3)<code>(代码中为了简单表明过程，只计算了一个color channel上的)</code>。上述例子表明，在保存图片信息99%的情况下，压缩率为90%。</p>
-</blockquote>
-<hr>
-
+<h3 id="3-结果说明"><a href="#3-结果说明" class="headerlink" title="3. 结果说明"></a>3. 结果说明</h3><h2 id="gt-原图大小是-198026403-带color-channel-，现经过SVD压缩为了-1257-1980-2640-3-代码中为了简单表明过程，只计算了一个color-channel上的-。上述例子表明，在保存图片信息99-的情况下，压缩率为90-。"><a href="#gt-原图大小是-198026403-带color-channel-，现经过SVD压缩为了-1257-1980-2640-3-代码中为了简单表明过程，只计算了一个color-channel上的-。上述例子表明，在保存图片信息99-的情况下，压缩率为90-。" class="headerlink" title="&gt; 原图大小是 198026403(带color channel)，现经过SVD压缩为了(1257(1980+2640)3)(代码中为了简单表明过程，只计算了一个color channel上的)。上述例子表明，在保存图片信息99%的情况下，压缩率为90%。"></a>&gt; 原图大小是 1980<em>2640</em>3(带color channel)，现经过SVD压缩为了(1257<em>(1980+2640)</em>3)<code>(代码中为了简单表明过程，只计算了一个color channel上的)</code>。上述例子表明，在保存图片信息99%的情况下，压缩率为90%。</h2>
       
     </div>
 
@@ -1032,20 +1079,10 @@
 </ol>
 <blockquote>
 <p><strong>prerequisite</strong>: A的column space’s projection matrix is <img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%85%AC%E5%BC%8F.png" alt="A对应投影矩阵公式" title="P = A(A^TA)^{-1}A^T"></p>
-</blockquote>
-<blockquote>
 <h3 id="1-首先以二维为例"><a href="#1-首先以二维为例" class="headerlink" title="1. 首先以二维为例"></a>1. 首先以二维为例</h3><p><code>(x1, x2)</code>是线性无关的列向量，现需找出<code>orthonormal的(q1, q2)</code>来表示(x1,x2)的<code>列空间</code>。第一步:<code>q1=x1/norm2(x1)</code>。问题是如何依据x2找到q2使<code>&lt;q1, q2&gt; = 0</code>。 <img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim2.png" alt="二维Gram_Schmidt" title="二维Gram_Schmidt"></p>
-</blockquote>
-<blockquote>
 <p>如图所示，<code>x2</code>在<code>q1</code>上的投影<code>p=&lt;q1, x2&gt;q1</code>，而我们需要的部分是<code>e(error) = x2-p</code>(# 注为啥叫error在投影那一章节有记录)。从而令<code>q2 = e/norm2(e)</code>。<strong>用人话</strong>来说就是，第n维的目标向量<code>(qn)</code>是第n维的已知向量<code>(xn)</code>依次减去其在<code>q1 -&gt; qn-1</code>上的投影，最后单位化。</p>
-</blockquote>
-<blockquote>
 <h3 id="2-三维图示"><a href="#2-三维图示" class="headerlink" title="2. 三维图示"></a>2. 三维图示</h3><p><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim3.png" alt="三维Gram_Schmidt" title="三维Gram_Schmidt"></p>
-</blockquote>
-<blockquote>
 <p>由此可推到出Gram_Schmidt的公式：<br><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt%E5%85%AC%E5%BC%8F.png" alt="Gram_Schmidt公式" title="Gram_Schmidt公式"></p>
-</blockquote>
-<blockquote>
 <h3 id="3-Pseudo-Code-of-Gram-Schmidt"><a href="#3-Pseudo-Code-of-Gram-Schmidt" class="headerlink" title="3. Pseudo Code of Gram-Schmidt"></a>3. Pseudo Code of Gram-Schmidt</h3><p><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Algorithm.png" alt="Gram_Schmidt_Algorithm" title="Gram_Schmidt_Algorithm"></p>
 </blockquote>
 <h2 id="二：A-QR与Gram-Schmidt的关系"><a href="#二：A-QR与Gram-Schmidt的关系" class="headerlink" title="二：A=QR与Gram-Schmidt的关系"></a>二：A=QR与Gram-Schmidt的关系</h2><blockquote>
@@ -1133,171 +1170,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="作业描述：新竹清华大学，周志远老师的并行计算课程，作业一"><a href="#作业描述：新竹清华大学，周志远老师的并行计算课程，作业一" class="headerlink" title="作业描述：新竹清华大学，周志远老师的并行计算课程，作业一"></a>作业描述：新竹清华大学，周志远老师的并行计算课程，<a href="http://lms.nthu.edu.tw/course.php?courseID=35305&f=hw&hw=168455" target="_blank" rel="noopener">作业一</a></h1><ol>
+          <h1 id="作业描述：新竹清华大学，周志远老师的并行计算课程，作业一"><a href="#作业描述：新竹清华大学，周志远老师的并行计算课程，作业一" class="headerlink" title="作业描述：新竹清华大学，周志远老师的并行计算课程，作业一"></a>作业描述：新竹清华大学，周志远老师的并行计算课程，<a target="_blank" rel="noopener" href="http://lms.nthu.edu.tw/course.php?courseID=35305&amp;f=hw&amp;hw=168455">作业一</a></h1><ol>
 <li>环境配置<blockquote>
-<p>在<a href="https://giganticray.github.io/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/" target="_blank" rel="noopener">slurm平台搭建成功</a>的基础上，（使用<code>sinfo</code>查看，应该如下图所示），包含2台机器（虚拟机ubuntu16.04 64位），一台master, 既作为control节点，又作为computing节点，配置为2核cpu。一台slaver，只作为computing节点，配置为一核cpu。<br><img src="https://github.com/GiganticRay/lei.Blog.File/blob/master/Picture/FirstHomeWork/slurm%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9Fsinfo.jpg" alt="sinfo配置成功图片" title="sinfo配置成功图片"></p>
+<p>在<a target="_blank" rel="noopener" href="https://giganticray.github.io/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/">slurm平台搭建成功</a>的基础上，（使用<code>sinfo</code>查看，应该如下图所示），包含2台机器（虚拟机ubuntu16.04 64位），一台master, 既作为control节点，又作为computing节点，配置为2核cpu。一台slaver，只作为computing节点，配置为一核cpu。<br><img src="https://github.com/GiganticRay/lei.Blog.File/blob/master/Picture/FirstHomeWork/slurm%E9%85%8D%E7%BD%AE%E6%88%90%E5%8A%9Fsinfo.jpg" alt="sinfo配置成功图片" title="sinfo配置成功图片"></p>
 </blockquote>
 </li>
 <li>配置共享nfs文件服务器<blockquote>
-<p>这是根据报错来的，我在master节点独立目录下运行任务时报错如下图所示，显示在slaver节点上找不到这个目录，于是采用share memory的方式，根据<a href="https://www.tecmint.com/install-nfs-server-on-ubuntu/" target="_blank" rel="noopener">这篇nfs配置</a>对nfs进行配置。<br><img src="https://github.com/GiganticRay/lei.Blog.File/blob/master/Picture/FirstHomeWork/slurm_srun_%E6%9C%AA%E9%85%8D%E7%BD%AEnfs.jpg" alt="nfs未配置" title="nfs未配置"><br>我的配置是将物理主机的<code>/mnt/nfs_share</code>作为共享目录，然后将虚拟机（master and slaver）的<code>/mnt/nfs_clientshare</code>作为挂载目录</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要注意的一条命令，在nfs client上对nfs server上目录进行挂载</span></span><br><span class="line">sudo mount <span class="number">192.168</span><span class="number">.1</span><span class="number">.103</span>:/mnt/nfs_share  /mnt/nfs_clientshare</span><br><span class="line"><span class="comment"># 注意，最后面没有 '/'，不然好像会挂在失败（未提示错误但是就是显示不出文件）</span></span><br></pre></td></tr></table></figure></li>
+<p>这是根据报错来的，我在master节点独立目录下运行任务时报错如下图所示，显示在slaver节点上找不到这个目录，于是采用share memory的方式，根据<a target="_blank" rel="noopener" href="https://www.tecmint.com/install-nfs-server-on-ubuntu/">这篇nfs配置</a>对nfs进行配置。<br><img src="https://github.com/GiganticRay/lei.Blog.File/blob/master/Picture/FirstHomeWork/slurm_srun_%E6%9C%AA%E9%85%8D%E7%BD%AEnfs.jpg" alt="nfs未配置" title="nfs未配置"><br>我的配置是将物理主机的<code>/mnt/nfs_share</code>作为共享目录，然后将虚拟机（master and slaver）的<code>/mnt/nfs_clientshare</code>作为挂载目录</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要注意的一条命令，在nfs client上对nfs server上目录进行挂载</span></span><br><span class="line">sudo mount <span class="number">192.168</span><span class="number">.1</span><span class="number">.103</span>:/mnt/nfs_share  /mnt/nfs_clientshare</span><br><span class="line"><span class="comment"># 注意，最后面没有 &#x27;/&#x27;，不然好像会挂在失败（未提示错误但是就是显示不出文件）</span></span><br></pre></td></tr></table></figure></blockquote>
+</li>
 <li>修改slaver状态<blockquote>
-<p>我这默认salver’s state=down, 需要手动设置其状态为idle，然后再使用<code>sinfo</code>查看节点状态</p>
+<p>我这默认salver’s state=down, 需要手动设置其状态为idle，然后再使用<code>sinfo</code>查看节点状态<br><code>scontrol: update NodeName=slave1 State=down</code></p>
 </blockquote>
-<figure class="highlight plain"><figcaption><span>update NodeName</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4. hello.c进行测试</span><br><span class="line">&gt; 用master主机在共享目录下下载[测试文件](https:&#x2F;&#x2F;www.open-mpi.org&#x2F;papers&#x2F;workshop-2006&#x2F;hello.c)，运行如下</span><br></pre></td></tr></table></figure>
-<h1 id="mpicc编译"><a href="#mpicc编译" class="headerlink" title="mpicc编译"></a>mpicc编译</h1>mpicc hello.c -o hello<br>srun -n 3 hello<pre><code>&gt; 结果如下图所示，但是按道理来说应该是0 of 2, 1 of 2, 2 of 2啊，为啥是3个 0 of 1 呢，奇怪
-![nfs配置成功后运行srun](https://github.com/GiganticRay/lei.Blog.File/blob/master/Picture/FirstHomeWork/slurm_srun_%E9%85%8D%E7%BD%AEnfs.jpg &quot;成功配置nfs&quot;)</code></pre>
+</li>
+<li>hello.c进行测试<blockquote>
+<p>用master主机在共享目录下下载<a target="_blank" rel="noopener" href="https://www.open-mpi.org/papers/workshop-2006/hello.c">测试文件</a>，运行如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># mpicc编译</span><br><span class="line">mpicc hello.c -o hello</span><br><span class="line">srun -n 3 hello</span><br></pre></td></tr></table></figure>
+<p>结果如下图所示，但是按道理来说应该是0 of 2, 1 of 2, 2 of 2啊，为啥是3个 0 of 1 呢，奇怪<br><img src="https://github.com/GiganticRay/lei.Blog.File/blob/master/Picture/FirstHomeWork/slurm_srun_%E9%85%8D%E7%BD%AEnfs.jpg" alt="nfs配置成功后运行srun" title="成功配置nfs"></p>
+</blockquote>
 </li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lei Chao">
-      <meta itemprop="description" content="Parallel Computing ITer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lei Chao's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/13/%E7%94%A8ubuntu%E6%90%AD%E5%BB%BAslurm%E5%B9%B3%E5%8F%B0/" class="post-title-link" itemprop="url">用ubuntu搭建slurm平台</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-13 16:31:58" itemprop="dateCreated datePublished" datetime="2020-07-13T16:31:58+08:00">2020-07-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-15 08:29:35" itemprop="dateModified" datetime="2020-07-15T08:29:35+08:00">2020-07-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="机器配置-注：我是基于zxh的博客，以及官方文档针对ubuntu进行配置的"><a href="#机器配置-注：我是基于zxh的博客，以及官方文档针对ubuntu进行配置的" class="headerlink" title="机器配置(注：我是基于zxh的博客，以及官方文档针对ubuntu进行配置的)"></a>机器配置(注：我是基于<a href="http://blog.zxh.site/" target="_blank" rel="noopener">zxh</a>的博客，以及<a href="https://slurm.schedmd.com/quickstart_admin.html" target="_blank" rel="noopener">官方文档</a>针对ubuntu进行配置的)</h3><blockquote>
-<p>两台ubuntu的虚拟机，一台作为master(2核心)，一台作为slave(1核心)</p>
-</blockquote>
-<ul>
-<li>配置过程</li>
-</ul>
-<ol start="0">
-<li><p>配置etc/hosts文件, 以及配置静态ip（默认是dhcp动态的，这样重启或者到了一个新的网络环境下局域网内部ip会自适应，这样每次都要调整很麻烦，所以此处设置为静态的）</p>
-<blockquote>
-<p>注意修改master node的etc/hostname文件，最好保持与你的用户名一致，不然后续可能会出现”slurmctld: error: this host (xx) not valid controller (master or (null))”错误<br>设置静态ip的时候需注意网关的设置，一般是192.168.1.1（路由器的地址嘛，关于网关的知识可以自行了解一下）</p>
-</blockquote>
-</li>
-<li><p>关闭防火墙（ubuntu’s SELinux默认是关闭的）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ufw disable (注：ufw，即uncomplicated firewall)</span><br></pre></td></tr></table></figure></li>
-<li><p>配置ntp <strong>（network Time protocol）</strong> 时间同步服务</p>
-<blockquote>
-<p><a href="https://linux.cn/article-8091-1.html" target="_blank" rel="noopener">ntp简介</a>，使用<strong>timedatectl</strong>可以查看时间同步状态，默认我这里时ntp synchronized: yes已经开启的</p>
-</blockquote>
-</li>
-<li><p>配置安装munge</p>
-<blockquote>
-<p>munge是为了授权才安装的，确保所有节点上的munge.key是相同的，并且在启动slurm之前要确保守护进程munged处于运行状态</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install munge</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里直接用apt安装，默认就配置好了munge的owner以及grouper，如果要手动配置的话要<strong>注意</strong>, munge daemon process的启用者要与munge’ owner一致。<br>安装完毕后将host节点中/etc/munge/munge.txt拷贝到其他节点的/etc/munge里面去(首先都安装上ssh)</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># host machine</span></span><br><span class="line">scp /etc/munge/munge.key slave1@<span class="number">192.168</span><span class="number">.1</span><span class="number">.105</span>:/tmp <span class="comment"># 将host machine节点上的munge.key复制到ip为192.168.1.105的slave1节点的tmp目录（这个目录有权限）</span></span><br><span class="line"><span class="comment"># 然后在slave节点上移动munge.txt到/etc/munge目录下，注意更改复制过来后key文件的owner与grouper为munge</span></span><br><span class="line">sudo chown munge:munge munge.key</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the daemon automatically at boot:</span></span><br><span class="line">sudo systemctl enable munge <span class="comment">#(开机自启)</span></span><br><span class="line"><span class="comment"># Start the daemon now:</span></span><br><span class="line">sudo systemctl start munge</span><br><span class="line"><span class="comment"># Stop the daemon:</span></span><br><span class="line">sudo systemctl stop munge</span><br><span class="line"></span><br><span class="line">ps -aux | grep munge查看</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>*** 注意：一定要在slurm daemon开启之前start munge daemon</p>
-<ol start="4">
-<li>下载配置 slurm<blockquote>
-<p>4.1 ubuntu，现在<a href="https://slurm.schedmd.com/download.html" target="_blank" rel="noopener">下载页面</a>下载slurm源码，编译后根据<a href="https://blog.csdn.net/datuqiqi/article/details/50827040" target="_blank" rel="noopener">这篇博客</a>配置slurm.conf文件</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">apt-get install hwloc libhwloc-dev libmunge-dev libmunge2 munge mariadb-server libmysqlclient-dev（slave节点不需要最后两个sql）</span><br><span class="line"><span class="comment"># 解压，在目录进行编译</span></span><br><span class="line">./configure</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br><span class="line"><span class="comment"># 编译完成后进入 slurm-xxxx/etc</span></span><br><span class="line">cp slurm.conf.example slurm.conf, 然后根据上述博客进行配置，配置完成后将slurm.conf拷贝到集群所有节点上面</span><br><span class="line">scp slurm.conf slave1@<span class="number">192.168</span><span class="number">.1</span><span class="number">.105</span>:/tmp</span><br><span class="line"><span class="comment"># 在slave1节点将slurm.conf文件拷贝进入安装目录</span></span><br><span class="line">cp /tmp/slurm.conf /home/slave1/slurmxxxx/etc</span><br></pre></td></tr></table></figure></li>
-<li>2 此处根据<a href="http://blog.zxh.site/2018/08/26/HPC-series-6-setup-slurm/" target="_blank" rel="noopener">zxh</a>配置Maria DB以及配置slurm<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mariadb-servert</span><br><span class="line"><span class="comment"># 注意，在ubuntu下安装mariadb，但是操作的时候是操作的mysql</span></span><br><span class="line">sudo systemctl start mysql</span><br><span class="line">systemctl enable mysql</span><br><span class="line">mysql_secure_installation</span><br><span class="line"><span class="comment"># 将配置好的slurm.conf copy至/usr/local/etc/中去</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>4.3<br>主节点运行:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slurmctld -c</span><br><span class="line">slurmd -c</span><br><span class="line">注意：-c时后台运行，在第一次运行时可以使用-D参数，显式运行以观察运行情况</span><br></pre></td></tr></table></figure>
-<p>slave节点运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slurmd -c</span><br></pre></td></tr></table></figure>
-
-<h1 id="False-Log"><a href="#False-Log" class="headerlink" title="False Log"></a>False Log</h1><ul>
-<li><p>我在master运行sudo slurmctld -c启动时报错找不到/usr/local/etc/slurm.conf文件</p>
-<blockquote>
-<p>将编译目录下/etc/slurm.conf复制进去即可</p>
-</blockquote>
-</li>
-<li><p>使用sinfo时报错：slurm_load_partitions: unable to contact slurm controller (connect failure)</p>
-<blockquote>
-<p>这个就是slurmctld没有正常启动…</p>
-</blockquote>
-</li>
-<li><p>“slurmd: fatal: mkdir(/var/spool/slurm/d): No such file or directory”</p>
-<blockquote>
-<p>创建slurm中部分配置的目录，/var/spool/slurm/ctld 和 /var/spool/slurm/d</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意更改spool以及其子目录文件的所有者及权限(如果需要的话)</span></span><br><span class="line">mkdir -p /var/spool/slurm/ctld</span><br><span class="line">mkdir -p /var/spool/slurm/d</span><br></pre></td></tr></table></figure></li>
-<li><p>master成功启动slurmctld 与 slurmd,但是从节点启动slurmd启动时报错：invalid user for slurmUser xxx, ignored（此时master与slave的slurm.conf完全一样）</p>
-<blockquote>
-<p>更改salve节点/etc/slurm-llnl/slurm.conf文件的slurmUser的值为slave的用户即可</p>
-</blockquote>
-</li>
-<li><p>slave节点：slurmd:error:couldn’t find the specified plugin name for select/cons_tres lokking at all files</p>
-<blockquote>
-<p>这个我也找不到问题所在了，定位在 slave节点上的/usr/local/lib下面居然没有找到与slurm相关的文件!,奇了怪了，算了，现在已经凌晨了，其他centos配个环境怎么这么简单，一路都没有错误，ubuntu错误为什么这么多呢，这个问题也是连日志都没有，我把master上面的相关文件copy至slave节点还是没有，那我直接把slave节点删除了！就用一个master同时充当controller与computer算了。就这样，<br>第二天早上我tm发现，在salve节点上居然没有make install… 所以在<code>/usr/local/lib</code>中找不到相关文件…</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="安装经验总结"><a href="#安装经验总结" class="headerlink" title="安装经验总结"></a>安装经验总结</h1><ul>
-<li>安装整体来说还是挺容易的，碰到问题不要慌，仔细看错误提示，每个人碰到的问题都是不同的，可能是文件权限错误，也可能是缺少某些文件等等，加油!<h1 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h1></li>
-</ul>
-<p>1.<a href="http://blog.zxh.site/2018/08/26/HPC-series-6-setup-slurm/" target="_blank" rel="noopener">http://blog.zxh.site/2018/08/26/HPC-series-6-setup-slurm/</a><br>2.<a href="https://blog.csdn.net/qq_40474522/article/details/78898128" target="_blank" rel="noopener">https://blog.csdn.net/qq_40474522/article/details/78898128</a><br>3.<a href="https://blog.csdn.net/datuqiqi/article/details/50827040" target="_blank" rel="noopener">https://blog.csdn.net/datuqiqi/article/details/50827040</a><br>4.<a href="http://blog.zxh.site/2018/09/02/HPC-%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0-7-Debian-Ubuntu%E5%AE%89%E8%A3%85Slurm/" target="_blank" rel="noopener">http://blog.zxh.site/2018/09/02/HPC-%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0-7-Debian-Ubuntu%E5%AE%89%E8%A3%85Slurm/</a><br>5.<a href="https://blog.csdn.net/banana1006034246/article/details/99301649" target="_blank" rel="noopener">https://blog.csdn.net/banana1006034246/article/details/99301649</a></p>
 
       
     </div>
@@ -1388,7 +1280,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/js/next-boot.js"></script>
 
 
   
@@ -1410,6 +1302,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
 
   
 
