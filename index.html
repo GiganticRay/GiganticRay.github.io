@@ -191,7 +191,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -236,6 +236,99 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lei Chao">
+      <meta itemprop="description" content="Parallel Computing ITer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lei Chao's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/" class="post-title-link" itemprop="url">从不变子空间到'良好的矩阵表示'</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-10-24 11:31:57" itemprop="dateCreated datePublished" datetime="2020-10-24T11:31:57+08:00">2020-10-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linear-Algebra/" itemprop="url" rel="index"><span itemprop="name">Linear Algebra</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><blockquote>
+<p>听君一席话，在下如拨云见日，茅塞顿开啊（\狗头，可怜的楚团长）.本文符号记法随前文。上回提到，任何一个<strong>从$U-&gt;V$空间的线性变换T</strong>，在给定$U、V$的基$B、B’$之后，都有其矩阵表示$[T]_{BB’}$。现我们给出约束：</p>
+<ol>
+<li>输入空间<strong>等于</strong>输出空间：$U=V=R^{n}$。</li>
+<li>输入空间的基<strong>等于</strong>输出空间的基：$B=B’$。<br>那么，如果$T$在$B=B’=B_{1}$的矩阵为$[T]_{B_1}$，$T$在$B=B’=B_{2}$的矩阵为$[T]_{B_2}$，记$P=[I]_{B_1B_2}$则<br>\begin{equation}\label{1}<br> [T]_{B_1} = P^{-1}[T]_{B_1}P<br>\end{equation}<br>而我们知道，<strong>对角矩阵</strong>就是线性代数的神，其拥有很多良好的性质，所以我们可不可以选择一组基，使得该线性变换的矩阵为对角矩阵呢？</li>
+</ol>
+<p>这里先给结论：在结合上述约束的情况下，如果线性变换的矩阵有n个特征向量，那么就可以选择一组合适的基，使得该线性变换的矩阵表示为对角矩阵。</p>
+</blockquote>
+<h2 id="Invariant-Subspaces"><a href="#Invariant-Subspaces" class="headerlink" title="Invariant Subspaces"></a>Invariant Subspaces</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><blockquote>
+<p>给定$U=V, \chi \subseteq V$， $\chi=R^{r}.r \leqslant n$，$T$是$V$上的线性算子，如果<br>\begin{equation}\label{2}<br>    T(\chi)= \chi<br>\end{equation}<br>我们就称$\chi$是$V$中$T$下的<strong>不变子空间</strong>。说人话就是，$T$作用在$\chi$中的任一元素后，结果仍然在$\chi$中。</p>
+</blockquote>
+<h3 id="Restricted-Operator"><a href="#Restricted-Operator" class="headerlink" title="Restricted Operator"></a>Restricted Operator</h3><blockquote>
+<p>有了不变子空间的定义后我们很自然地可以引入<strong>restricted operator</strong>，由于$T$作用在$\chi$上与$V$中的其他元素无关，那么就好像$\chi$是一个baby $V$，我们定义一个只作用在$\chi$上的作用相同的变换$T_{/\chi}$。此即<strong>restricted operator</strong>。</p>
+<h4 id="The-matrix-representation-of-restricted-operator"><a href="#The-matrix-representation-of-restricted-operator" class="headerlink" title="The matrix representation of restricted operator"></a>The matrix representation of restricted operator</h4><p>定义$\chi$的一组基为$B_x={x_1,x_2···x_r}$，故，根据线性变换基的矩阵表示的定义，可得：<br>\begin{equation}\label{3}<br>    [A/\chi]_{B_x} = ([A/\chi(x_1)]_{B_x}|[A/\chi(x_2)]_{B_x}|···|[A/\chi(x_r)]_{B_x}])<br>\end{equation}</p>
+</blockquote>
+<h3 id="The-matrix-of-T-involved-T-chi"><a href="#The-matrix-of-T-involved-T-chi" class="headerlink" title="The matrix of $T$ involved $T/\chi$"></a>The matrix of $T$ involved $T/\chi$</h3><blockquote>
+<p>如果我们把$\chi$的基$B_x$作为$V$输入基$B$的一部分，那么此时的$[T]_B$的形式是怎样的呢？emm..interesting.<br>令$B=(x_1,x_2…x_r,y_1,y_2…y_q)$是$V$的一组基，那么，<br>\begin{equation}\label{4}<br>    [T]_B=([T(x_1)]_B|···|[T(x_r)]_B|[T(q_1)]_B···|[T(y_q)]_B)<br>\end{equation}</p>
+</blockquote>
+<p>由于$x_1-&gt;x_r$是<strong>不依赖</strong>于后面的$y$的，所以<br>\begin{equation}\label{5}<br>\begin{matrix}<br>T(x_j)=\sum_{i=1}^{r}\alpha_{ij}x_i &amp;<br>[T(x_j)]_B = \begin{pmatrix}<br>\alpha_{1j}\\<br>···\\<br>\alpha{rj}\\<br>0\\<br>···\\<br>0<br>\end{pmatrix}\end{matrix}<br>\end{equation}</p>
+<p>\begin{equation}\label{6}<br>\begin{matrix}<br>T(y_j)=\sum_{i=1}^{r}\beta_{ij}x_i + \sum_{i=1}^{q}\gamma_{ij}y_i &amp;<br>[T(y_j)]_B = \begin{pmatrix}<br>\beta_{1j}\\<br>···\\<br>\beta_{rj}\\<br>\gamma_{1j}\\<br>···\\<br>\gamma_{qj}<br>\end{pmatrix}\end{matrix}<br>\end{equation}</p>
+<blockquote>
+<p>从而，可得出：<br>\begin{equation}\label{7}<br>    [T]_B =<br>    \begin{pmatrix}<br>    \alpha_{11} &amp; ··· &amp; \alpha_{1r} &amp; \beta_{11} &amp; ··· &amp; \beta_{1q}\\<br>     ·&amp; ··· &amp; · &amp; · &amp; ··· &amp; ·\\<br>    \alpha_{r1} &amp; ··· &amp; \alpha_{rr} &amp; \beta_{r1} &amp; ··· &amp; \beta_{rq}\\<br>     0&amp; ··· &amp; 0 &amp; \gamma_{11} &amp; ··· &amp; \gamma_{1q}\\<br>     ·&amp; ··· &amp; · &amp; · &amp; ··· &amp; ·\\<br>     0&amp; ··· &amp; 0 &amp; \gamma_{q1} &amp; ··· &amp; \gamma_{qq}<br>    \end{pmatrix}<br>\end{equation}</p>
+<p>左上角部分即为$[T_{/\chi}]_{B_{\chi}}$。</p>
+</blockquote>
+<h3 id="联想到特征向量以及特征空间"><a href="#联想到特征向量以及特征空间" class="headerlink" title="联想到特征向量以及特征空间"></a>联想到特征向量以及特征空间</h3><blockquote>
+<p>上面我们已经得出一般形式，不难发现，$[T]_B$的<strong>n</strong>个特征向量<em>（前面我们的约束）</em>，都是$T$下的不变子空间，那么有意思的来了，把这n个特征向量作为$V$的基$B=(x_1,x_2,···,x_n)$，那么$[T]_B$的形式就是一个<strong>对角矩阵</strong>了，对角线元素为特征值$\lambda$，interesting。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1137,74 +1230,6 @@
 <p>这个我懒得描述了，看李航老师《统计学习方法》上就有。需要更正的一点是<em>（我觉得其算法3.3漏了一个判别步骤）</em>，算法3.3<code>的(1)</code>中，强调的是<code>“直到子节点为叶节点为止”</code>，但是有可能搜索结束后发现结束的那个节点<code>并不是</code>叶节点，如(50,30)，那么就要在(50, 30)下添加一个空节点，然后以该空节点作为<code>&quot;包含目标点x的叶节点&quot;</code>。</p>
 </blockquote>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/22/SVD-A-U%CE%A3V-T-to-compress-a-Picture-%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lei Chao">
-      <meta itemprop="description" content="Parallel Computing ITer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lei Chao's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/22/SVD-A-U%CE%A3V-T-to-compress-a-Picture-%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" class="post-title-link" itemprop="url">SVD A=UΣV^T to compress a Picture(奇异值分解)进行图片压缩</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-22 18:04:14" itemprop="dateCreated datePublished" datetime="2020-07-22T18:04:14+08:00">2020-07-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linear-Algebra/" itemprop="url" rel="index"><span itemprop="name">Linear Algebra</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-奇异值分解：A-UΣV-T-其中，U是AA-T的特征向量，Σ-2是AA-T的特征值，V是A-TA的特征向量，目的即将图片weights-x-heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。"><a href="#1-奇异值分解：A-UΣV-T-其中，U是AA-T的特征向量，Σ-2是AA-T的特征值，V是A-TA的特征向量，目的即将图片weights-x-heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。" class="headerlink" title="1. 奇异值分解：A=UΣV^T, 其中，U是AA^T的特征向量，Σ^2是AA^T的特征值，V是A^TA的特征向量，目的即将图片weights x heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。"></a>1. 奇异值分解：A=UΣV^T, 其中，U是AA^T的特征向量，Σ^2是AA^T的特征值，V是A^TA的特征向量，目的即将图片weights x heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># psuedo Code</span></span><br><span class="line">    <span class="comment"># 1. 加载图片成width x height的数组A</span></span><br><span class="line">    <span class="comment"># 2. 计算A^TA，算出其lambda^2, lambda是SIGMA, 对应特征向量是V1，V2；再根据(1):解AA^T的eigen vector作为U；（2）或者解AV/SIGMA得出U。</span></span><br><span class="line">    <span class="comment"># 3. 从大到小排列SIGMA以及对应U，V得出分解内容。</span></span><br><span class="line">    <span class="comment"># 4. 分析结论</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. 得出矩阵A_TA</span></span><br><span class="line">    Img = Image.open(<span class="string">&#x27;./test.jpg&#x27;</span>)</span><br><span class="line">    Img_array = np.array(Img)</span><br><span class="line">    A = Img_array[:,:,<span class="number">0</span>]</span><br><span class="line">    A_T = A.transpose()</span><br><span class="line">    A_TA = np.dot(A_T, A)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 计算出对应特征值及对应特征向量，并排好序（in order of importance）</span></span><br><span class="line">    eigenvalues,eigenVectors = np.linalg.eig(A_TA)</span><br><span class="line">    tmp = np.column_stack((eigenvalues, eigenVectors))</span><br><span class="line">    tmp = tmp[np.argsort(-(tmp[:,<span class="number">0</span>]))]</span><br><span class="line">    singularValues, singularVectorsV = np.nan_to_num(np.power(tmp[:, <span class="number">0</span>], <span class="number">0.5</span>)), tmp[:, <span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 用AV/SIGMA = U 计算U</span></span><br><span class="line">    singularVectorsU = np.dot(A, singularVectorsV)/singularValues</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置阈值为99%</span></span><br><span class="line">    threshold = <span class="number">0.99</span></span><br><span class="line">    SigmaSum = np.sum(singularValues)</span><br><span class="line">    tmp = singularValues[<span class="number">0</span>]</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(tmp/SigmaSum &lt;= threshold):</span><br><span class="line">        tmp += singularValues[i]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    reConstructImgArray = np.dot(</span><br><span class="line">        np.dot(singularVectorsU[:, <span class="number">0</span>:i+<span class="number">1</span>], np.diag(singularValues[<span class="number">0</span>:i+<span class="number">1</span>])), </span><br><span class="line">        np.transpose(singularVectorsV[:, <span class="number">0</span>:i+<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    reConstructImg = Image.fromarray(reConstructImgArray)</span><br><span class="line">    reConstructImg.show()</span><br><span class="line">    <span class="comment"># 结果为i=1257, 即压缩为了1257*(1980+2640), 原图是1980*2640, 这样压缩保留了99%的信息</span></span><br><span class="line">    print(<span class="string">&quot;good luck&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="2-左为重构，右为原图"><a href="#2-左为重构，右为原图" class="headerlink" title="2. 左为重构，右为原图"></a>2. 左为重构，右为原图</h3><p><img src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/SVD/SVD%E4%BB%A3%E7%A0%81%E6%95%88%E6%9E%9C%E7%A4%BA%E4%BE%8B%E5%9B%BE.jpg" alt="SVD_Sample_Pic" title="SVD_Sample_Pic"></p>
-<h3 id="3-结果说明"><a href="#3-结果说明" class="headerlink" title="3. 结果说明"></a>3. 结果说明</h3><h2 id="gt-原图大小是-198026403-带color-channel-，现经过SVD压缩为了-1257-1980-2640-3-代码中为了简单表明过程，只计算了一个color-channel上的-。上述例子表明，在保存图片信息99-的情况下，压缩率为90-。"><a href="#gt-原图大小是-198026403-带color-channel-，现经过SVD压缩为了-1257-1980-2640-3-代码中为了简单表明过程，只计算了一个color-channel上的-。上述例子表明，在保存图片信息99-的情况下，压缩率为90-。" class="headerlink" title="&gt; 原图大小是 198026403(带color channel)，现经过SVD压缩为了(1257(1980+2640)3)(代码中为了简单表明过程，只计算了一个color channel上的)。上述例子表明，在保存图片信息99%的情况下，压缩率为90%。"></a>&gt; 原图大小是 1980<em>2640</em>3(带color channel)，现经过SVD压缩为了(1257<em>(1980+2640)</em>3)<code>(代码中为了简单表明过程，只计算了一个color channel上的)</code>。上述例子表明，在保存图片信息99%的情况下，压缩率为90%。</h2>
       
     </div>
 
