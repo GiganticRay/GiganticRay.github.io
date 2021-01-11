@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
-  <meta name="description" content="Notation $[T]_B$表示，以$B、B$为输入、输出基下，$T$变换的矩阵表示 $[I]_{BB’}$表示分别以$B、B’$为输入、输出基下，$I$变换的矩阵表示。 $[x_1]_{B’}$表示$x_1$这个object在$B’$下的坐标表示。上述  Abstract 关于基变换算子的一些理解，(秃头进行中…)基变换算子是什么，我们可以用基变换算子干嘛？  用基变换算子，当然是对物体ob">
+  <meta name="description" content="Conditional Number of Matrix In This post, I will comb the inference of the conditional number of Matrix  WHAT 不得不说，咱们语言文化的博大精深。所谓“千里之堤，溃于蚁穴”，则正是条件数的表示，旨在对某件事物进行轻微的扰动，那么其会产生巨大的影响。  Defenition所以对于方程组 $">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Change Of Basis Operator">
-<meta property="og:url" content="http://yoursite.com/2020/10/20/Change-Of-Basis-Operator/index.html">
+<meta property="og:title" content="conditional Number of Matrix">
+<meta property="og:url" content="http://yoursite.com/2021/01/11/conditional-Number-of-Matrix/index.html">
 <meta property="og:site_name" content="Lei Chao&#39;s Blog">
-<meta property="og:description" content="Notation $[T]_B$表示，以$B、B$为输入、输出基下，$T$变换的矩阵表示 $[I]_{BB’}$表示分别以$B、B’$为输入、输出基下，$I$变换的矩阵表示。 $[x_1]_{B’}$表示$x_1$这个object在$B’$下的坐标表示。上述  Abstract 关于基变换算子的一些理解，(秃头进行中…)基变换算子是什么，我们可以用基变换算子干嘛？  用基变换算子，当然是对物体ob">
+<meta property="og:description" content="Conditional Number of Matrix In This post, I will comb the inference of the conditional number of Matrix  WHAT 不得不说，咱们语言文化的博大精深。所谓“千里之堤，溃于蚁穴”，则正是条件数的表示，旨在对某件事物进行轻微的扰动，那么其会产生巨大的影响。  Defenition所以对于方程组 $">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-20T15:50:38.000Z">
-<meta property="article:modified_time" content="2020-10-20T15:50:38.000Z">
+<meta property="article:published_time" content="2021-01-11T06:09:31.000Z">
+<meta property="article:modified_time" content="2021-01-11T06:09:31.000Z">
 <meta property="article:author" content="Lei Chao">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/10/20/Change-Of-Basis-Operator/">
+<link rel="canonical" href="http://yoursite.com/2021/01/11/conditional-Number-of-Matrix/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>Change Of Basis Operator | Lei Chao's Blog</title>
+  <title>conditional Number of Matrix | Lei Chao's Blog</title>
   
 
 
@@ -181,7 +181,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Notation"><span class="nav-number">1.</span> <span class="nav-text">Notation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">2.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%9F%BA%E5%8F%98%E6%8D%A2%E7%AE%97%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">什么是基变换算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E5%8F%98%E6%8D%A2%E7%AE%97%E5%AD%90%E7%9A%84%E4%BD%9C%E7%94%A8%E4%B9%8B%E4%B8%80"><span class="nav-number">4.</span> <span class="nav-text">基变换算子的作用之一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E5%8F%98%E6%8D%A2%E7%AE%97%E5%AD%90%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E6%98%AF%E5%95%A5"><span class="nav-number">5.</span> <span class="nav-text">基变换算子的矩阵表示是啥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prove-Equation-3"><span class="nav-number">5.1.</span> <span class="nav-text">Prove Equation 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E5%8F%98%E6%8D%A2%E7%AE%97%E5%AD%90%E7%9A%84%E4%BD%9C%E7%94%A8%E4%B9%8B%E4%BA%8C"><span class="nav-number">6.</span> <span class="nav-text">基变换算子的作用之二</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Conditional-Number-of-Matrix"><span class="nav-number">1.</span> <span class="nav-text">Conditional Number of Matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WHAT"><span class="nav-number">1.1.</span> <span class="nav-text">WHAT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Defenition"><span class="nav-number">1.1.1.</span> <span class="nav-text">Defenition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inference-of-the-Conditional-Number"><span class="nav-number">1.2.</span> <span class="nav-text">Inference of the Conditional Number</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Neumann-Series"><span class="nav-number">1.2.1.</span> <span class="nav-text">Neumann Series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perturbation-Term"><span class="nav-number">1.2.2.</span> <span class="nav-text">Perturbation Term</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B0%E5%8A%A8%E9%A1%B9-gt-%E6%9D%A1%E4%BB%B6%E6%95%B0"><span class="nav-number">1.2.3.</span> <span class="nav-text">扰动项 &#x3D;&gt; 条件数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%95%B0%E4%B8%BA%E5%A4%9A%E5%B0%91%E6%97%B6%E6%89%8D%E6%98%AF%E5%87%89%E6%80%81%E7%9A%84%EF%BC%9F"><span class="nav-number">1.2.4.</span> <span class="nav-text">条件数为多少时才是凉态的？</span></a></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -245,7 +245,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/20/Change-Of-Basis-Operator/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/11/conditional-Number-of-Matrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -258,7 +258,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Change Of Basis Operator
+          conditional Number of Matrix
         </h1>
 
         <div class="post-meta">
@@ -268,7 +268,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-10-20 23:50:38" itemprop="dateCreated datePublished" datetime="2020-10-20T23:50:38+08:00">2020-10-20</time>
+              <time title="Created: 2021-01-11 14:09:31" itemprop="dateCreated datePublished" datetime="2021-01-11T14:09:31+08:00">2021-01-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -291,70 +291,52 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h2><ol>
-<li>$[T]_B$表示，以$B、B$为<code>输入、输出基</code>下，$T$变换的矩阵表示</li>
-<li>$[I]_{BB’}$表示分别以$B、B’$为<code>输入、输出基</code>下，$I$变换的矩阵表示。</li>
-<li>$[x_1]_{B’}$表示$x_1$这个<code>object</code>在$B’$下的坐标表示。上述</li>
-</ol>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><blockquote>
-<p>关于基变换算子的一些理解，(秃头进行中…)基变换算子是什么，我们可以用基变换算子干嘛？</p>
+        <h1 id="Conditional-Number-of-Matrix"><a href="#Conditional-Number-of-Matrix" class="headerlink" title="Conditional Number of Matrix"></a>Conditional Number of Matrix</h1><blockquote>
+<p>In This post, I will comb the inference of the conditional number of Matrix</p>
+</blockquote>
+<h2 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h2><blockquote>
+<p>不得不说，咱们语言文化的博大精深。所谓“千里之堤，溃于蚁穴”，则正是<strong>条件数</strong>的表示，旨在对某件事物进行轻微的扰动，那么其会产生巨大的影响。</p>
+</blockquote>
+<h3 id="Defenition"><a href="#Defenition" class="headerlink" title="Defenition"></a>Defenition</h3><p>所以对于方程组 $Ax=b$， 如果我们给$A$一个轻微的扰动，其解x变化仍在我们可接受的范围之内的话，那么就说这个矩阵是良好的矩阵(Well Done!)，否则，它就是一个病态的矩阵。</p>
+<blockquote>
+<p>针对上述定义，我们引出两个问题</p>
+</blockquote>
 <ol>
-<li>用基变换算子，当然是对物体object进行基变换的鸭</li>
-<li>探索对于同一个线性变换，在给定不同的输入基以及输出基下，其对应的矩阵有什么联系</li>
+<li><p>什么是轻微的扰动？</p>
+</li>
+<li><p>如何评测一个矩阵是否是病态的？</p>
+</li>
 </ol>
-</blockquote>
-<h2 id="什么是基变换算子"><a href="#什么是基变换算子" class="headerlink" title="什么是基变换算子"></a>什么是基变换算子</h2><blockquote>
-<p>这一点是我学习时非常困扰的一点，把一切抛之于脑后，不去想基变换，就把它看成是一种变换，这样就好解释了。首先我们说明：<strong>基变换是一种线性变换</strong>，这个自己验证即可，而一个从$U-&gt;V$的线性变换是<code>客观存在的</code>，只有当我们给定$U、V$的一组基后，这个线性变换的<code>矩阵表示</code>才被确定下来。</p>
-<p>我们知道，给定$U、V$空间的一组基$B=[u_1,u_2…u_n]，B’=[v_1,v_2…v_m]$从$U-&gt;V$空间的任意线性变换$T$，都对应着一个矩阵表示。现在我们引出一个问题：<strong>基变换也是线性变换，那么我们给定一组基$B=[u_1,u_2…u_n]、B’=[v_1,v_2…v_n]$,基变换是从基$B1-&gt;B1’$，请问$B、B’$与$B1、B1’$之间都是基，那他们有什么联系呢？</strong></p>
-<p>这是我学习时非常非常困惑的一点，按照我的理解，这两者没有任何联系，他们所表示的内容是两个不同的概念：</p>
-<p>把基变换算子就抽象出一个变换，其输入空间与输出空间都是$R^n$（管它什么基变换不变换的，就看成是一个变换），而一个线性变换要在<strong>给定输入空间的一组输入基、输出空间的一组输出基</strong>下，才能给出其唯一的矩阵表示。上面的<strong>输入、输出基</strong>，即是$B、B’$。那么可能就有人问了：<strong>“那$B1、B1’$是啥呢？”</strong>，我们只要把<strong>$B1与B1$’</strong>看作是这个线性变换里边儿的元素就可以了。</p>
-<p>对应，李老师直接给出线性变换的定义：给定两个基$B=(x_1,x_2…x_n)，B’=(y_1,y_2…y_n)$。把$B$变换为$B’$的T表示为<br>\begin{equation}\label{1}<br>T(y_i)=x_i<br>\end{equation}</p>
-<p>tips：上述定义之中的基$B、B’$是<code>T要变换的东西，而不是T所在的基</code>，好绕啊…</p>
-</blockquote>
-<h2 id="基变换算子的作用之一"><a href="#基变换算子的作用之一" class="headerlink" title="基变换算子的作用之一"></a>基变换算子的作用之一</h2><blockquote>
-<p>假设$P$是一个基变换算子$T$的矩阵表示$P=[T]_{BB’}$，<code>x</code>是一个<code>object</code>，其在$B$下的坐标表示为$[x]_{B}$，其在$B’$下的坐标表示为$[x]_{B’}$，那么$[x]_{B’}=P·[x]_{B}$。</p>
-</blockquote>
-<h2 id="基变换算子的矩阵表示是啥"><a href="#基变换算子的矩阵表示是啥" class="headerlink" title="基变换算子的矩阵表示是啥"></a>基变换算子的矩阵表示是啥</h2><blockquote>
-<p>不给定输入基与输出基谈变换的矩阵表示都是耍流氓，上述我们给出了基变换算子的定义，却并未给出该变换输入空间的输入基，输出空间的输出基。来看一下这个表达式</p>
-</blockquote>
-<p>\begin{equation}\label{2}<br>P=[T]_{BB}=[T]_{B’B’}=[I]_{BB’}=([x_1]_{B’}|[x_2]_{B’}|···|[x_n]_{B’})<br>\end{equation}</p>
-<blockquote>
-<p><strong>我个人觉得的就是，由于基变换算子太饶了，而我们可以用一个简单的形式来等价表示，即$[I]_{BB’}$，那我们就干脆用$[I]_{BB’}$来表示从B到B’的线性变换的矩阵了</strong>。</p>
-</blockquote>
-<h3 id="Prove-Equation-3"><a href="#Prove-Equation-3" class="headerlink" title="Prove Equation 3"></a>Prove Equation 3</h3><blockquote>
-<p>根据定义，我们可以得到：</p>
-</blockquote>
-<p>\begin{equation}\label{3}<br>    T(y_i)=x_i=\sum_{j=1}^n \alpha_jy_j<br>\end{equation}</p>
-<blockquote>
-<p>$[\alpha_1, \alpha_2···\alpha_n]$即表示$x_i$这个<code>object</code>，在$B’$下的坐标表示，即$\alpha=[x_i]_{B’}$。现在，我们同时考虑对等式3左右两边同时进行T变换：</p>
-</blockquote>
-<p>\begin{equation}\label{4}<br>    T(x_i)=\sum_{j=1}^n\alpha_j·T(y_j) = \sum_{j=1}^n\alpha_jx_j<br>\end{equation}</p>
-<blockquote>
-<p>这个式子很有趣啊，表示$T(x_i)$在$B$下的坐标表示也为$\alpha$，即$\alpha=[T(x_i)]_{B}$，结合等式3，那么就是</p>
-</blockquote>
-<p>\begin{equation}\label{5}<br>    [x_i]_{B’} = [T(x_i)]_B<br>\end{equation}</p>
-<blockquote>
-<p>这样我们可以得到如下：</p>
-</blockquote>
-<p>\begin{equation}\label{6}<br>    [T]_b = ([T(x_1)]_B,[T(x_2)]_B···[T(x_n)]_B) = ([x_1]_{B’},[x_2]_{B’}···,[x_n]_B’) = [T]_{B’}<br>\end{equation}</p>
-<blockquote>
-<p>证明$[I]_{BB’}$与他们相等也很简单</p>
-</blockquote>
-<p>\begin{equation}\label{7}<br>    [I]_{BB’}=[[I(x_n)]_{B’},[I(x_2)]_{B’}···,[I(x_n)]_{B’}]=[[x_1]_{B’},[x_2]_{B’}···,[x_n]_{B’}]=[T]_{B’}<br>\end{equation}</p>
-<blockquote>
-<p>我靠，这也太神奇了，从而，研究从$B-&gt;B’$的基变换算子，我们就可以研究$[I]_{BB’}$这个矩阵了。</p>
-</blockquote>
-<h2 id="基变换算子的作用之二"><a href="#基变换算子的作用之二" class="headerlink" title="基变换算子的作用之二"></a>基变换算子的作用之二</h2><blockquote>
-<p>考虑这样一种情况，$A$是在$V$上的一个线性算子<code>(linear operator)</code>，$B、B’$分别是$V$的两组基，那么$[A]_B$与$[A]_{B’}$这两个矩阵既然表示同样线性变换，<strong>那么它们有什么联系呢？</strong></p>
-</blockquote>
-<p>\begin{equation}\label{8}<br>    [A]_B = P^{-1}[A]_{B’}P<br>\end{equation}</p>
-<blockquote>
-<p>where $P = [I]_{BB’}$，这个很好理解嘛，我们把两边都乘以$[x]_B$，即</p>
-</blockquote>
-<p>\begin{equation}\label{9}<br>    [A]_B[x]_B = P^{-1}[A]_{B’}P[x]_B<br>\end{equation}</p>
-<blockquote>
-<p>学废了吗？因为这个东西，所以如果我们已知一个线性变换的矩阵表示$[A]_B$，那么我们通过变换基，可以得到其更好的矩阵表示形式$[A]_{B’}$，这样在特定情况下就可以方便问题求解了。（一定要注意：线性变换是<code>客观存在</code>的，上述讨论的只是线性算子，即输入空间、输出空间是一样的。并且仅考虑输入空间、输出空间的基也是一样的。就相当于控制变量嘛，有同学可能要问了，那诸如投影算子这些呢，它们输入、输出空间肯定不一样鸭。这种情况不在我们的讨论范围之内，因为这样的话它的矩阵表示肯定不是满秩了，肯定会有维度的损失。）</p>
-</blockquote>
+<p>所谓轻微的扰动，并不是指整个矩阵中所有元素变化量的大小，而是说变化元素的个数。通常，我们用</p>
+<script type="math/tex; mode=display">
+   e_i·\alpha {e_j}^T</script><p>来表示仅在$(i, j)$位置的元素为$\alpha$，其余位置为$0$的矩阵。而轻微扰动，即在$A$的基础之上 append 一些$(1)$的元素。</p>
+<p>下面进行条件数的推导。</p>
+<h2 id="Inference-of-the-Conditional-Number"><a href="#Inference-of-the-Conditional-Number" class="headerlink" title="Inference of the Conditional Number"></a>Inference of the Conditional Number</h2><h3 id="Neumann-Series"><a href="#Neumann-Series" class="headerlink" title="Neumann Series"></a>Neumann Series</h3><p>在这里只能说诺伊曼牛逼, If $\lim_{n \to \infty} A^n=0$, 那么$I-A$就是非奇异的，并且</p>
+<script type="math/tex; mode=display">
+(I-A)^{-1} = I+A+A^2+···=\sum_{k=0}^{\infty}A^k</script><p>这个直接相乘即可验证出来了，诺伊曼给了我们一个估算$(I-A)^{-1}$的级数，太棒了。</p>
+<h3 id="Perturbation-Term"><a href="#Perturbation-Term" class="headerlink" title="Perturbation Term"></a>Perturbation Term</h3><p>现在我们假设给予$A$矩阵一些轻微的扰动$B$， 即$A+B$，现在来考虑$Ax=b$的解$x$，与$(A+B)\widetilde{x}=b$的解$\widetilde{x}$的gap。因为$A$可逆，且$B$是轻微扰动，所以说$A+B$是可逆的，所以</p>
+<script type="math/tex; mode=display">
+\left\{\begin{matrix}
+x=A^{-1}b\\ 
+\widetilde{x}=(A+B)^{-1}b
+\end{matrix}\right.</script><p>从而，我们仅要看$A^{-1}$与$(A+B)^{-1}$的差异即可。下面由诺伊曼级数进行导出。</p>
+<p>假设$\lim_{n \to \infty}(A^{-1}B)^n=0$，(这个其实很好满足嘛，直觉上只要$A^{-1}$不要太大就好，因为$B$是轻微扰动项，所以说$B^n$本身很小很小的，这样说不太严谨，但是intuitive)。</p>
+<script type="math/tex; mode=display">
+(A+B)^{-1} = (A(I-[-A^{-1}B]))^{-1} = (I-[-A^{-1}B])^{-1}A^{-1}=(\sum_{k=0}^{\infty}[-A^{-1}B]^k)A^{-1}</script><p>为了方便起见，我们仅考虑其一阶估计</p>
+<script type="math/tex; mode=display">
+(A+B)^{-1} \approx A^{-1}-A^{-1}BA^{-1}</script><p>可见，右边儿的第二项就是扰动项：$A^{-1}BA^{-1}$。</p>
+<h3 id="扰动项-gt-条件数"><a href="#扰动项-gt-条件数" class="headerlink" title="扰动项 =&gt; 条件数"></a>扰动项 =&gt; 条件数</h3><p>首先我们先得到$x- \widetilde{x}$的上界</p>
+<script type="math/tex; mode=display">
+x- \widetilde{x} = A^{-1}b-(A+B)^{-1}b \approx A^{-1}Bx</script><p>这肯定是上界嘛，因为只估算到了一阶。那么，<strong>只要这个上界足够小，那么其误差就可能大</strong>。</p>
+<script type="math/tex; mode=display">
+\left \| x-\widetilde{x} \right \| \leq \left \|A^{-1} \right \| \left \| B \right \| \left \| x \right \|</script><p>由于解本身有大有小，所以我们不能直接用其差值进行误差的估量，进而采用</p>
+<script type="math/tex; mode=display">
+\frac{\left \| x-\widetilde{x} \right \|}{\left \|x \right \|} \leq \left \| A^{-1} \right \| \left \|B \right \| = \kappa\{ \frac{\left \|B \right \|} {\left \|A \right \|}\}</script><p>其中，由于B是扰动，所以 $\frac{\left |B \right |} {\left |A \right |}$本身很小，所以其上界如果很大，那么肯定是$\kappa$出了问题。</p>
+<script type="math/tex; mode=display">
+\kappa = \left \|A \right \|·\left \| A^{-1} \right \|</script><p>我们称$\kappa$为矩阵$A$的条件数。如果$\kappa$很小，那么其差值上界定然小，如果$\kappa$很大，那么其差值上界就很大，从而其真实的差值就可能大，就是病态矩阵。（注意定然和可能）。</p>
+<p>至于这个“小”还是“大”，因为已经经过模的规范化了，所以不同矩阵之间也可以比较。</p>
+<h3 id="条件数为多少时才是凉态的？"><a href="#条件数为多少时才是凉态的？" class="headerlink" title="条件数为多少时才是凉态的？"></a>条件数为多少时才是凉态的？</h3><p>这里其实可以做一个实验，编写代码画图，构造一些指定条件数的矩阵出来，观察其轻微扰动之后的差值。给出网友的结论：（第一步骤实验！）</p>
+<p><em>首先奇异和病态没有必然的联系，良态、病态、条件数都要针对求解的问题而言，比如说矩阵求逆的性态和矩阵求特征值的性态就完全是两码事 　在2-范数扰动的意义下，矩阵求逆或者解线性方程组的时候奇异矩阵可以认为是最病态（无限病态）的矩阵，因为它有零奇异值（注意，这个问题的性态体现在奇异值而不是特征值） 　至于什么样的矩阵算病态，没有绝对的标准，因为大和小是相对的概念 　通常病态与否也与实际计算的机器精度有关，比如IEEE单精度下K=10^4算比较病态了，但在IEEE双精度下就算比较良态</em></p>
 
     </div>
 
@@ -373,13 +355,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/10/18/Linear-Transformation%E8%A1%A5%E5%85%85-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/" rel="prev" title="Linear Transformation补充-线性变换的矩阵表示">
-      <i class="fa fa-chevron-left"></i> Linear Transformation补充-线性变换的矩阵表示
+    <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/" rel="prev" title="Understand Fourier Transformation by basic math">
+      <i class="fa fa-chevron-left"></i> Understand Fourier Transformation by basic math
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/" rel="next" title="从不变子空间到'良好的矩阵表示'">
-      从不变子空间到'良好的矩阵表示' <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -547,7 +526,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'HexoRemark',
       owner       : 'GiganticRay',
       admin       : ['GiganticRay'],
-      id          : 'efbe486db60044113e2a4f899b3c9bfa',
+      id          : '24400d9ca7afef467544aa75c33f53c4',
         language: '',
       distractionFreeMode: true
     });
