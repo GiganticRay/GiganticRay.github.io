@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Lei Chao&#39;s Blog | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/GiganticRay/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/GiganticRay/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/GiganticRay/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/GiganticRay/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/GiganticRay/css/main.css">
+
+
+<link rel="stylesheet" href="/GiganticRay/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/GiganticRay/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
   <meta name="description" content="参考章节目录  - Iteriative Methods for Sparse Linear Systems P12 - MATH 5330: Computational Methods of Linear Algebra—Lecture Note 10: Householder Transformation—Xianyi Zeng—Department of Mathematical Sci">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lei Chao&#39;s Blog">
-<meta property="og:url" content="http://example.com/2020/08/07/A-QR-HouseHolder-Defactorization/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:title" content="A-QR-HouseHolder-Defactorization">
+<meta property="og:url" content="https://github.com/GiganticRay/2020/08/07/A-QR-HouseHolder-Defactorization/index.html">
+<meta property="og:site_name" content="Hughui&#39;s Blog">
 <meta property="og:description" content="参考章节目录  - Iteriative Methods for Sparse Linear Systems P12 - MATH 5330: Computational Methods of Linear Algebra—Lecture Note 10: Householder Transformation—Xianyi Zeng—Department of Mathematical Sci">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/HouseholderMatrix%E7%9A%84%E5%87%A0%E4%BD%95%E8%A1%A8%E7%A4%BA.png">
@@ -29,85 +43,303 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.3.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Householder_pseudoCode.png">
 <meta property="article:published_time" content="2020-08-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-27T12:41:41.271Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2025-01-27T13:55:19.693Z">
+<meta property="article:author" content="Hughui Lei">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/HouseholderMatrix%E7%9A%84%E5%87%A0%E4%BD%95%E8%A1%A8%E7%A4%BA.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="canonical" href="https://github.com/GiganticRay/2020/08/07/A-QR-HouseHolder-Defactorization/">
 
-  
-  
-<meta name="generator" content="Hexo 7.3.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>A-QR-HouseHolder-Defactorization | Hughui's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
-</header>
 
-      <div class="outer">
-        <section id="main"><article id="post-A-QR-HouseHolder-Defactorization" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/08/07/A-QR-HouseHolder-Defactorization/" class="article-date">
-  <time class="dt-published" datetime="2020-08-06T16:00:00.000Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
+  <div class="site-meta">
+
+    <a href="/GiganticRay/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hughui's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Lei Chao&#39;s Blog
-    </h1>
-  
 
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/GiganticRay/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/GiganticRay/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/GiganticRay/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/GiganticRay/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/GiganticRay/2020/08/07/A-QR-HouseHolder-Defactorization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/GiganticRay/images/avatar.gif">
+      <meta itemprop="name" content="Hughui Lei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hughui's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A-QR-HouseHolder-Defactorization
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-08-07 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-07T00:00:00+08:00">2020-08-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-01-27 21:55:19" itemprop="dateModified" datetime="2025-01-27T21:55:19+08:00">2025-01-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/GiganticRay/categories/Linear-Algebra/" itemprop="url" rel="index"><span itemprop="name">Linear Algebra</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
       </header>
+
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
         <blockquote>
 </blockquote>
@@ -120,162 +352,220 @@
 
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><blockquote>
 </blockquote>
-<p>关于A&#x3D;QR的分解，有三种方法：<strong><a target="_blank" rel="noopener" href="https://giganticray.github.io/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">Gram、Givens</a>、Householder</strong>，Givens我不熟悉、但好像和旋转有关、可以保留A’s columns的长度。HouseHolder也有这个优点。</p>
+<p>关于A=QR的分解，有三种方法：<strong><a target="_blank" rel="noopener" href="https://giganticray.github.io/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">Gram、Givens</a>、Householder</strong>，Givens我不熟悉、但好像和旋转有关、可以保留A’s columns的长度。HouseHolder也有这个优点。</p>
 <h2 id="大致了解"><a href="#大致了解" class="headerlink" title="大致了解"></a>大致了解</h2><blockquote>
 </blockquote>
 <p>Gram-Schmidt的方法是通过一步一步地将新的列A<sub>j</sub>，减去其在已正交化的q<sub>1</sub>，q<sub>2</sub>，q<sub>(j-1)</sub>的投影从而得到新的正交项以此构成Q，<strong>HouseHolder</strong>采取了另外一种完全的方法，其一步一步地将待分解矩阵A，分解成<strong>Echelon matrix</strong>，当然这个分解过程不是简单的<strong>Gaussian Decomposition</strong>，而是用了<strong>HouseHolder算子</strong>，下面翻译一下参考书目1中的分解步骤</p>
 <h2 id="什么是Householder算子（Householder矩阵的几何表示）"><a href="#什么是Householder算子（Householder矩阵的几何表示）" class="headerlink" title="什么是Householder算子（Householder矩阵的几何表示）"></a>什么是Householder算子（Householder矩阵的几何表示）</h2><blockquote>
 </blockquote>
-<p>Householder算子是一个矩阵，其形式是<strong>P &#x3D; I - 2ww<sup>T</sup></strong>，这里我一般记作<strong>P<sub>w</sub></strong>，因为P是由w决定的，后续我们也是针对待分解矩阵的每一列来构造对应的w，从而得出针对每一列的P。<br>易证，<code>P是Ortogonal矩阵、且是Symmetric矩阵</code>：<strong>P<sup>T</sup>&#x3D;P，P<sup>T</sup>P&#x3D;I</strong>。<br>注意，我们后续在选择w的时候，要让其是2-norm unity的向量。<br>从几何上来看，Px表示的就是x,关于空间{w}<sup>⊥</sup>的镜像。画图表示就是<br/><img alt="HouseholderMatrix的几何表示" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/HouseholderMatrix%E7%9A%84%E5%87%A0%E4%BD%95%E8%A1%A8%E7%A4%BA.png" title="HouseholderMatrix的几何表示"/><br>v就是上文中的w、H<sub>v</sub>就是上文中的P<sub>w</sub>。</p>
+<p>Householder算子是一个矩阵，其形式是<strong>P = I - 2ww<sup>T</sup></strong>，这里我一般记作<strong>P<sub>w</sub></strong>，因为P是由w决定的，后续我们也是针对待分解矩阵的每一列来构造对应的w，从而得出针对每一列的P。<br>易证，<code>P是Ortogonal矩阵、且是Symmetric矩阵</code>：<strong>P<sup>T</sup>=P，P<sup>T</sup>P=I</strong>。<br>注意，我们后续在选择w的时候，要让其是2-norm unity的向量。<br>从几何上来看，Px表示的就是x,关于空间{w}<sup>⊥</sup>的镜像。画图表示就是<br><img alt="HouseholderMatrix的几何表示" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/HouseholderMatrix%E7%9A%84%E5%87%A0%E4%BD%95%E8%A1%A8%E7%A4%BA.png" title="HouseholderMatrix的几何表示"><br>v就是上文中的w、H<sub>v</sub>就是上文中的P<sub>w</sub>。</p>
 <h2 id="如何为每一列Xj构造每一个HouseHolder矩阵Pj"><a href="#如何为每一列Xj构造每一个HouseHolder矩阵Pj" class="headerlink" title="如何为每一列Xj构造每一个HouseHolder矩阵Pj"></a>如何为每一列Xj构造每一个HouseHolder矩阵Pj</h2><li>针对向量x、构造其P<sub>w</sub><blockquote>
-一直在强调，HouseHolder矩阵P<sub>j</sub>的作用就相当于Gaussian Elimination的消除矩阵（应该这么叫吧）。下面以第一列为例，假设第一列是x，那么目的肯定是<br/><img alt="1.15.1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.15.1.png" title="1.15.1"/><br/>α是一个张量，后面我们会知道其实就是x的长度。现在将P的表达式代入:<br/><img alt="1.16" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.16.png" title="1.16"/><br/><img alt="推导1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/%E6%8E%A8%E5%AF%BC1.png" title="推导1"/><br/><img alt="推导2" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/%E6%8E%A8%E5%AF%BC2.png" title="推导2"/>
+一直在强调，HouseHolder矩阵P<sub>j</sub>的作用就相当于Gaussian Elimination的消除矩阵（应该这么叫吧）。下面以第一列为例，假设第一列是x，那么目的肯定是<br><img alt="1.15.1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.15.1.png" title="1.15.1"><br>α是一个张量，后面我们会知道其实就是x的长度。现在将P的表达式代入:<br><img alt="1.16" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.16.png" title="1.16"><br><img alt="推导1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/%E6%8E%A8%E5%AF%BC1.png" title="推导1"><br><img alt="推导2" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/%E6%8E%A8%E5%AF%BC2.png" title="推导2">
 </blockquote>
 </li>
 
 <blockquote>
 </blockquote>
-<p><strong>至此、我们就用通过x、求得了一个w，使得x在P<sub>w</sub>的作用下可以变换至||x||e<sub>1</sub></strong>，w的表达式如下<br/><img alt="w1_Expression" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/w1_Expression.png" title="w1_Expression"/></p>
+<p><strong>至此、我们就用通过x、求得了一个w，使得x在P<sub>w</sub>的作用下可以变换至||x||e<sub>1</sub></strong>，w的表达式如下<br><img alt="w1_Expression" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/w1_Expression.png" title="w1_Expression"></p>
 <li>针对矩阵的每一列，进行构造P<blockquote>
-先看矩阵的第一列x<sub>1</sub>，我们直接用x<sub>1</sub>替换掉`1.17`中的x，即得出w<sub>1</sub>，从而得出P<sub>1</sub>。记X<sub>1</sub>是第一次HouseHolder变换后的矩阵（形如已经完成一次Gaussian Elimination的矩阵）<br/><img alt="X1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/X1.png" title="X1"/><br/>X<sub>1</sub>的第一个元素为α，其余元素为0。
+先看矩阵的第一列x<sub>1</sub>，我们直接用x<sub>1</sub>替换掉`1.17`中的x，即得出w<sub>1</sub>，从而得出P<sub>1</sub>。记X<sub>1</sub>是第一次HouseHolder变换后的矩阵（形如已经完成一次Gaussian Elimination的矩阵）<br><img alt="X1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/X1.png" title="X1"><br>X<sub>1</sub>的第一个元素为α，其余元素为0。
 </blockquote>
 </li>
 
 <blockquote>
 </blockquote>
-<p>现在我们看一下第<code>k</code>次HouseHolder变换的情况，操作对象当然是已经完成<code>k-1</code>次的矩阵了鸭。表达式如下：<br/><img alt="Xk" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Xk.png" title="Xk"/><br>矩阵在列k-1前是一个上三角矩阵。进行下一步时，<code>前k-1列</code>保持不变，根据第<code>k</code>列的向量<strong>x<sub>k</sub></strong>，确定一个w，然后生成P。w的形状是<code>1至k-1</code>个元素都是0，这样才保证了前k-1列不变。P<sub>k</sub>的推导如下<br/><img alt="Pk" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Pk.png" title="Pk"/><br>当k&#x3D;0时，即第一次变换的P，此时的<strong>β&#x3D;αe<sub>1</sub></strong>，符合上文的描述。</p>
-<h2 id="构造A-QR"><a href="#构造A-QR" class="headerlink" title="构造A&#x3D;QR"></a>构造A&#x3D;QR</h2><blockquote>
+<p>现在我们看一下第<code>k</code>次HouseHolder变换的情况，操作对象当然是已经完成<code>k-1</code>次的矩阵了鸭。表达式如下：<br><img alt="Xk" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Xk.png" title="Xk"><br>矩阵在列k-1前是一个上三角矩阵。进行下一步时，<code>前k-1列</code>保持不变，根据第<code>k</code>列的向量<strong>x<sub>k</sub></strong>，确定一个w，然后生成P。w的形状是<code>1至k-1</code>个元素都是0，这样才保证了前k-1列不变。P<sub>k</sub>的推导如下<br><img alt="Pk" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Pk.png" title="Pk"><br>当k=0时，即第一次变换的P，此时的<strong>β=αe<sub>1</sub></strong>，符合上文的描述。</p>
+<h2 id="构造A-QR"><a href="#构造A-QR" class="headerlink" title="构造A=QR"></a>构造A=QR</h2><blockquote>
 </blockquote>
-<p>到这里，我们就描述完了整个X的分解过程，使得x可以分解成<br/><img alt="1.22" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.22.png" title="1.22"/><br/>这里仅需要一小步、就可以将上式变成A&#x3D;QR的美丽式子了鸭。(下面这个过程，即将R那部分中的0，转移到P中去，形成Q).我们将<code>1.22</code>表示成下面的式子<code>1.23</code>，R是<code>mxm</code>的矩阵。<br/><img alt="1.23" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.jpg" title="1.23"/><br>我们在前面给出了P<sub>i</sub>是<code>对称、且正交</code>的，所以我们把P放到右边:<br/><img alt="1.23.1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.1.png" title="1.23.1"/><br>我们用**E<sub>m</sub>**表示I的前m列，shape&#x3D;(n,m)。可表示如下<br/><img alt="1.23.2" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.2.png" title="1.23.2"/><br>令Q&#x3D;P<sup>T</sup>E<sub>m</sub>，这表示取P<sup>T</sup>的前m列。我们可以验证：<br/><img alt="1.23.3" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.3.png" title="1.23.3"/><br>所以，Q是我们想要的Q(Orthonomal)。分解成功！</p>
-<h1 id="Pseudo-Code"><a href="#Pseudo-Code" class="headerlink" title="Pseudo Code"></a>Pseudo Code</h1><img alt="Householder_pseudoCode" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Householder_pseudoCode.png" title="Householder_pseudoCode"/>
+<p>到这里，我们就描述完了整个X的分解过程，使得x可以分解成<br><img alt="1.22" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.22.png" title="1.22"><br>这里仅需要一小步、就可以将上式变成A=QR的美丽式子了鸭。(下面这个过程，即将R那部分中的0，转移到P中去，形成Q).我们将<code>1.22</code>表示成下面的式子<code>1.23</code>，R是<code>mxm</code>的矩阵。<br><img alt="1.23" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.jpg" title="1.23"><br>我们在前面给出了P<sub>i</sub>是<code>对称、且正交</code>的，所以我们把P放到右边:<br><img alt="1.23.1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.1.png" title="1.23.1"><br>我们用**E<sub>m</sub>**表示I的前m列，shape=(n,m)。可表示如下<br><img alt="1.23.2" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.2.png" title="1.23.2"><br>令Q=P<sup>T</sup>E<sub>m</sub>，这表示取P<sup>T</sup>的前m列。我们可以验证：<br><img alt="1.23.3" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.3.png" title="1.23.3"><br>所以，Q是我们想要的Q(Orthonomal)。分解成功！</p>
+<h1 id="Pseudo-Code"><a href="#Pseudo-Code" class="headerlink" title="Pseudo Code"></a>Pseudo Code</h1><img alt="Householder_pseudoCode" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Householder_pseudoCode.png" title="Householder_pseudoCode">
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/08/07/A-QR-HouseHolder-Defactorization/" data-id="cm6f1kwxp0002msusbeg01hgf" data-title="Lei Chao&#39;s Blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/GiganticRay/2020/08/05/something-about-%E5%86%B3%E7%AD%96%E6%A0%91-%E7%86%B5/" rel="prev" title="something-about-决策树-熵">
+      <i class="fa fa-chevron-left"></i> something-about-决策树-熵
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/GiganticRay/2020/10/14/Linear-Transformation%E8%A1%A5%E5%85%85/" rel="next" title="Linear-Transformation补充">
+      Linear-Transformation补充 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E8%87%B4%E4%BA%86%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">大致了解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFHouseholder%E7%AE%97%E5%AD%90%EF%BC%88Householder%E7%9F%A9%E9%98%B5%E7%9A%84%E5%87%A0%E4%BD%95%E8%A1%A8%E7%A4%BA%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">什么是Householder算子（Householder矩阵的几何表示）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%B8%BA%E6%AF%8F%E4%B8%80%E5%88%97Xj%E6%9E%84%E9%80%A0%E6%AF%8F%E4%B8%80%E4%B8%AAHouseHolder%E7%9F%A9%E9%98%B5Pj"><span class="nav-number">4.</span> <span class="nav-text">如何为每一列Xj构造每一个HouseHolder矩阵Pj</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0A-QR"><span class="nav-number">5.</span> <span class="nav-text">构造A&#x3D;QR</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pseudo-Code"><span class="nav-number"></span> <span class="nav-text">Pseudo Code</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Hughui Lei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/GiganticRay/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/GiganticRay/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hughui Lei</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
     </footer>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/08/21/Finite-Difference-Methods-%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Lei Chao&#39;s Blog
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/08/05/something-about-%E5%86%B3%E7%AD%96%E6%A0%91-%E7%86%B5/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Lei Chao&#39;s Blog</div>
-    </a>
-  
-</nav>
 
   
-</article>
+  <script src="/GiganticRay/lib/anime.min.js"></script>
+  <script src="/GiganticRay/lib/velocity/velocity.min.js"></script>
+  <script src="/GiganticRay/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/GiganticRay/js/utils.js"></script>
+
+<script src="/GiganticRay/js/motion.js"></script>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
-    </div>
-  </div>
+<script src="/GiganticRay/js/schemes/pisces.js"></script>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/01/27/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/11/conditional-Number-of-Matrix/">Lei Chao&#39;s Blog</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/">Lei Chao&#39;s Blog</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">Lei Chao&#39;s Blog</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/20/Change-Of-Basis-Operator/">Lei Chao&#39;s Blog</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+<script src="/GiganticRay/js/next-boot.js"></script>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
 
 
 
 
 
-  </div>
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>

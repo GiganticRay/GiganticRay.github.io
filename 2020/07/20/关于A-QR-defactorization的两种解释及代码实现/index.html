@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Lei Chao&#39;s Blog | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="参考书目章节 Introduction to linear algebra: P239, The Factorization A &#x3D; QR  Iterative Methods for Sparse Linear systems: **P11**, Gram-schmidt[](#一：Gram-Schmidt)一：Gram-Schmidt Interesting: gilbert str">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/GiganticRay/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/GiganticRay/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/GiganticRay/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/GiganticRay/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/GiganticRay/css/main.css">
+
+
+<link rel="stylesheet" href="/GiganticRay/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/GiganticRay/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="参考书目章节 Introduction to linear algebra: P239, The Factorization A &#x3D; QR  Iterative Methods for Sparse Linear systems: **P11**, Gram-schmidt[](#一：Gram-Schmidt)一：Gram-Schmidt Interesting: gilbert strang s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lei Chao&#39;s Blog">
-<meta property="og:url" content="http://example.com/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="参考书目章节 Introduction to linear algebra: P239, The Factorization A &#x3D; QR  Iterative Methods for Sparse Linear systems: **P11**, Gram-schmidt[](#一：Gram-Schmidt)一：Gram-Schmidt Interesting: gilbert str">
+<meta property="og:title" content="关于A-QR-defactorization的两种解释及代码实现">
+<meta property="og:url" content="https://github.com/GiganticRay/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Hughui&#39;s Blog">
+<meta property="og:description" content="参考书目章节 Introduction to linear algebra: P239, The Factorization A &#x3D; QR  Iterative Methods for Sparse Linear systems: **P11**, Gram-schmidt[](#一：Gram-Schmidt)一：Gram-Schmidt Interesting: gilbert strang s">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%85%AC%E5%BC%8F.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim2.png">
@@ -22,249 +36,522 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%E4%BA%8C.png">
 <meta property="article:published_time" content="2020-07-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-27T12:41:41.279Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2025-01-27T13:57:26.352Z">
+<meta property="article:author" content="Hughui Lei">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%85%AC%E5%BC%8F.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="canonical" href="https://github.com/GiganticRay/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
 
-  
-  
-<meta name="generator" content="Hexo 7.3.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>关于A-QR-defactorization的两种解释及代码实现 | Hughui's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
-</header>
 
-      <div class="outer">
-        <section id="main"><article id="post-关于A-QR-defactorization的两种解释及代码实现" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="article-date">
-  <time class="dt-published" datetime="2020-07-19T16:00:00.000Z" itemprop="datePublished">2020-07-20</time>
-</a>
-    
+  <div class="site-meta">
+
+    <a href="/GiganticRay/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hughui's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Lei Chao&#39;s Blog
-    </h1>
-  
 
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/GiganticRay/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/GiganticRay/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/GiganticRay/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/GiganticRay/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/GiganticRay/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/GiganticRay/images/avatar.gif">
+      <meta itemprop="name" content="Hughui Lei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hughui's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于A-QR-defactorization的两种解释及代码实现
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-20 00:00:00" itemprop="dateCreated datePublished" datetime="2020-07-20T00:00:00+08:00">2020-07-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-01-27 21:57:26" itemprop="dateModified" datetime="2025-01-27T21:57:26+08:00">2025-01-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/GiganticRay/categories/Linear-Algebra/" itemprop="url" rel="index"><span itemprop="name">Linear Algebra</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
       </header>
+
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
         <h2 id="参考书目章节"><a href="#参考书目章节" class="headerlink" title="参考书目章节"></a>参考书目章节</h2><ol>
-<li>Introduction to linear algebra: <strong>P239</strong>, The Factorization A &#x3D; QR</li>
+<li>Introduction to linear algebra: <strong>P239</strong>, The Factorization A = QR</li>
 </ol>
 <li>Iterative Methods for Sparse Linear systems: **P11**, Gram-schmidt<h2 id="一：Gram-Schmidt">[](#一：Gram-Schmidt)一：Gram-Schmidt</h2><blockquote>
-Interesting: gilbert strang said:”i don’t know what schmidt did in this greatful process”<br/>在很多工作中，我们需要用到一组向量空间的正交基来简化计算（如简化求解Ax=b的最小二乘解的过程）。Gram-Schmidt就是**正交化**一种经典方法，掌握了**投影**后，gram-schmidt就很好理解了。
+Interesting: gilbert strang said:”i don’t know what schmidt did in this greatful process”<br>在很多工作中，我们需要用到一组向量空间的正交基来简化计算（如简化求解Ax=b的最小二乘解的过程）。Gram-Schmidt就是**正交化**一种经典方法，掌握了**投影**后，gram-schmidt就很好理解了。
 </blockquote>
 </li>
 
 <blockquote>
 </blockquote>
-<p>Interesting: gilbert strang said:”i don’t know what schmidt did in this greatful process”<br/>在很多工作中，我们需要用到一组向量空间的正交基来简化计算（如简化求解Ax&#x3D;b的最小二乘解的过程）。Gram-Schmidt就是<strong>正交化</strong>一种经典方法，掌握了<strong>投影</strong>后，gram-schmidt就很好理解了。</p>
+<p>Interesting: gilbert strang said:”i don’t know what schmidt did in this greatful process”<br>在很多工作中，我们需要用到一组向量空间的正交基来简化计算（如简化求解Ax=b的最小二乘解的过程）。Gram-Schmidt就是<strong>正交化</strong>一种经典方法，掌握了<strong>投影</strong>后，gram-schmidt就很好理解了。</p>
 <blockquote>
 </blockquote>
-<p><strong>prerequisite</strong>: A的column space’s projection matrix is <img alt="A对应投影矩阵公式" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%85%AC%E5%BC%8F.png" title="P = A(A^TA)^{-1}A^T"/></p>
-<h3 id="1-首先以二维为例">[](#1-首先以二维为例)1. 首先以二维为例</h3>`(x1, x2)`是线性无关的列向量，现需找出`orthonormal的(q1, q2)`来表示(x1,x2)的`列空间`。第一步:`q1=x1/norm2(x1)`。问题是如何依据x2找到q2使`&lt;q1, q2&gt; = 0`。 <img alt="二维Gram_Schmidt" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim2.png" title="二维Gram_Schmidt"/>
+<p><strong>prerequisite</strong>: A的column space’s projection matrix is <img alt="A对应投影矩阵公式" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%85%AC%E5%BC%8F.png" title="P = A(A^TA)^{-1}A^T"></p>
+<h3 id="1-首先以二维为例">[](#1-首先以二维为例)1. 首先以二维为例</h3>`(x1, x2)`是线性无关的列向量，现需找出`orthonormal的(q1, q2)`来表示(x1,x2)的`列空间`。第一步:`q1=x1/norm2(x1)`。问题是如何依据x2找到q2使`&lt;q1, q2&gt; = 0`。 <img alt="二维Gram_Schmidt" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim2.png" title="二维Gram_Schmidt">
 如图所示，`x2`在`q1`上的投影`p=&lt;q1, x2&gt;q1`，而我们需要的部分是`e(error) = x2-p`(# 注为啥叫error在投影那一章节有记录)。从而令`q2 = e/norm2(e)`。**用人话**来说就是，第n维的目标向量`(qn)`是第n维的已知向量`(xn)`依次减去其在`q1 -&gt; qn-1`上的投影，最后单位化。
-<h3 id="2-三维图示">[](#2-三维图示)2. 三维图示</h3><img alt="三维Gram_Schmidt" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim3.png" title="三维Gram_Schmidt"/>
-由此可推到出Gram_Schmidt的公式：<br/><img alt="Gram_Schmidt公式" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt%E5%85%AC%E5%BC%8F.png" title="Gram_Schmidt公式"/>
-<h3 id="3-Pseudo-Code-of-Gram-Schmidt">[](#3-Pseudo-Code-of-Gram-Schmidt)3. Pseudo Code of Gram-Schmidt</h3><img alt="Gram_Schmidt_Algorithm" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Algorithm.png" title="Gram_Schmidt_Algorithm"/>
+<h3 id="2-三维图示">[](#2-三维图示)2. 三维图示</h3><img alt="三维Gram_Schmidt" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim3.png" title="三维Gram_Schmidt">
+由此可推到出Gram_Schmidt的公式：<br><img alt="Gram_Schmidt公式" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt%E5%85%AC%E5%BC%8F.png" title="Gram_Schmidt公式">
+<h3 id="3-Pseudo-Code-of-Gram-Schmidt">[](#3-Pseudo-Code-of-Gram-Schmidt)3. Pseudo Code of Gram-Schmidt</h3><img alt="Gram_Schmidt_Algorithm" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Algorithm.png" title="Gram_Schmidt_Algorithm">
 
 
-<h3 id="2-三维图示"><a href="#2-三维图示" class="headerlink" title="2. 三维图示"></a><a href="#2-%E4%B8%89%E7%BB%B4%E5%9B%BE%E7%A4%BA"></a>2. 三维图示</h3><h2 id="二：A-QR与Gram-Schmidt的关系"><a href="#二：A-QR与Gram-Schmidt的关系" class="headerlink" title="二：A&#x3D;QR与Gram-Schmidt的关系"></a>二：A&#x3D;QR与Gram-Schmidt的关系</h2><blockquote>
+<h3 id="2-三维图示"><a href="#2-三维图示" class="headerlink" title="2. 三维图示"></a><a href="#2-%E4%B8%89%E7%BB%B4%E5%9B%BE%E7%A4%BA"></a>2. 三维图示</h3><h2 id="二：A-QR与Gram-Schmidt的关系"><a href="#二：A-QR与Gram-Schmidt的关系" class="headerlink" title="二：A=QR与Gram-Schmidt的关系"></a>二：A=QR与Gram-Schmidt的关系</h2><blockquote>
 </blockquote>
-<p>实际上这也是A&#x3D;QR的第一种推理方式，即从<code>Gram-Schmidt</code>的推理过程得出<code>A=QR</code>。现假设我们已经通过Gram-Schmidt得到了前j个q<code>(q1,q2...qj)</code>，这样我们就可以得到<img alt="分解xj" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E5%88%86%E8%A7%A3xj.png" title="分解xj"/>,即将<code>xj</code>分解至每一个正交基上。用矩阵的语言进行表达，即<code>X=QR</code>,<code>X=[x1, x2...,xr]</code>,<code>Q=[q1,q2,...,qr]</code>。如下图所示<img alt="A=QR矩阵表示" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA.png" title="A=QR矩阵表示"/></p>
-<h2 id="三：从行列空间规律得出A-QR"><a href="#三：从行列空间规律得出A-QR" class="headerlink" title="三：从行列空间规律得出A&#x3D;QR"></a>三：从行列空间规律得出A&#x3D;QR</h2><blockquote>
+<p>实际上这也是A=QR的第一种推理方式，即从<code>Gram-Schmidt</code>的推理过程得出<code>A=QR</code>。现假设我们已经通过Gram-Schmidt得到了前j个q<code>(q1,q2...qj)</code>，这样我们就可以得到<img alt="分解xj" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E5%88%86%E8%A7%A3xj.png" title="分解xj">,即将<code>xj</code>分解至每一个正交基上。用矩阵的语言进行表达，即<code>X=QR</code>,<code>X=[x1, x2...,xr]</code>,<code>Q=[q1,q2,...,qr]</code>。如下图所示<img alt="A=QR矩阵表示" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA.png" title="A=QR矩阵表示"></p>
+<h2 id="三：从行列空间规律得出A-QR"><a href="#三：从行列空间规律得出A-QR" class="headerlink" title="三：从行列空间规律得出A=QR"></a>三：从行列空间规律得出A=QR</h2><blockquote>
 </blockquote>
 <p>这是<code>A=QR</code>的第二种推理方式，C(A)是<code>independent</code>的，在Gram-Schmidt中，我们的目的是找出<code>orthonormal的Q</code>，从目的而言，Q与A的列向量代表的向量空间肯定是一样的，即<code>C(A) = C(Q)</code>，根据线代的基础知识我们知道，肯定存在一个矩阵R，使得<code>A=QR</code>(A与Q的列向量空间相同)。若A is <code>Square</code>，那么<code>A and Q both are invertiable</code>。从而<code>R=Q^(-1)A</code>，又<code>Q is orthonormal</code>，so <code>Q^(-1) = Q^T</code>，so <code>R = Q^TA</code>，这样就求出了R，如下图所示。</p>
 <blockquote>
-<img alt="A=QR矩阵表示方法二" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%E4%BA%8C.png" title="A=QR矩阵表示方法二"/>
+<img alt="A=QR矩阵表示方法二" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%E4%BA%8C.png" title="A=QR矩阵表示方法二">
 
 
-<h2 id="四：A-QR的应用"><a href="#四：A-QR的应用" class="headerlink" title="四：A&#x3D;QR的应用"></a>四：A&#x3D;QR的应用</h2><blockquote>
+<h2 id="四：A-QR的应用"><a href="#四：A-QR的应用" class="headerlink" title="四：A=QR的应用"></a>四：A=QR的应用</h2><blockquote>
 </blockquote>
-<p>gilbert Strang教授在书上说过：<code>&quot;the matrix factorization is of most importance in linear algebra&quot;</code>,<code>A=QR</code>作为一种矩阵分解，可以把线性独立的矩阵，分解成QR，Q是<code>orthonormal</code>,<code>R</code>又是<code>upper triangle</code>，特别是<code>orthonormal</code>给计算提供了很好的性质，目前接触到的就是在<code>least square solution</code>中的投影矩阵部分，<code>逆</code>的那一块直接为单位矩阵了，大大节约了计算时间成本。</p>
-
-      
+<p>gilbert Strang教授在书上说过：<code>"the matrix factorization is of most importance in linear algebra"</code>,<code>A=QR</code>作为一种矩阵分解，可以把线性独立的矩阵，分解成QR，Q是<code>orthonormal</code>,<code>R</code>又是<code>upper triangle</code>，特别是<code>orthonormal</code>给计算提供了很好的性质，目前接触到的就是在<code>least square solution</code>中的投影矩阵部分，<code>逆</code>的那一块直接为单位矩阵了，大大节约了计算时间成本。</p>
+</blockquote>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" data-id="cm6f1kwxs000hmsuseb3o1e3x" data-title="Lei Chao&#39;s Blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/GiganticRay/2020/07/22/SVD-A-U%CE%A3V-T-to-compress-a-Picture-%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" rel="next" title="SVD-A-UΣV-T-to-compress-a-Picture-奇异值分解-进行图片压缩">
+      SVD-A-UΣV-T-to-compress-a-Picture-奇异值分解-进行图片压缩 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E4%B9%A6%E7%9B%AE%E7%AB%A0%E8%8A%82"><span class="nav-number">1.</span> <span class="nav-text">参考书目章节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%EF%BC%9AGram-Schmidt"><span class="nav-number">2.</span> <span class="nav-text">[](#一：Gram-Schmidt)一：Gram-Schmidt</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%A6%96%E5%85%88%E4%BB%A5%E4%BA%8C%E7%BB%B4%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">[](#1-首先以二维为例)1. 首先以二维为例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%89%E7%BB%B4%E5%9B%BE%E7%A4%BA"><span class="nav-number">2.2.</span> <span class="nav-text">[](#2-三维图示)2. 三维图示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Pseudo-Code-of-Gram-Schmidt"><span class="nav-number">2.3.</span> <span class="nav-text">[](#3-Pseudo-Code-of-Gram-Schmidt)3. Pseudo Code of Gram-Schmidt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%89%E7%BB%B4%E5%9B%BE%E7%A4%BA"><span class="nav-number">2.4.</span> <span class="nav-text">2. 三维图示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%EF%BC%9AA-QR%E4%B8%8EGram-Schmidt%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.</span> <span class="nav-text">二：A&#x3D;QR与Gram-Schmidt的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%EF%BC%9A%E4%BB%8E%E8%A1%8C%E5%88%97%E7%A9%BA%E9%97%B4%E8%A7%84%E5%BE%8B%E5%BE%97%E5%87%BAA-QR"><span class="nav-number">4.</span> <span class="nav-text">三：从行列空间规律得出A&#x3D;QR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%EF%BC%9AA-QR%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">四：A&#x3D;QR的应用</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Hughui Lei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/GiganticRay/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/GiganticRay/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hughui Lei</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
     </footer>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/07/22/SVD-A-U%CE%A3V-T-to-compress-a-Picture-%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Lei Chao&#39;s Blog
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/07/14/FirstHomeWork/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Lei Chao&#39;s Blog</div>
-    </a>
-  
-</nav>
 
   
-</article>
+  <script src="/GiganticRay/lib/anime.min.js"></script>
+  <script src="/GiganticRay/lib/velocity/velocity.min.js"></script>
+  <script src="/GiganticRay/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/GiganticRay/js/utils.js"></script>
+
+<script src="/GiganticRay/js/motion.js"></script>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
-    </div>
-  </div>
+<script src="/GiganticRay/js/schemes/pisces.js"></script>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/01/27/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/11/conditional-Number-of-Matrix/">Lei Chao&#39;s Blog</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/">Lei Chao&#39;s Blog</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">Lei Chao&#39;s Blog</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/20/Change-Of-Basis-Operator/">Lei Chao&#39;s Blog</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+<script src="/GiganticRay/js/next-boot.js"></script>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
 
 
 
 
 
-  </div>
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>
