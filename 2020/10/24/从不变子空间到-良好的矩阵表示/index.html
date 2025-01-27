@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Lei Chao&#39;s Blog | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Abstract  听君一席话，在下如拨云见日，茅塞顿开啊（\狗头，可怜的楚团长）.本文符号记法随前文。上回提到，任何一个从$U-&gt;V$空间的线性变换T，在给定$U、V$的基$B、B’$之后，都有其矩阵表示$[T]_{BB’}$。现我们给出约束：  - 输入空间**等于**输出空间：$U&#x3D;V&#x3D;R^{n}$。 - 输入空间的基**等于**输出空间的基：$B&#x3D;B’$。那么，如果$T$在$B&#x3D;B’">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lei Chao&#39;s Blog">
+<meta property="og:url" content="http://example.com/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Abstract  听君一席话，在下如拨云见日，茅塞顿开啊（\狗头，可怜的楚团长）.本文符号记法随前文。上回提到，任何一个从$U-&gt;V$空间的线性变换T，在给定$U、V$的基$B、B’$之后，都有其矩阵表示$[T]_{BB’}$。现我们给出约束：  - 输入空间**等于**输出空间：$U&#x3D;V&#x3D;R^{n}$。 - 输入空间的基**等于**输出空间的基：$B&#x3D;B’$。那么，如果$T$在$B&#x3D;B’">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-27T12:41:41.279Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-从不变子空间到-良好的矩阵表示" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/" class="article-date">
+  <time class="dt-published" datetime="2020-10-23T16:00:00.000Z" itemprop="datePublished">2020-10-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Lei Chao&#39;s Blog
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><blockquote>
+</blockquote>
+<p>听君一席话，在下如拨云见日，茅塞顿开啊（\狗头，可怜的楚团长）.本文符号记法随前文。上回提到，任何一个<strong>从$U-&gt;V$空间的线性变换T</strong>，在给定$U、V$的基$B、B’$之后，都有其矩阵表示$[T]_{BB’}$。现我们给出约束：</p>
+<ol>
+- 输入空间**等于**输出空间：$U=V=R^{n}$。
+- 输入空间的基**等于**输出空间的基：$B=B’$。<br/>那么，如果$T$在$B=B’=B_{1}$的矩阵为$[T]_{B_1}$，$T$在$B=B’=B_{2}$的矩阵为$[T]_{B_2}$，记$P=[I]_{B_1B_2}$则<br/>\begin{equation}\label{1}<br/> [T]_{B_1} = P^{-1}[T]_{B_1}P<br/>\end{equation}<br/>而我们知道，**对角矩阵**就是线性代数的神，其拥有很多良好的性质，所以我们可不可以选择一组基，使得该线性变换的矩阵为对角矩阵呢？
+</ol>
+这里先给结论：在结合上述约束的情况下，如果线性变换的矩阵有n个特征向量，那么就可以选择一组合适的基，使得该线性变换的矩阵表示为对角矩阵。
+
+
+<h2 id="Invariant-Subspaces"><a href="#Invariant-Subspaces" class="headerlink" title="Invariant Subspaces"></a>Invariant Subspaces</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><blockquote>
+</blockquote>
+<p>给定$U&#x3D;V, \chi \subseteq V$， $\chi&#x3D;R^{r}.r \leqslant n$，$T$是$V$上的线性算子，如果<br/>\begin{equation}\label{2}<br/>    T(\chi)&#x3D; \chi<br/>\end{equation}<br/>我们就称$\chi$是$V$中$T$下的<strong>不变子空间</strong>。说人话就是，$T$作用在$\chi$中的任一元素后，结果仍然在$\chi$中。</p>
+<h3 id="Restricted-Operator"><a href="#Restricted-Operator" class="headerlink" title="Restricted Operator"></a>Restricted Operator</h3><blockquote>
+</blockquote>
+<p>有了不变子空间的定义后我们很自然地可以引入<strong>restricted operator</strong>，由于$T$作用在$\chi$上与$V$中的其他元素无关，那么就好像$\chi$是一个baby $V$，我们定义一个只作用在$\chi$上的作用相同的变换$T_{&#x2F;\chi}$。此即<strong>restricted operator</strong>。</p>
+<h4 id="The-matrix-representation-of-restricted-operator">[](#The-matrix-representation-of-restricted-operator)The matrix representation of restricted operator</h4>定义$\chi$的一组基为$B_x={x_1,x_2···x_r}$，故，根据线性变换基的矩阵表示的定义，可得：<br/>\begin{equation}\label{3}<br/>    [A/\chi]_{B_x} = ([A/\chi(x_1)]_{B_x}|[A/\chi(x_2)]_{B_x}|···|[A/\chi(x_r)]_{B_x}])<br/>\end{equation}
+
+
+<h3 id="The-matrix-of-T-involved-T-chi"><a href="#The-matrix-of-T-involved-T-chi" class="headerlink" title="The matrix of $T$ involved $T&#x2F;\chi$"></a>The matrix of $T$ involved $T&#x2F;\chi$</h3><blockquote>
+</blockquote>
+<p>如果我们把$\chi$的基$B_x$作为$V$输入基$B$的一部分，那么此时的$[T]_B$的形式是怎样的呢？emm..interesting.<br/>令$B&#x3D;(x_1,x_2…x_r,y_1,y_2…y_q)$是$V$的一组基，那么，<br/>\begin{equation}\label{4}<br/>    [T]_B&#x3D;([T(x_1)]_B|···|[T(x_r)]_B|[T(q_1)]_B···|[T(y_q)]_B)<br/>\end{equation}</p>
+<p>由于$x_1-&gt;x_r$是<strong>不依赖</strong>于后面的$y$的，所以<br/>\begin{equation}\label{5}<br/>\begin{matrix}<br/>T(x_j)&#x3D;\sum_{i&#x3D;1}^{r}\alpha_{ij}x_i &amp;<br/>[T(x_j)]<em>B &#x3D; \begin{pmatrix}<br/>\alpha</em>{1j}\<br/>···\<br/>\alpha{rj}\<br/>0\<br/>···\<br/>0<br/>\end{pmatrix}\end{matrix}<br/>\end{equation}</p>
+<p>\begin{equation}\label{6}<br/>\begin{matrix}<br/>T(y_j)&#x3D;\sum_{i&#x3D;1}^{r}\beta_{ij}x_i + \sum_{i&#x3D;1}^{q}\gamma_{ij}y_i &amp;<br/>[T(y_j)]<em>B &#x3D; \begin{pmatrix}<br/>\beta</em>{1j}\<br/>···\<br/>\beta_{rj}\<br/>\gamma_{1j}\<br/>···\<br/>\gamma_{qj}<br/>\end{pmatrix}\end{matrix}<br/>\end{equation}</p>
+<blockquote>
+</blockquote>
+<p>从而，可得出：<br/>\begin{equation}\label{7}<br/>    [T]<em>B &#x3D;<br/>    \begin{pmatrix}<br/>    \alpha</em>{11} &amp; ··· &amp; \alpha_{1r} &amp; \beta_{11} &amp; ··· &amp; \beta_{1q}\<br/>     ·&amp; ··· &amp; · &amp; · &amp; ··· &amp; ·\<br/>    \alpha_{r1} &amp; ··· &amp; \alpha_{rr} &amp; \beta_{r1} &amp; ··· &amp; \beta_{rq}\<br/>     0&amp; ··· &amp; 0 &amp; \gamma_{11} &amp; ··· &amp; \gamma_{1q}\<br/>     ·&amp; ··· &amp; · &amp; · &amp; ··· &amp; ·\<br/>     0&amp; ··· &amp; 0 &amp; \gamma_{q1} &amp; ··· &amp; \gamma_{qq}<br/>    \end{pmatrix}<br/>\end{equation}<br>左上角部分即为$[T_{&#x2F;\chi}]<em>{B</em>{\chi}}$。</p>
+<h3 id="联想到特征向量以及特征空间"><a href="#联想到特征向量以及特征空间" class="headerlink" title="联想到特征向量以及特征空间"></a>联想到特征向量以及特征空间</h3><blockquote>
+</blockquote>
+<p>上面我们已经得出一般形式，不难发现，$[T]_B$的<strong>n</strong>个特征向量**（前面我们的约束）<strong>，都是$T$下的不变子空间，那么有意思的来了，把这n个特征向量作为$V$的基$B&#x3D;(x_1,x_2,···,x_n)$，那么$[T]_B$的形式就是一个</strong>对角矩阵**了，对角线元素为特征值$\lambda$，interesting。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/" data-id="cm6f1kwxs000emsus5ydt0fy0" data-title="Lei Chao&#39;s Blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lei Chao&#39;s Blog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/20/Change-Of-Basis-Operator/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lei Chao&#39;s Blog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/11/conditional-Number-of-Matrix/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/20/Change-Of-Basis-Operator/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

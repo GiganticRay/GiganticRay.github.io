@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Lei Chao&#39;s Blog | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="参考书目章节 Introduction to linear algebra: P239, The Factorization A &#x3D; QR  Iterative Methods for Sparse Linear systems: **P11**, Gram-schmidt[](#一：Gram-Schmidt)一：Gram-Schmidt Interesting: gilbert str">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lei Chao&#39;s Blog">
+<meta property="og:url" content="http://example.com/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="参考书目章节 Introduction to linear algebra: P239, The Factorization A &#x3D; QR  Iterative Methods for Sparse Linear systems: **P11**, Gram-schmidt[](#一：Gram-Schmidt)一：Gram-Schmidt Interesting: gilbert str">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%85%AC%E5%BC%8F.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt%E5%85%AC%E5%BC%8F.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Algorithm.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E5%88%86%E8%A7%A3xj.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%E4%BA%8C.png">
+<meta property="article:published_time" content="2020-07-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-27T12:41:41.279Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%85%AC%E5%BC%8F.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-关于A-QR-defactorization的两种解释及代码实现" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="article-date">
+  <time class="dt-published" datetime="2020-07-19T16:00:00.000Z" itemprop="datePublished">2020-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Lei Chao&#39;s Blog
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="参考书目章节"><a href="#参考书目章节" class="headerlink" title="参考书目章节"></a>参考书目章节</h2><ol>
+<li>Introduction to linear algebra: <strong>P239</strong>, The Factorization A &#x3D; QR</li>
+</ol>
+<li>Iterative Methods for Sparse Linear systems: **P11**, Gram-schmidt<h2 id="一：Gram-Schmidt">[](#一：Gram-Schmidt)一：Gram-Schmidt</h2><blockquote>
+Interesting: gilbert strang said:”i don’t know what schmidt did in this greatful process”<br/>在很多工作中，我们需要用到一组向量空间的正交基来简化计算（如简化求解Ax=b的最小二乘解的过程）。Gram-Schmidt就是**正交化**一种经典方法，掌握了**投影**后，gram-schmidt就很好理解了。
+</blockquote>
+</li>
+
+<blockquote>
+</blockquote>
+<p>Interesting: gilbert strang said:”i don’t know what schmidt did in this greatful process”<br/>在很多工作中，我们需要用到一组向量空间的正交基来简化计算（如简化求解Ax&#x3D;b的最小二乘解的过程）。Gram-Schmidt就是<strong>正交化</strong>一种经典方法，掌握了<strong>投影</strong>后，gram-schmidt就很好理解了。</p>
+<blockquote>
+</blockquote>
+<p><strong>prerequisite</strong>: A的column space’s projection matrix is <img alt="A对应投影矩阵公式" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%85%AC%E5%BC%8F.png" title="P = A(A^TA)^{-1}A^T"/></p>
+<h3 id="1-首先以二维为例">[](#1-首先以二维为例)1. 首先以二维为例</h3>`(x1, x2)`是线性无关的列向量，现需找出`orthonormal的(q1, q2)`来表示(x1,x2)的`列空间`。第一步:`q1=x1/norm2(x1)`。问题是如何依据x2找到q2使`&lt;q1, q2&gt; = 0`。 <img alt="二维Gram_Schmidt" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim2.png" title="二维Gram_Schmidt"/>
+如图所示，`x2`在`q1`上的投影`p=&lt;q1, x2&gt;q1`，而我们需要的部分是`e(error) = x2-p`(# 注为啥叫error在投影那一章节有记录)。从而令`q2 = e/norm2(e)`。**用人话**来说就是，第n维的目标向量`(qn)`是第n维的已知向量`(xn)`依次减去其在`q1 -&gt; qn-1`上的投影，最后单位化。
+<h3 id="2-三维图示">[](#2-三维图示)2. 三维图示</h3><img alt="三维Gram_Schmidt" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Dim3.png" title="三维Gram_Schmidt"/>
+由此可推到出Gram_Schmidt的公式：<br/><img alt="Gram_Schmidt公式" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt%E5%85%AC%E5%BC%8F.png" title="Gram_Schmidt公式"/>
+<h3 id="3-Pseudo-Code-of-Gram-Schmidt">[](#3-Pseudo-Code-of-Gram-Schmidt)3. Pseudo Code of Gram-Schmidt</h3><img alt="Gram_Schmidt_Algorithm" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/Gram_Schmidt_Algorithm.png" title="Gram_Schmidt_Algorithm"/>
+
+
+<h3 id="2-三维图示"><a href="#2-三维图示" class="headerlink" title="2. 三维图示"></a><a href="#2-%E4%B8%89%E7%BB%B4%E5%9B%BE%E7%A4%BA"></a>2. 三维图示</h3><h2 id="二：A-QR与Gram-Schmidt的关系"><a href="#二：A-QR与Gram-Schmidt的关系" class="headerlink" title="二：A&#x3D;QR与Gram-Schmidt的关系"></a>二：A&#x3D;QR与Gram-Schmidt的关系</h2><blockquote>
+</blockquote>
+<p>实际上这也是A&#x3D;QR的第一种推理方式，即从<code>Gram-Schmidt</code>的推理过程得出<code>A=QR</code>。现假设我们已经通过Gram-Schmidt得到了前j个q<code>(q1,q2...qj)</code>，这样我们就可以得到<img alt="分解xj" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/%E5%88%86%E8%A7%A3xj.png" title="分解xj"/>,即将<code>xj</code>分解至每一个正交基上。用矩阵的语言进行表达，即<code>X=QR</code>,<code>X=[x1, x2...,xr]</code>,<code>Q=[q1,q2,...,qr]</code>。如下图所示<img alt="A=QR矩阵表示" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA.png" title="A=QR矩阵表示"/></p>
+<h2 id="三：从行列空间规律得出A-QR"><a href="#三：从行列空间规律得出A-QR" class="headerlink" title="三：从行列空间规律得出A&#x3D;QR"></a>三：从行列空间规律得出A&#x3D;QR</h2><blockquote>
+</blockquote>
+<p>这是<code>A=QR</code>的第二种推理方式，C(A)是<code>independent</code>的，在Gram-Schmidt中，我们的目的是找出<code>orthonormal的Q</code>，从目的而言，Q与A的列向量代表的向量空间肯定是一样的，即<code>C(A) = C(Q)</code>，根据线代的基础知识我们知道，肯定存在一个矩阵R，使得<code>A=QR</code>(A与Q的列向量空间相同)。若A is <code>Square</code>，那么<code>A and Q both are invertiable</code>。从而<code>R=Q^(-1)A</code>，又<code>Q is orthonormal</code>，so <code>Q^(-1) = Q^T</code>，so <code>R = Q^TA</code>，这样就求出了R，如下图所示。</p>
+<blockquote>
+<img alt="A=QR矩阵表示方法二" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR/A%3DQR%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%E4%BA%8C.png" title="A=QR矩阵表示方法二"/>
+
+
+<h2 id="四：A-QR的应用"><a href="#四：A-QR的应用" class="headerlink" title="四：A&#x3D;QR的应用"></a>四：A&#x3D;QR的应用</h2><blockquote>
+</blockquote>
+<p>gilbert Strang教授在书上说过：<code>&quot;the matrix factorization is of most importance in linear algebra&quot;</code>,<code>A=QR</code>作为一种矩阵分解，可以把线性独立的矩阵，分解成QR，Q是<code>orthonormal</code>,<code>R</code>又是<code>upper triangle</code>，特别是<code>orthonormal</code>给计算提供了很好的性质，目前接触到的就是在<code>least square solution</code>中的投影矩阵部分，<code>逆</code>的那一块直接为单位矩阵了，大大节约了计算时间成本。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" data-id="cm6f1kwxs000hmsuseb3o1e3x" data-title="Lei Chao&#39;s Blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/22/SVD-A-U%CE%A3V-T-to-compress-a-Picture-%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lei Chao&#39;s Blog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/14/FirstHomeWork/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lei Chao&#39;s Blog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/11/conditional-Number-of-Matrix/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/20/Change-Of-Basis-Operator/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

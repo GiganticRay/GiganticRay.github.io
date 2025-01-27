@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Lei Chao&#39;s Blog | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="abstract  今天上完liao(致敬)李保滨老师的矩阵分析课程，对线性变换有了更进一步的理解，李老师与Gilbert的课程还是有差异的，个人感觉Gilbert老师的18.06对线代的基础（4个基本子空间）讲的更透彻，而李老师再线性变换处更明了 prerequisite  矩阵乘法AB&#x3D;C的意义、C的行列与A、B行列的关系、线性变换、向量空间。这要搞清楚，这里不展开。 基本概念  首">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lei Chao&#39;s Blog">
+<meta property="og:url" content="http://example.com/2020/10/14/Linear-Transformation%E8%A1%A5%E5%85%85/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="abstract  今天上完liao(致敬)李保滨老师的矩阵分析课程，对线性变换有了更进一步的理解，李老师与Gilbert的课程还是有差异的，个人感觉Gilbert老师的18.06对线代的基础（4个基本子空间）讲的更透彻，而李老师再线性变换处更明了 prerequisite  矩阵乘法AB&#x3D;C的意义、C的行列与A、B行列的关系、线性变换、向量空间。这要搞清楚，这里不展开。 基本概念  首">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-27T12:41:41.275Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Linear-Transformation补充" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/10/14/Linear-Transformation%E8%A1%A5%E5%85%85/" class="article-date">
+  <time class="dt-published" datetime="2020-10-13T16:00:00.000Z" itemprop="datePublished">2020-10-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Lei Chao&#39;s Blog
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h3><blockquote>
+</blockquote>
+<p>今天上完liao(致敬)李保滨老师的矩阵分析课程，对线性变换有了更进一步的理解，李老师与Gilbert的课程还是有差异的，个人感觉Gilbert老师的18.06对线代的基础（4个基本子空间）讲的更透彻，而李老师再线性变换处更明了</p>
+<h3 id="prerequisite"><a href="#prerequisite" class="headerlink" title="prerequisite"></a>prerequisite</h3><blockquote>
+</blockquote>
+<p>矩阵乘法AB&#x3D;C的意义、C的行列与A、B行列的关系、线性变换、向量空间。这要搞清楚，这里不展开。</p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><blockquote>
+</blockquote>
+<p>首先我们想一个问题，<code>如何表示一个物体</code>，其实小时候大家都做过这样的数学题，在坐标轴**（笛卡尔棒棒）<strong>上对一些坐标标点，最后把这些点连起来，最终就会得到一个可爱的猫猫啦。可见，坐标可以用来描述物体。<code>但是</code>，仅仅是坐标就足够了吗。look, here’s the deal</strong>（poor Biden…）<strong>，当然不是的，题目给出坐标时，默认了我们都在空间的标准基<code>(standard basis)</code>里。所以，除了坐标之外，我们还需要空间的基。<br>比如说，我们说一点<code>(object)</code>的<code>coordinate</code>是<code>c = (1,2,3)</code>，实际上我们默认是在说这个<code>object = c1*e1 + c2*e2 + c3*e3</code>。只是我们选择的基太<code>tricky</code>了，所以可以用<code>coordinate stand for that object directly</code></strong>(important)<strong>。<br>这样，用<code>基</code>和<code>坐标</code>,就可以表述出我们的猫猫（客观物体<code>object</code>）了。<br>tips：Gilbert的书中貌似有点说不清楚<code>object</code>与<code>coordinate</code>的关系</strong>(当然是我太菜了)**，李老师证明了：<code>在给定基下，每一个线性变换都有其矩阵表示</code>。</p>
+<h3 id="Prove-在给定基下，每一个线性变换都有其矩阵表示"><a href="#Prove-在给定基下，每一个线性变换都有其矩阵表示" class="headerlink" title="Prove: 在给定基下，每一个线性变换都有其矩阵表示"></a>Prove: 在给定基下，每一个线性变换都有其矩阵表示</h3><blockquote>
+</blockquote>
+<p>证明思路：联想到普通情况，令{e1, e2, e3}为$R^3$的基，我们如何证明在$R^3$空间中的任一目标，都能表示出来呢？obviously，令一个系数向量C(3x1)代表坐标，一个矩阵代表基B(3x3)，那么，BC就可以唯一表示这个object了。同理，李老师的证明过程如下：</p>
+<ol>
+<li>$U$与$V$分别代表两个向量空间$U&#x3D;R^n$, $V&#x3D;R^m$，把从<code>U-&amp;gt;V</code>的所有线性变换放到一个集合里，记作<code>L(U, V)</code>，那么<code>L(U, V)</code>是一个向量空间。</li>
+<li>令$U$、$V$的基分别是<code>B</code>&#x3D;{u<sub>1</sub>, u<sub>2</sub>,…,u<sub>n</sub>}、<code>B&#39;</code>&#x3D;{v<sub>1</sub>, v<sub>2</sub>,…,v<sub>m</sub>}。定义$T_{ji}(u)&#x3D;\xi_jv_i$，$(\xi_1, \xi_2…\xi_n)^T&#x3D;[u]_B$(tips: 即object u在基B下的坐标表示)&#96;，那么，我们可以得出下面结论3:</li>
+<li>$ T_L &#x3D; \left { T_{ji}\right }_{j&#x3D;1…n}^{i&#x3D;1…m} $是<code>L(U, V)</code>的一组基。</li>
+<li>如果有了结论3，那么得证。 即给定空间U、V的基，任意一个从<code>U -&amp;gt; V</code>的线性变换，我们都可以用这组基$T_L$来表示，而表示的坐标<code>coordinate</code>，即是：<strong>在U、V的给定基下，从U -&gt; V线性变换T的矩阵表示</strong>。</li>
+</ol>
+<h4 id="证明-T-L-left-T-ji-right-j-1…n-i-1…m-是L-U-V-的一组基"><a href="#证明-T-L-left-T-ji-right-j-1…n-i-1…m-是L-U-V-的一组基" class="headerlink" title="证明$ T_L &#x3D; \left { T_{ji}\right }_{j&#x3D;1…n}^{i&#x3D;1…m} $是L(U, V)的一组基"></a>证明$ T_L &#x3D; \left { T_{ji}\right }_{j&#x3D;1…n}^{i&#x3D;1…m} $是L(U, V)的一组基</h4><blockquote>
+</blockquote>
+<p>证明思路：1.$T_L$是线性无关的。2.$L(U, V)$中的任意一个元素，都能用$T_L$中的元素表示。</p>
+<p>1.根据定义即证明$\sum_{j,i}\eta_{ji}T_{ji} &#x3D; 0$中的所有$\eta_{ji}只能等于0$。这个鬼东西怎么证明呢，用到了一个小trick**（tips:我这非数学专业就不去想那些老头子怎么想出来的了）**<br/>\begin{equation}\label{1}<br/>T_{ji}(u_k) &#x3D; \left{\begin{matrix}<br/> v_i &amp; j&#x3D;k\<br/> 0 &amp; j≠k<br/>\end{matrix}\right.<br/>\end{equation}</p>
+<blockquote>
+</blockquote>
+<p>现在把要证的等式两端同时乘以$u_k$，即基组$U$的第k个基，得到<br/>\begin{equation}\label{2}<br/>(\sum_{j,i}\eta_{ji}T_{ji})(u_k) &#x3D; 0<br/>\end{equation}<br/>去括号，相当于把$u_k$做${T_{ji}}$变换。<br/>\begin{equation}\label{3}<br/>\sum_{j,i}\eta_{ji}T_{ji}(u_k) &#x3D; 0<br/>\end{equation}<br/>结合公式1，即可得出<br/>\begin{equation}\label{4}<br/>\sum_{i&#x3D;1}^{m}\eta_{ki}v_i &#x3D; 0<br/>\end{equation}<br/>因为${v_1,v_2,v_3..v_m}$是输出空间空间$V$的一组基底，所以<code>所有</code> $\eta$ <code>都等于0</code>，得证。</p>
+<h4 id="要证第二个，首先要搞清楚-L-U-V-中的元素是什么-exactly。这个集合里面存放的是：从-U-V-的所有线性变换。"><a href="#要证第二个，首先要搞清楚-L-U-V-中的元素是什么-exactly。这个集合里面存放的是：从-U-V-的所有线性变换。" class="headerlink" title="要证第二个，首先要搞清楚$L(U, V)$中的元素是什么,exactly。这个集合里面存放的是：从$U$ -&gt; $V$的所有线性变换。"></a>要证第二个，首先要搞清楚$L(U, V)$中的元素是什么,exactly。这个集合里面存放的是：从$U$ -&gt; $V$的所有线性变换。</h4><blockquote>
+</blockquote>
+<p>现从$L(U,V)$中任取一个元素$T’$，now, enjoying this formulation,hahaha<br/>\begin{equation}\label{5}<br/>T(u) &#x3D; T(\sum_{j&#x3D;1}^{n}\xi_ju_j) &#x3D; \sum_{j&#x3D;1}^{n}\xi_jT(u_j) &#x3D; \sum_{j&#x3D;1}^{n}\xi_j \sum_{i&#x3D;1}^{m}\alpha_{ij}v_i &#x3D; \sum_{i, j}\alpha_{ij}\xi_jv_i &#x3D; \sum_{i, j}T_{ji}(u)<br/>\end{equation}<br/>非常漂亮的过程。</p>
+<h4 id="现在，我们想证明的都证明完了，就可以说-在给定输入空间-U-、输出空间-V-，以及他们自个的基-B-、-B’-下，每一个从-U-到-V-的线性变换都有其矩阵表示。"><a href="#现在，我们想证明的都证明完了，就可以说-在给定输入空间-U-、输出空间-V-，以及他们自个的基-B-、-B’-下，每一个从-U-到-V-的线性变换都有其矩阵表示。" class="headerlink" title="现在，我们想证明的都证明完了，就可以说, 在给定输入空间$U$、输出空间$V$，以及他们自个的基$B$、$B’$下，每一个从$U$到$V$的线性变换都有其矩阵表示。"></a>现在，我们想证明的都证明完了，就可以说, 在给定输入空间$U$、输出空间$V$，以及他们自个的基$B$、$B’$下，每一个从$U$到$V$的线性变换都有其矩阵表示。</h4><h4 id="Brain-Expansion"><a href="#Brain-Expansion" class="headerlink" title="Brain Expansion"></a>Brain Expansion</h4><blockquote>
+</blockquote>
+<p>上述表述有一个flaw我没有提，你看那个第3点，为什么我们要把$T_{ji}(u)&#x3D;\xi_jv_i$, $(\xi_1, \xi_2…\xi_n)^T&#x3D;[u]<em>B$, $ T_L &#x3D; \left { T</em>{ji}\right }<em>{j&#x3D;1…n}^{i&#x3D;1…m} $作为<code>L(U, V)</code>的一组基呢，它代表着啥含义。这点老师上课也没有讲(or 我走神了?)下面我简单分析一下<br>首先我们看一下这个表达式<br/>\begin{equation}\label{6}<br/>T</em>{ji}(u_k) &#x3D; \left{\begin{matrix}<br/> v_i &amp; j&#x3D;k\<br/> 0 &amp; j≠k<br/>\end{matrix}\right.<br/>\end{equation}<br>将上面三个带入就发现这是成立的，即经过$T_{ki}$变换，$u_k$变换成了$v_i$，并且这个$T_{ki}$将其他的基$u_z(z≠k)$变成了0。穷举法，任意一个变换可能将原来空间的基$u_{1,2…n}$，变换成任意一个输出空间基的倍数$v_{1,2…m}$。所以，将这mxn<code>朴素变换</code><strong>(我瞎说的词)<strong>进行线性组合，既可以组合成任意</strong>在给定输入空间$U$、输出空间$V$，以及他们自个的基$B$、$B’$下，从$U$到$V$的线性变换</strong>。想出这个证明的人，我愿称之为现代王！</p>
+<h3 id="再往下延拓就是如何将这个变换用矩阵表示出来了，具体做法也很简单，这里就不说了"><a href="#再往下延拓就是如何将这个变换用矩阵表示出来了，具体做法也很简单，这里就不说了" class="headerlink" title="再往下延拓就是如何将这个变换用矩阵表示出来了，具体做法也很简单，这里就不说了"></a>再往下延拓就是如何将这个变换用矩阵表示出来了，具体做法也很简单，这里就不说了</h3><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><blockquote>
+</blockquote>
+<p>我在读Gilbert<introduction algebra="" linear="" to="">的setction 8的时候，总是分不清其表达式$T(u)&#x3D;u$的这两个u到底是代表的object还是coordinate。但是李老师讲解的过程$T(u)$很明确，就是说对object u 进行 $T$变换。不过遗憾的是，李老师这堂课的视频并没有放出来，我上面的东西估计只有我自己能看懂hhh，(tips: 大家不妨试试@一下UCAS的教务处^-^)。（再tips:上课已一月有余，北京的冷空气让我的厚衣服屁用都没有了)。</introduction></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/14/Linear-Transformation%E8%A1%A5%E5%85%85/" data-id="cm6f1kwxq0005msusbm8b54ne" data-title="Lei Chao&#39;s Blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/18/Linear-Transformation%E8%A1%A5%E5%85%85-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lei Chao&#39;s Blog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/08/ubuntu%E6%90%AD%E5%BB%BAslurm-openmpi%E5%B9%B3%E5%8F%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lei Chao&#39;s Blog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/11/conditional-Number-of-Matrix/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/20/Change-Of-Basis-Operator/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

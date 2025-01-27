@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Lei Chao&#39;s Blog | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Conditional Number of Matrix  In This post, I will comb the inference of the conditional number of Matrix WHAT  不得不说，咱们语言文化的博大精深。所谓“千里之堤，溃于蚁穴”，则正是条件数的表示，旨在对某件事物进行轻微的扰动，那么其会产生巨大的影响。 Defenition所以对于方程组 $">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lei Chao&#39;s Blog">
+<meta property="og:url" content="http://example.com/2021/01/11/conditional-Number-of-Matrix/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Conditional Number of Matrix  In This post, I will comb the inference of the conditional number of Matrix WHAT  不得不说，咱们语言文化的博大精深。所谓“千里之堤，溃于蚁穴”，则正是条件数的表示，旨在对某件事物进行轻微的扰动，那么其会产生巨大的影响。 Defenition所以对于方程组 $">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-27T12:41:41.277Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-conditional-Number-of-Matrix" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/conditional-Number-of-Matrix/" class="article-date">
+  <time class="dt-published" datetime="2021-01-10T16:00:00.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Lei Chao&#39;s Blog
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Conditional-Number-of-Matrix"><a href="#Conditional-Number-of-Matrix" class="headerlink" title="Conditional Number of Matrix"></a>Conditional Number of Matrix</h1><blockquote>
+</blockquote>
+<p>In This post, I will comb the inference of the conditional number of Matrix</p>
+<h2 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h2><blockquote>
+</blockquote>
+<p>不得不说，咱们语言文化的博大精深。所谓“千里之堤，溃于蚁穴”，则正是<strong>条件数</strong>的表示，旨在对某件事物进行轻微的扰动，那么其会产生巨大的影响。</p>
+<h3 id="Defenition"><a href="#Defenition" class="headerlink" title="Defenition"></a>Defenition</h3><p>所以对于方程组 $Ax&#x3D;b$， 如果我们给$A$一个轻微的扰动，其解x变化仍在我们可接受的范围之内的话，那么就说这个矩阵是良好的矩阵(Well Done!)，否则，它就是一个病态的矩阵。</p>
+<blockquote>
+</blockquote>
+<p>针对上述定义，我们引出两个问题</p>
+<li>什么是轻微的扰动？
+</li>
+<li>如何评测一个矩阵是否是病态的？
+</li>
+
+<p>所谓轻微的扰动，并不是指整个矩阵中所有元素变化量的大小，而是说变化元素的个数。通常，我们用</p>
+<p>来表示仅在$(i, j)$位置的元素为$\alpha$，其余位置为$0$的矩阵。而轻微扰动，即在$A$的基础之上 append 一些$(1)$的元素。</p>
+<p>下面进行条件数的推导。</p>
+<h2 id="Inference-of-the-Conditional-Number"><a href="#Inference-of-the-Conditional-Number" class="headerlink" title="Inference of the Conditional Number"></a>Inference of the Conditional Number</h2><h3 id="Neumann-Series"><a href="#Neumann-Series" class="headerlink" title="Neumann Series"></a>Neumann Series</h3><p>在这里只能说诺伊曼牛逼, If $\lim_{n \to \infty} A^n&#x3D;0$, 那么$I-A$就是非奇异的，并且</p>
+<p>这个直接相乘即可验证出来了，诺伊曼给了我们一个估算$(I-A)^{-1}$的级数，太棒了。</p>
+<h3 id="Perturbation-Term"><a href="#Perturbation-Term" class="headerlink" title="Perturbation Term"></a>Perturbation Term</h3><p>现在我们假设给予$A$矩阵一些轻微的扰动$B$， 即$A+B$，现在来考虑$Ax&#x3D;b$的解$x$，与$(A+B)\widetilde{x}&#x3D;b$的解$\widetilde{x}$的gap。因为$A$可逆，且$B$是轻微扰动，所以说$A+B$是可逆的，所以</p>
+<p>从而，我们仅要看$A^{-1}$与$(A+B)^{-1}$的差异即可。下面由诺伊曼级数进行导出。</p>
+<p>假设$\lim_{n \to \infty}(A^{-1}B)^n&#x3D;0$，(这个其实很好满足嘛，直觉上只要$A^{-1}$不要太大就好，因为$B$是轻微扰动项，所以说$B^n$本身很小很小的，这样说不太严谨，但是intuitive)。</p>
+<p>为了方便起见，我们仅考虑其一阶估计</p>
+<p>可见，右边儿的第二项就是扰动项：$A^{-1}BA^{-1}$。</p>
+<h3 id="扰动项-条件数"><a href="#扰动项-条件数" class="headerlink" title="扰动项 &#x3D;&gt; 条件数"></a>扰动项 &#x3D;&gt; 条件数</h3><p>首先我们先得到$x- \widetilde{x}$的上界</p>
+<p>这肯定是上界嘛，因为只估算到了一阶。那么，<strong>只要这个上界足够小，那么其误差就可能大</strong>。</p>
+<p>由于解本身有大有小，所以我们不能直接用其差值进行误差的估量，进而采用</p>
+<p>其中，由于B是扰动，所以 $\frac{\left |B \right |} {\left |A \right |}$本身很小，所以其上界如果很大，那么肯定是$\kappa$出了问题。</p>
+<p>我们称$\kappa$为矩阵$A$的条件数。如果$\kappa$很小，那么其差值上界定然小，如果$\kappa$很大，那么其差值上界就很大，从而其真实的差值就可能大，就是病态矩阵。（注意定然和可能）。</p>
+<p>至于这个“小”还是“大”，因为已经经过模的规范化了，所以不同矩阵之间也可以比较。</p>
+<h3 id="条件数为多少时才是凉态的？"><a href="#条件数为多少时才是凉态的？" class="headerlink" title="条件数为多少时才是凉态的？"></a>条件数为多少时才是凉态的？</h3><p>这里其实可以做一个实验，编写代码画图，构造一些指定条件数的矩阵出来，观察其轻微扰动之后的差值。给出网友的结论：（第一步骤实验！）</p>
+<p><strong>首先奇异和病态没有必然的联系，良态、病态、条件数都要针对求解的问题而言，比如说矩阵求逆的性态和矩阵求特征值的性态就完全是两码事 　在2-范数扰动的意义下，矩阵求逆或者解线性方程组的时候奇异矩阵可以认为是最病态（无限病态）的矩阵，因为它有零奇异值（注意，这个问题的性态体现在奇异值而不是特征值） 　至于什么样的矩阵算病态，没有绝对的标准，因为大和小是相对的概念 　通常病态与否也与实际计算的机器精度有关，比如IEEE单精度下K&#x3D;10^4算比较病态了，但在IEEE双精度下就算比较良态</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/conditional-Number-of-Matrix/" data-id="cm6f1kwxr0009msusdadi2ovh" data-title="Lei Chao&#39;s Blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/27/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lei Chao&#39;s Blog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/11/conditional-Number-of-Matrix/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/20/Change-Of-Basis-Operator/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

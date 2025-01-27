@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Lei Chao&#39;s Blog | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1. 奇异值分解：A&#x3D;UΣV^T, 其中，U是AA^T的特征向量，Σ^2是AA^T的特征值，V是A^TA的特征向量，目的即将图片weights x heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lei Chao&#39;s Blog">
+<meta property="og:url" content="http://example.com/2020/07/22/SVD-A-U%CE%A3V-T-to-compress-a-Picture-%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. 奇异值分解：A&#x3D;UΣV^T, 其中，U是AA^T的特征向量，Σ^2是AA^T的特征值，V是A^TA的特征向量，目的即将图片weights x heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/SVD/SVD%E4%BB%A3%E7%A0%81%E6%95%88%E6%9E%9C%E7%A4%BA%E4%BE%8B%E5%9B%BE.jpg">
+<meta property="article:published_time" content="2020-07-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-27T12:41:41.275Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/SVD/SVD%E4%BB%A3%E7%A0%81%E6%95%88%E6%9E%9C%E7%A4%BA%E4%BE%8B%E5%9B%BE.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-SVD-A-UΣV-T-to-compress-a-Picture-奇异值分解-进行图片压缩" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/07/22/SVD-A-U%CE%A3V-T-to-compress-a-Picture-%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" class="article-date">
+  <time class="dt-published" datetime="2020-07-21T16:00:00.000Z" itemprop="datePublished">2020-07-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Lei Chao&#39;s Blog
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="1-奇异值分解：A-UΣV-T-其中，U是AA-T的特征向量，Σ-2是AA-T的特征值，V是A-TA的特征向量，目的即将图片weights-x-heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。"><a href="#1-奇异值分解：A-UΣV-T-其中，U是AA-T的特征向量，Σ-2是AA-T的特征值，V是A-TA的特征向量，目的即将图片weights-x-heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。" class="headerlink" title="1. 奇异值分解：A&#x3D;UΣV^T, 其中，U是AA^T的特征向量，Σ^2是AA^T的特征值，V是A^TA的特征向量，目的即将图片weights x heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。"></a>1. 奇异值分解：A&#x3D;UΣV^T, 其中，U是AA^T的特征向量，Σ^2是AA^T的特征值，V是A^TA的特征向量，目的即将图片weights x heights分解为矩阵表达，这样存储时仅仅存储矩阵表达即可，从而达到压缩的效果。代码如下所示。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># psuedo Code</span></span><br><span class="line">    <span class="comment"># 1. 加载图片成width x height的数组A</span></span><br><span class="line">    <span class="comment"># 2. 计算A^TA，算出其lambda^2, lambda是SIGMA, 对应特征向量是V1，V2；再根据(1):解AA^T的eigen vector作为U；（2）或者解AV/SIGMA得出U。</span></span><br><span class="line">    <span class="comment"># 3. 从大到小排列SIGMA以及对应U，V得出分解内容。</span></span><br><span class="line">    <span class="comment"># 4. 分析结论</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. 得出矩阵A_TA</span></span><br><span class="line">    Img = Image.<span class="built_in">open</span>(<span class="string">&#x27;./test.jpg&#x27;</span>)</span><br><span class="line">    Img_array = np.array(Img)</span><br><span class="line">    A = Img_array[:,:,<span class="number">0</span>]</span><br><span class="line">    A_T = A.transpose()</span><br><span class="line">    A_TA = np.dot(A_T, A)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 计算出对应特征值及对应特征向量，并排好序（in order of importance）</span></span><br><span class="line">    eigenvalues,eigenVectors = np.linalg.eig(A_TA)</span><br><span class="line">    tmp = np.column_stack((eigenvalues, eigenVectors))</span><br><span class="line">    tmp = tmp[np.argsort(-(tmp[:,<span class="number">0</span>]))]</span><br><span class="line">    singularValues, singularVectorsV = np.nan_to_num(np.power(tmp[:, <span class="number">0</span>], <span class="number">0.5</span>)), tmp[:, <span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 用AV/SIGMA = U 计算U</span></span><br><span class="line">    singularVectorsU = np.dot(A, singularVectorsV)/singularValues</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置阈值为99%</span></span><br><span class="line">    threshold = <span class="number">0.99</span></span><br><span class="line">    SigmaSum = np.<span class="built_in">sum</span>(singularValues)</span><br><span class="line">    tmp = singularValues[<span class="number">0</span>]</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(tmp/SigmaSum &amp;lt;= threshold):</span><br><span class="line">        tmp += singularValues[i]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    reConstructImgArray = np.dot(</span><br><span class="line">        np.dot(singularVectorsU[:, <span class="number">0</span>:i+<span class="number">1</span>], np.diag(singularValues[<span class="number">0</span>:i+<span class="number">1</span>])), </span><br><span class="line">        np.transpose(singularVectorsV[:, <span class="number">0</span>:i+<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    reConstructImg = Image.fromarray(reConstructImgArray)</span><br><span class="line">    reConstructImg.show()</span><br><span class="line">    <span class="comment"># 结果为i=1257, 即压缩为了1257*(1980+2640), 原图是1980*2640, 这样压缩保留了99%的信息</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;good luck&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="2-左为重构，右为原图"><a href="#2-左为重构，右为原图" class="headerlink" title="2. 左为重构，右为原图"></a>2. 左为重构，右为原图</h3><img alt="SVD_Sample_Pic" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/SVD/SVD%E4%BB%A3%E7%A0%81%E6%95%88%E6%9E%9C%E7%A4%BA%E4%BE%8B%E5%9B%BE.jpg" title="SVD_Sample_Pic"/>
+
+<h3 id="3-结果说明"><a href="#3-结果说明" class="headerlink" title="3. 结果说明"></a>3. 结果说明</h3><h2 id="原图大小是-198026403-带color-channel-，现经过SVD压缩为了-1257-1980-2640-3-代码中为了简单表明过程，只计算了一个color-channel上的-。上述例子表明，在保存图片信息99-的情况下，压缩率为90-。"><a href="#原图大小是-198026403-带color-channel-，现经过SVD压缩为了-1257-1980-2640-3-代码中为了简单表明过程，只计算了一个color-channel上的-。上述例子表明，在保存图片信息99-的情况下，压缩率为90-。" class="headerlink" title="&gt; 原图大小是 198026403(带color channel)，现经过SVD压缩为了(1257(1980+2640)3)(代码中为了简单表明过程，只计算了一个color channel上的)。上述例子表明，在保存图片信息99%的情况下，压缩率为90%。"></a>&gt; 原图大小是 198026403(带color channel)，现经过SVD压缩为了(1257(1980+2640)3)(代码中为了简单表明过程，只计算了一个color channel上的)。上述例子表明，在保存图片信息99%的情况下，压缩率为90%。</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/07/22/SVD-A-U%CE%A3V-T-to-compress-a-Picture-%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-id="cm6f1kwxq0006msus8pcc0nhm" data-title="Lei Chao&#39;s Blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/24/KD-Tree-s-Construction-and-Searching/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lei Chao&#39;s Blog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/20/%E5%85%B3%E4%BA%8EA-QR-defactorization%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A7%A3%E9%87%8A%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lei Chao&#39;s Blog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/11/conditional-Number-of-Matrix/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/20/Change-Of-Basis-Operator/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

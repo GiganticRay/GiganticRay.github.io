@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Lei Chao&#39;s Blog | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Notation $[T]_B$表示，以$B、B$为输入、输出基下，$T$变换的矩阵表示 $[I]_{BB’}$表示分别以$B、B’$为输入、输出基下，$I$变换的矩阵表示。 $[x_1]_{B’}$表示$x_1$这个object在$B’$下的坐标表示。上述  Abstract  关于基变换算子的一些理解，(秃头进行中…)基变换算子是什么，我们可以用基变换算子干嘛？  - 用基变换算子，当然是对物">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lei Chao&#39;s Blog">
+<meta property="og:url" content="http://example.com/2020/10/20/Change-Of-Basis-Operator/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Notation $[T]_B$表示，以$B、B$为输入、输出基下，$T$变换的矩阵表示 $[I]_{BB’}$表示分别以$B、B’$为输入、输出基下，$I$变换的矩阵表示。 $[x_1]_{B’}$表示$x_1$这个object在$B’$下的坐标表示。上述  Abstract  关于基变换算子的一些理解，(秃头进行中…)基变换算子是什么，我们可以用基变换算子干嘛？  - 用基变换算子，当然是对物">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-27T12:41:41.271Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Change-Of-Basis-Operator" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/10/20/Change-Of-Basis-Operator/" class="article-date">
+  <time class="dt-published" datetime="2020-10-19T16:00:00.000Z" itemprop="datePublished">2020-10-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Lei Chao&#39;s Blog
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h2><ol>
+<li>$[T]_B$表示，以$B、B$为<code>输入、输出基</code>下，$T$变换的矩阵表示</li>
+<li>$[I]_{BB’}$表示分别以$B、B’$为<code>输入、输出基</code>下，$I$变换的矩阵表示。</li>
+<li>$[x_1]_{B’}$表示$x_1$这个<code>object</code>在$B’$下的坐标表示。上述</li>
+</ol>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><blockquote>
+</blockquote>
+<p>关于基变换算子的一些理解，(秃头进行中…)基变换算子是什么，我们可以用基变换算子干嘛？</p>
+<ol>
+- 用基变换算子，当然是对物体object进行基变换的鸭
+- 探索对于同一个线性变换，在给定不同的输入基以及输出基下，其对应的矩阵有什么联系
+</ol>
+
+
+<h2 id="什么是基变换算子"><a href="#什么是基变换算子" class="headerlink" title="什么是基变换算子"></a>什么是基变换算子</h2><blockquote>
+</blockquote>
+<p>这一点是我学习时非常困扰的一点，把一切抛之于脑后，不去想基变换，就把它看成是一种变换，这样就好解释了。首先我们说明：<strong>基变换是一种线性变换</strong>，这个自己验证即可，而一个从$U-&gt;V$的线性变换是<code>客观存在的</code>，只有当我们给定$U、V$的一组基后，这个线性变换的<code>矩阵表示</code>才被确定下来。<br>我们知道，给定$U、V$空间的一组基$B&#x3D;[u_1,u_2…u_n]，B’&#x3D;[v_1,v_2…v_m]$从$U-&gt;V$空间的任意线性变换$T$，都对应着一个矩阵表示。现在我们引出一个问题：<strong>基变换也是线性变换，那么我们给定一组基$B&#x3D;[u_1,u_2…u_n]、B’&#x3D;[v_1,v_2…v_n]$,基变换是从基$B1-&gt;B1’$，请问$B、B’$与$B1、B1’$之间都是基，那他们有什么联系呢？</strong><br>这是我学习时非常非常困惑的一点，按照我的理解，这两者没有任何联系，他们所表示的内容是两个不同的概念：<br>把基变换算子就抽象出一个变换，其输入空间与输出空间都是$R^n$（管它什么基变换不变换的，就看成是一个变换），而一个线性变换要在<strong>给定输入空间的一组输入基、输出空间的一组输出基</strong>下，才能给出其唯一的矩阵表示。上面的<strong>输入、输出基</strong>，即是$B、B’$。那么可能就有人问了：<strong>“那$B1、B1’$是啥呢？”</strong>，我们只要把**$B1与B1$’**看作是这个线性变换里边儿的元素就可以了。<br>对应，李老师直接给出线性变换的定义：给定两个基$B&#x3D;(x_1,x_2…x_n)，B’&#x3D;(y_1,y_2…y_n)$。把$B$变换为$B’$的T表示为<br/>\begin{equation}\label{1}<br/>T(y_i)&#x3D;x_i<br/>\end{equation}<br>tips：上述定义之中的基$B、B’$是<code>T要变换的东西，而不是T所在的基</code>，好绕啊…</p>
+<h2 id="基变换算子的作用之一"><a href="#基变换算子的作用之一" class="headerlink" title="基变换算子的作用之一"></a>基变换算子的作用之一</h2><blockquote>
+</blockquote>
+<p>假设$P$是一个基变换算子$T$的矩阵表示$P&#x3D;[T]<em>{BB’}$，<code>x</code>是一个<code>object</code>，其在$B$下的坐标表示为$[x]</em>{B}$，其在$B’$下的坐标表示为$[x]<em>{B’}$，那么$[x]</em>{B’}&#x3D;P·[x]_{B}$。</p>
+<h2 id="基变换算子的矩阵表示是啥"><a href="#基变换算子的矩阵表示是啥" class="headerlink" title="基变换算子的矩阵表示是啥"></a>基变换算子的矩阵表示是啥</h2><blockquote>
+</blockquote>
+<p>不给定输入基与输出基谈变换的矩阵表示都是耍流氓，上述我们给出了基变换算子的定义，却并未给出该变换输入空间的输入基，输出空间的输出基。来看一下这个表达式</p>
+<p>\begin{equation}\label{2}<br/>P&#x3D;[T]<em>{BB}&#x3D;[T]</em>{B’B’}&#x3D;[I]<em>{BB’}&#x3D;([x_1]</em>{B’}|[x_2]<em>{B’}|···|[x_n]</em>{B’})<br/>\end{equation}</p>
+<blockquote>
+</blockquote>
+<p><strong>我个人觉得的就是，由于基变换算子太饶了，而我们可以用一个简单的形式来等价表示，即$[I]<em>{BB’}$，那我们就干脆用$[I]</em>{BB’}$来表示从B到B’的线性变换的矩阵了</strong>。</p>
+<h3 id="Prove-Equation-3"><a href="#Prove-Equation-3" class="headerlink" title="Prove Equation 3"></a>Prove Equation 3</h3><blockquote>
+</blockquote>
+<p>根据定义，我们可以得到：</p>
+<p>\begin{equation}\label{3}<br/>    T(y_i)&#x3D;x_i&#x3D;\sum_{j&#x3D;1}^n \alpha_jy_j<br/>\end{equation}</p>
+<blockquote>
+</blockquote>
+<p>$[\alpha_1, \alpha_2···\alpha_n]$即表示$x_i$这个<code>object</code>，在$B’$下的坐标表示，即$\alpha&#x3D;[x_i]_{B’}$。现在，我们同时考虑对等式3左右两边同时进行T变换：</p>
+<p>\begin{equation}\label{4}<br/>    T(x_i)&#x3D;\sum_{j&#x3D;1}^n\alpha_j·T(y_j) &#x3D; \sum_{j&#x3D;1}^n\alpha_jx_j<br/>\end{equation}</p>
+<blockquote>
+</blockquote>
+<p>这个式子很有趣啊，表示$T(x_i)$在$B$下的坐标表示也为$\alpha$，即$\alpha&#x3D;[T(x_i)]_{B}$，结合等式3，那么就是</p>
+<p>\begin{equation}\label{5}<br/>    [x_i]_{B’} &#x3D; [T(x_i)]_B<br/>\end{equation}</p>
+<blockquote>
+</blockquote>
+<p>这样我们可以得到如下：</p>
+<p>\begin{equation}\label{6}<br/>    [T]_b &#x3D; ([T(x_1)]_B,[T(x_2)]<em>B···[T(x_n)]<em>B) &#x3D; ([x_1]</em>{B’},[x_2]</em>{B’}···,[x_n]<em>B’) &#x3D; [T]</em>{B’}<br/>\end{equation}</p>
+<blockquote>
+</blockquote>
+<p>证明$[I]_{BB’}$与他们相等也很简单</p>
+<p>\begin{equation}\label{7}<br/>    [I]<em>{BB’}&#x3D;[[I(x_n)]</em>{B’},[I(x_2)]<em>{B’}···,[I(x_n)]</em>{B’}]&#x3D;[[x_1]<em>{B’},[x_2]</em>{B’}···,[x_n]<em>{B’}]&#x3D;[T]</em>{B’}<br/>\end{equation}</p>
+<blockquote>
+</blockquote>
+<p>我靠，这也太神奇了，从而，研究从$B-&gt;B’$的基变换算子，我们就可以研究$[I]_{BB’}$这个矩阵了。</p>
+<h2 id="基变换算子的作用之二"><a href="#基变换算子的作用之二" class="headerlink" title="基变换算子的作用之二"></a>基变换算子的作用之二</h2><blockquote>
+</blockquote>
+<p>考虑这样一种情况，$A$是在$V$上的一个线性算子<code>(linear operator)</code>，$B、B’$分别是$V$的两组基，那么$[A]<em>B$与$[A]</em>{B’}$这两个矩阵既然表示同样线性变换，<strong>那么它们有什么联系呢？</strong></p>
+<p>\begin{equation}\label{8}<br/>    [A]<em>B &#x3D; P^{-1}[A]</em>{B’}P<br/>\end{equation}</p>
+<blockquote>
+</blockquote>
+<p>where $P &#x3D; [I]_{BB’}$，这个很好理解嘛，我们把两边都乘以$[x]_B$，即</p>
+<p>\begin{equation}\label{9}<br/>    [A]_B[x]<em>B &#x3D; P^{-1}[A]</em>{B’}P[x]_B<br/>\end{equation}</p>
+<blockquote>
+</blockquote>
+<p>学废了吗？因为这个东西，所以如果我们已知一个线性变换的矩阵表示$[A]<em>B$，那么我们通过变换基，可以得到其更好的矩阵表示形式$[A]</em>{B’}$，这样在特定情况下就可以方便问题求解了。（一定要注意：线性变换是<code>客观存在</code>的，上述讨论的只是线性算子，即输入空间、输出空间是一样的。并且仅考虑输入空间、输出空间的基也是一样的。就相当于控制变量嘛，有同学可能要问了，那诸如投影算子这些呢，它们输入、输出空间肯定不一样鸭。这种情况不在我们的讨论范围之内，因为这样的话它的矩阵表示肯定不是满秩了，肯定会有维度的损失。）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/20/Change-Of-Basis-Operator/" data-id="cm6f1kwxq0007msus18a58crd" data-title="Lei Chao&#39;s Blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lei Chao&#39;s Blog
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/18/Linear-Transformation%E8%A1%A5%E5%85%85-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lei Chao&#39;s Blog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/11/conditional-Number-of-Matrix/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/Understand-Fourier-Transformation-by-basic-math/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/24/%E4%BB%8E%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4%E5%88%B0-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/20/Change-Of-Basis-Operator/">Lei Chao&#39;s Blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
