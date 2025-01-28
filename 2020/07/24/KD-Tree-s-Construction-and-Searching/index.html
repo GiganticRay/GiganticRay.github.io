@@ -27,12 +27,12 @@
 <meta property="og:site_name" content="Hughui&#39;s Blog">
 <meta property="og:description" content="K近邻算法 简介  这一部分就不赘述了，挺基本的。 为啥需要KD-Tree  KD-Tree是存储训练数据的一种结构，因为K近邻算法没有显示的学习过程，所以每次对目标点进行分类的时候，都需要借助已知的训练数据。而类似感知机这种具有显示的学习过程的算法，会根据训练数据，得出一个模型sign(&amp;lt;w,x&amp;gt;+B)，后续预测直接用训练好的模型进行预测就行了。因为这个特性，所以如果">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/KD-Tree/KD-Tree.png">
+<meta property="og:image" content="https://github.com/2020/07/24/KD-Tree-s-Construction-and-Searching/">
 <meta property="article:published_time" content="2020-07-23T16:00:00.000Z">
 <meta property="article:modified_time" content="2025-01-27T13:56:07.284Z">
 <meta property="article:author" content="Hughui Lei">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/KD-Tree/KD-Tree.png">
+<meta name="twitter:image" content="https://github.com/2020/07/24/KD-Tree-s-Construction-and-Searching/">
 
 <link rel="canonical" href="https://github.com/GiganticRay/2020/07/24/KD-Tree-s-Construction-and-Searching/">
 
@@ -335,7 +335,7 @@ mjx-container[display="true"] + br {
 <p>KD-Tree是存储训练数据的一种结构，因为K近邻算法<code>没有显示的学习过程</code>，所以每次对<code>目标点</code>进行分类的时候，都需要借助已知的训练数据。而类似感知机这种<code>具有显示的学习过程</code>的算法，会根据训练数据，得出一个模型<code>sign(&amp;lt;w,x&amp;gt;+B)</code>，后续预测直接用训练好的模型进行预测就行了。<br>因为这个特性，所以如果不采取特殊的数据结构对数据进行存储，那么每一次<code>分类目标点</code>的时候，都要遍历所有的训练数据，<code>时间不可控</code>。对此，<code>KD-Tree</code>就出来了，其实KD-Tree听名字就是一棵树，可以参考二分查找的过程。</p>
 <h2 id="什么是KD-Tree"><a href="#什么是KD-Tree" class="headerlink" title="什么是KD-Tree"></a>什么是KD-Tree</h2><blockquote>
 </blockquote>
-<p>这里先给出一颗KD-Tree的例子，后续再对KD-tree的Construction与Searching进行论述。<img alt="KD-Tree" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/KD-Tree/KD-Tree.png" title="KD-Tree"><br>每一个节点对应着一个<code>划分</code>(就是一个大饼被刀切了)，如图所示，<code>根节点(30,40)</code>对应了整个输入空间（整个饼），根节点将整个输入控件分为了<code>两类</code>，分别是<code>x&amp;lt;30, x&amp;gt;30</code>，由其两个分支表示。<strong>（解释为啥是x，这与选择的特征有关，看图根节点左边是选的x，所以对比x）</strong>。这样不断往下划分，最终得到了整个输入空间的划分（左边），对应的数据结构如<code>右边</code>所示。<br>闲话：其实通过上面描述应该就知道KD-Tree存储的什么东西了，它将数据的信息（具体特征的数值大小）表示在了结构上。其与排序二叉树十分类似嘛。</p>
+<p>这里先给出一颗KD-Tree的例子，后续再对KD-tree的Construction与Searching进行论述。<img src="/2020/07/24/KD-Tree-s-Construction-and-Searching/" title="KD-Tree"><br>每一个节点对应着一个<code>划分</code>(就是一个大饼被刀切了)，如图所示，<code>根节点(30,40)</code>对应了整个输入空间（整个饼），根节点将整个输入控件分为了<code>两类</code>，分别是<code>x&amp;lt;30, x&amp;gt;30</code>，由其两个分支表示。<strong>（解释为啥是x，这与选择的特征有关，看图根节点左边是选的x，所以对比x）</strong>。这样不断往下划分，最终得到了整个输入空间的划分（左边），对应的数据结构如<code>右边</code>所示。<br>闲话：其实通过上面描述应该就知道KD-Tree存储的什么东西了，它将数据的信息（具体特征的数值大小）表示在了结构上。其与排序二叉树十分类似嘛。</p>
 <h2 id="KD-Tree’s-Construction"><a href="#KD-Tree’s-Construction" class="headerlink" title="KD-Tree’s Construction"></a>KD-Tree’s Construction</h2><ul>
 <li>数据描述：(5,25) (10, 12) (30, 40) (35, 45) (50, 30) (70, 70)，输入空间为<code>整个二维平面</code>。即每个样本点，有两个特征，我们假定为(x, y)。我们先展示整个构造过程，再解释构造细节。</li>
 </ul>

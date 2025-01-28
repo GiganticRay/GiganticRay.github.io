@@ -27,16 +27,16 @@
 <meta property="og:site_name" content="Hughui&#39;s Blog">
 <meta property="og:description" content="参考书：[Introduction to Linear Algebra] 概念汇总  这一节内容真实非常奇妙啊，简直是线代精华，用线代可以描述世间万物。空间、基、坐标表示、线性变换这四个术语息息相关，这里来阐述其关系。 空间  这个很好理解，从小我们就知道：点，线，面，体。这就对应着&#96;0维、1维、2维、3维&#96;空间，我们所处的就是三维空间。**（PS:三体中的二向箔，莫非就是说明了宇宙是数字化出来的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%86%B3%E5%AE%9A%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5A%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation3.png">
+<meta property="og:image" content="https://github.com/2020/07/27/Linear-Transformation-and-its-Matrix-Form-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E5%8F%8A%E5%85%B6%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">
+<meta property="og:image" content="https://github.com/2020/07/27/Linear-Transformation-and-its-Matrix-Form-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E5%8F%8A%E5%85%B6%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">
+<meta property="og:image" content="https://github.com/2020/07/27/Linear-Transformation-and-its-Matrix-Form-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E5%8F%8A%E5%85%B6%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">
+<meta property="og:image" content="https://github.com/2020/07/27/Linear-Transformation-and-its-Matrix-Form-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E5%8F%8A%E5%85%B6%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">
+<meta property="og:image" content="https://github.com/2020/07/27/Linear-Transformation-and-its-Matrix-Form-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E5%8F%8A%E5%85%B6%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">
 <meta property="article:published_time" content="2020-07-26T16:00:00.000Z">
 <meta property="article:modified_time" content="2025-01-27T13:56:21.235Z">
 <meta property="article:author" content="Hughui Lei">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png">
+<meta name="twitter:image" content="https://github.com/2020/07/27/Linear-Transformation-and-its-Matrix-Form-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E5%8F%8A%E5%85%B6%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">
 
 <link rel="canonical" href="https://github.com/GiganticRay/2020/07/27/Linear-Transformation-and-its-Matrix-Form-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E5%8F%8A%E5%85%B6%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA/">
 
@@ -347,7 +347,7 @@ mjx-container[display="true"] + br {
 </li>
 <li>坐标表示
 <blockquote>
-我们平时所画的那个三维坐标轴x,y,z笛卡尔坐标系。常用3个数字来表述一个位置，如`p1=(12,34,56)`。这实则用完整的语言表述是：**p1点，在基`b1(1,0,0) b2(0,1,0) b3(0,0,1)`所表示的三维空间下的坐标为(12,34,56)**，用矩阵的表述语言如<img alt="坐标与基" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png" title="坐标与基">。**同一空间下相同的点，在不同的基下其坐标表示会不一样。**
+我们平时所画的那个三维坐标轴x,y,z笛卡尔坐标系。常用3个数字来表述一个位置，如`p1=(12,34,56)`。这实则用完整的语言表述是：**p1点，在基`b1(1,0,0) b2(0,1,0) b3(0,0,1)`所表示的三维空间下的坐标为(12,34,56)**，用矩阵的表述语言如<img src="/2020/07/27/Linear-Transformation-and-its-Matrix-Form-线性变换及其矩阵表示/" title="坐标与基">。**同一空间下相同的点，在不同的基下其坐标表示会不一样。**
 </blockquote>
 </li>
 <li>线性变换 (Linear Transformation)
@@ -364,10 +364,10 @@ mjx-container[display="true"] + br {
 <p>线性变换的定义就不再赘述了，<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png">1</a>中<code>P405</code>提出：<strong>任何从V=R<sup>n</sup>到W=R<sup>m</sup>的线性变换，都对应着其矩阵表达。</strong>(V是n维输入空间，W是m维输出空间。)</p>
 <blockquote>
 </blockquote>
-<p>思考问题：<br>从V=R<sup>n</sup>到W=R<sup>m</sup>的线性变换的矩阵表达A<strong>是唯一的吗？</strong><br>answer: <strong>不是唯一的，变换肯定是在空间中进行的，而无关于基的选择。基的选择会确定该变换矩阵表达A。</strong><br>解释：我们用顺时针旋转90度来举例子，V=R<sup>2</sup>到W=R<sup>2</sup>，那么，不管我们怎么选择V=(v1,v2)与W=(w1,w2)，顺时针旋转90<sup>。</sup>始终表示顺时针旋转<sup>。</sup>。只是我们对基的选择，会决定该变换的矩阵表达A。<br><img alt="决定变换矩阵A的三要素" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%86%B3%E5%AE%9A%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5A%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0.png" title="决定变换矩阵A的三要素"></p>
+<p>思考问题：<br>从V=R<sup>n</sup>到W=R<sup>m</sup>的线性变换的矩阵表达A<strong>是唯一的吗？</strong><br>answer: <strong>不是唯一的，变换肯定是在空间中进行的，而无关于基的选择。基的选择会确定该变换矩阵表达A。</strong><br>解释：我们用顺时针旋转90度来举例子，V=R<sup>2</sup>到W=R<sup>2</sup>，那么，不管我们怎么选择V=(v1,v2)与W=(w1,w2)，顺时针旋转90<sup>。</sup>始终表示顺时针旋转<sup>。</sup>。只是我们对基的选择，会决定该变换的矩阵表达A。<br><img src="/2020/07/27/Linear-Transformation-and-its-Matrix-Form-线性变换及其矩阵表示/" title="决定变换矩阵A的三要素"></p>
 <li>基变换矩阵
 <blockquote>
-这个其实相当于特殊的线性变换，即**Basis<sub>in</sub> -&gt; Basis<sub>out</sub>的identitic transformation**。说人话就是，我们只变换一下空间的基的表示而已。我们以[1](https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png)中**p412**举例。<br><img alt="basisTransformation1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation1.png" title="basisTransformation1"><br><img alt="basisTransformation2" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation2.png" title="basisTransformation2"><br><img alt="basisTransformation3" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/basisTransformation3.png" title="basisTransformation3">
+这个其实相当于特殊的线性变换，即**Basis<sub>in</sub> -&gt; Basis<sub>out</sub>的identitic transformation**。说人话就是，我们只变换一下空间的基的表示而已。我们以[1](https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/Linear_Transformation/%E5%9D%90%E6%A0%87%E4%B8%8E%E5%9F%BA.png)中**p412**举例。<br><img src="/2020/07/27/Linear-Transformation-and-its-Matrix-Form-线性变换及其矩阵表示/" title="basisTransformation1"><br><img src="/2020/07/27/Linear-Transformation-and-its-Matrix-Form-线性变换及其矩阵表示/" title="basisTransformation2"><br><img src="/2020/07/27/Linear-Transformation-and-its-Matrix-Form-线性变换及其矩阵表示/" title="basisTransformation3">
 </blockquote>
 </li>
 <li>如何选择**好的基**，使得该变换T在这组input basis与output basis下的矩阵表示比较简单？

@@ -27,26 +27,26 @@
 <meta property="og:site_name" content="Hughui&#39;s Blog">
 <meta property="og:description" content="参考章节目录  - Iteriative Methods for Sparse Linear Systems P12 - MATH 5330: Computational Methods of Linear Algebra—Lecture Note 10: Householder Transformation—Xianyi Zeng—Department of Mathematical Sci">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/HouseholderMatrix%E7%9A%84%E5%87%A0%E4%BD%95%E8%A1%A8%E7%A4%BA.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.15.1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.16.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/%E6%8E%A8%E5%AF%BC1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/%E6%8E%A8%E5%AF%BC2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/w1_Expression.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/X1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Xk.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Pk.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.22.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.3.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Householder_pseudoCode.png">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
+<meta property="og:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
 <meta property="article:published_time" content="2020-08-06T16:00:00.000Z">
 <meta property="article:modified_time" content="2025-01-27T13:55:19.693Z">
 <meta property="article:author" content="Hughui Lei">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/HouseholderMatrix%E7%9A%84%E5%87%A0%E4%BD%95%E8%A1%A8%E7%A4%BA.png">
+<meta name="twitter:image" content="https://github.com/2020/08/07/A-QR-HouseHolder-Defactorization/">
 
 <link rel="canonical" href="https://github.com/GiganticRay/2020/08/07/A-QR-HouseHolder-Defactorization/">
 
@@ -358,27 +358,27 @@ mjx-container[display="true"] + br {
 <p>Gram-Schmidt的方法是通过一步一步地将新的列A<sub>j</sub>，减去其在已正交化的q<sub>1</sub>，q<sub>2</sub>，q<sub>(j-1)</sub>的投影从而得到新的正交项以此构成Q，<strong>HouseHolder</strong>采取了另外一种完全的方法，其一步一步地将待分解矩阵A，分解成<strong>Echelon matrix</strong>，当然这个分解过程不是简单的<strong>Gaussian Decomposition</strong>，而是用了<strong>HouseHolder算子</strong>，下面翻译一下参考书目1中的分解步骤</p>
 <h2 id="什么是Householder算子（Householder矩阵的几何表示）"><a href="#什么是Householder算子（Householder矩阵的几何表示）" class="headerlink" title="什么是Householder算子（Householder矩阵的几何表示）"></a>什么是Householder算子（Householder矩阵的几何表示）</h2><blockquote>
 </blockquote>
-<p>Householder算子是一个矩阵，其形式是<strong>P = I - 2ww<sup>T</sup></strong>，这里我一般记作<strong>P<sub>w</sub></strong>，因为P是由w决定的，后续我们也是针对待分解矩阵的每一列来构造对应的w，从而得出针对每一列的P。<br>易证，<code>P是Ortogonal矩阵、且是Symmetric矩阵</code>：<strong>P<sup>T</sup>=P，P<sup>T</sup>P=I</strong>。<br>注意，我们后续在选择w的时候，要让其是2-norm unity的向量。<br>从几何上来看，Px表示的就是x,关于空间{w}<sup>⊥</sup>的镜像。画图表示就是<br><img alt="HouseholderMatrix的几何表示" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/HouseholderMatrix%E7%9A%84%E5%87%A0%E4%BD%95%E8%A1%A8%E7%A4%BA.png" title="HouseholderMatrix的几何表示"><br>v就是上文中的w、H<sub>v</sub>就是上文中的P<sub>w</sub>。</p>
+<p>Householder算子是一个矩阵，其形式是<strong>P = I - 2ww<sup>T</sup></strong>，这里我一般记作<strong>P<sub>w</sub></strong>，因为P是由w决定的，后续我们也是针对待分解矩阵的每一列来构造对应的w，从而得出针对每一列的P。<br>易证，<code>P是Ortogonal矩阵、且是Symmetric矩阵</code>：<strong>P<sup>T</sup>=P，P<sup>T</sup>P=I</strong>。<br>注意，我们后续在选择w的时候，要让其是2-norm unity的向量。<br>从几何上来看，Px表示的就是x,关于空间{w}<sup>⊥</sup>的镜像。画图表示就是<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="HouseholderMatrix的几何表示"><br>v就是上文中的w、H<sub>v</sub>就是上文中的P<sub>w</sub>。</p>
 <h2 id="如何为每一列Xj构造每一个HouseHolder矩阵Pj"><a href="#如何为每一列Xj构造每一个HouseHolder矩阵Pj" class="headerlink" title="如何为每一列Xj构造每一个HouseHolder矩阵Pj"></a>如何为每一列Xj构造每一个HouseHolder矩阵Pj</h2><li>针对向量x、构造其P<sub>w</sub><blockquote>
-一直在强调，HouseHolder矩阵P<sub>j</sub>的作用就相当于Gaussian Elimination的消除矩阵（应该这么叫吧）。下面以第一列为例，假设第一列是x，那么目的肯定是<br><img alt="1.15.1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.15.1.png" title="1.15.1"><br>α是一个张量，后面我们会知道其实就是x的长度。现在将P的表达式代入:<br><img alt="1.16" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.16.png" title="1.16"><br><img alt="推导1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/%E6%8E%A8%E5%AF%BC1.png" title="推导1"><br><img alt="推导2" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/%E6%8E%A8%E5%AF%BC2.png" title="推导2">
+一直在强调，HouseHolder矩阵P<sub>j</sub>的作用就相当于Gaussian Elimination的消除矩阵（应该这么叫吧）。下面以第一列为例，假设第一列是x，那么目的肯定是<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="1.15.1"><br>α是一个张量，后面我们会知道其实就是x的长度。现在将P的表达式代入:<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="1.16"><br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="推导1"><br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="推导2">
 </blockquote>
 </li>
 
 <blockquote>
 </blockquote>
-<p><strong>至此、我们就用通过x、求得了一个w，使得x在P<sub>w</sub>的作用下可以变换至||x||e<sub>1</sub></strong>，w的表达式如下<br><img alt="w1_Expression" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/w1_Expression.png" title="w1_Expression"></p>
+<p><strong>至此、我们就用通过x、求得了一个w，使得x在P<sub>w</sub>的作用下可以变换至||x||e<sub>1</sub></strong>，w的表达式如下<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="w1_Expression"></p>
 <li>针对矩阵的每一列，进行构造P<blockquote>
-先看矩阵的第一列x<sub>1</sub>，我们直接用x<sub>1</sub>替换掉`1.17`中的x，即得出w<sub>1</sub>，从而得出P<sub>1</sub>。记X<sub>1</sub>是第一次HouseHolder变换后的矩阵（形如已经完成一次Gaussian Elimination的矩阵）<br><img alt="X1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/X1.png" title="X1"><br>X<sub>1</sub>的第一个元素为α，其余元素为0。
+先看矩阵的第一列x<sub>1</sub>，我们直接用x<sub>1</sub>替换掉`1.17`中的x，即得出w<sub>1</sub>，从而得出P<sub>1</sub>。记X<sub>1</sub>是第一次HouseHolder变换后的矩阵（形如已经完成一次Gaussian Elimination的矩阵）<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="X1"><br>X<sub>1</sub>的第一个元素为α，其余元素为0。
 </blockquote>
 </li>
 
 <blockquote>
 </blockquote>
-<p>现在我们看一下第<code>k</code>次HouseHolder变换的情况，操作对象当然是已经完成<code>k-1</code>次的矩阵了鸭。表达式如下：<br><img alt="Xk" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Xk.png" title="Xk"><br>矩阵在列k-1前是一个上三角矩阵。进行下一步时，<code>前k-1列</code>保持不变，根据第<code>k</code>列的向量<strong>x<sub>k</sub></strong>，确定一个w，然后生成P。w的形状是<code>1至k-1</code>个元素都是0，这样才保证了前k-1列不变。P<sub>k</sub>的推导如下<br><img alt="Pk" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Pk.png" title="Pk"><br>当k=0时，即第一次变换的P，此时的<strong>β=αe<sub>1</sub></strong>，符合上文的描述。</p>
+<p>现在我们看一下第<code>k</code>次HouseHolder变换的情况，操作对象当然是已经完成<code>k-1</code>次的矩阵了鸭。表达式如下：<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="Xk"><br>矩阵在列k-1前是一个上三角矩阵。进行下一步时，<code>前k-1列</code>保持不变，根据第<code>k</code>列的向量<strong>x<sub>k</sub></strong>，确定一个w，然后生成P。w的形状是<code>1至k-1</code>个元素都是0，这样才保证了前k-1列不变。P<sub>k</sub>的推导如下<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="Pk"><br>当k=0时，即第一次变换的P，此时的<strong>β=αe<sub>1</sub></strong>，符合上文的描述。</p>
 <h2 id="构造A-QR"><a href="#构造A-QR" class="headerlink" title="构造A=QR"></a>构造A=QR</h2><blockquote>
 </blockquote>
-<p>到这里，我们就描述完了整个X的分解过程，使得x可以分解成<br><img alt="1.22" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.22.png" title="1.22"><br>这里仅需要一小步、就可以将上式变成A=QR的美丽式子了鸭。(下面这个过程，即将R那部分中的0，转移到P中去，形成Q).我们将<code>1.22</code>表示成下面的式子<code>1.23</code>，R是<code>mxm</code>的矩阵。<br><img alt="1.23" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.jpg" title="1.23"><br>我们在前面给出了P<sub>i</sub>是<code>对称、且正交</code>的，所以我们把P放到右边:<br><img alt="1.23.1" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.1.png" title="1.23.1"><br>我们用**E<sub>m</sub>**表示I的前m列，shape=(n,m)。可表示如下<br><img alt="1.23.2" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.2.png" title="1.23.2"><br>令Q=P<sup>T</sup>E<sub>m</sub>，这表示取P<sup>T</sup>的前m列。我们可以验证：<br><img alt="1.23.3" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/1.23.3.png" title="1.23.3"><br>所以，Q是我们想要的Q(Orthonomal)。分解成功！</p>
-<h1 id="Pseudo-Code"><a href="#Pseudo-Code" class="headerlink" title="Pseudo Code"></a>Pseudo Code</h1><img alt="Householder_pseudoCode" src="https://raw.githubusercontent.com/GiganticRay/lei.Blog.File/master/Picture/A%3DQR-HouseHolder/Householder_pseudoCode.png" title="Householder_pseudoCode">
+<p>到这里，我们就描述完了整个X的分解过程，使得x可以分解成<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="1.22"><br>这里仅需要一小步、就可以将上式变成A=QR的美丽式子了鸭。(下面这个过程，即将R那部分中的0，转移到P中去，形成Q).我们将<code>1.22</code>表示成下面的式子<code>1.23</code>，R是<code>mxm</code>的矩阵。<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="1.23"><br>我们在前面给出了P<sub>i</sub>是<code>对称、且正交</code>的，所以我们把P放到右边:<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="1.23.1"><br>我们用**E<sub>m</sub>**表示I的前m列，shape=(n,m)。可表示如下<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="1.23.2"><br>令Q=P<sup>T</sup>E<sub>m</sub>，这表示取P<sup>T</sup>的前m列。我们可以验证：<br><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="1.23.3"><br>所以，Q是我们想要的Q(Orthonomal)。分解成功！</p>
+<h1 id="Pseudo-Code"><a href="#Pseudo-Code" class="headerlink" title="Pseudo Code"></a>Pseudo Code</h1><img src="/2020/08/07/A-QR-HouseHolder-Defactorization/" title="Householder_pseudoCode">
 
     </div>
 
