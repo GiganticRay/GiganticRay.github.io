@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Times New Roman:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
@@ -20,17 +20,21 @@
     var CONFIG = {"hostname":"github.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="Why Floyd–Warshall algorithm worksQuestion ThrownAll we know that Floyd–Warshall algorithm is a dynamic programming algorithm aims to solve the all-pairs shortest path problem. the code itself is simp">
+<meta property="og:type" content="article">
 <meta property="og:title" content="why Floyd–Warshall algorithm works">
-<meta property="og:url" content="https://github.com/GiganticRay/2025/01/27/works/index.html">
+<meta property="og:url" content="https://github.com/GiganticRay/2025/01/27/Floyd-Warshall/index.html">
 <meta property="og:site_name" content="Hughui&#39;s Blog">
+<meta property="og:description" content="Why Floyd–Warshall algorithm worksQuestion ThrownAll we know that Floyd–Warshall algorithm is a dynamic programming algorithm aims to solve the all-pairs shortest path problem. the code itself is simp">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/FLoyd-Warshall/floyd_steps.jpg">
 <meta property="article:published_time" content="2025-01-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-27T15:09:13.579Z">
+<meta property="article:modified_time" content="2025-01-28T01:54:46.604Z">
 <meta property="article:author" content="Hughui Lei">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/FLoyd-Warshall/floyd_steps.jpg">
 
-<link rel="canonical" href="https://github.com/GiganticRay/2025/01/27/works/">
+<link rel="canonical" href="https://github.com/GiganticRay/2025/01/27/Floyd-Warshall/">
 
 
 <script id="page-configurations">
@@ -270,7 +274,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://github.com/GiganticRay/2025/01/27/works/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/GiganticRay/2025/01/27/Floyd-Warshall/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -292,10 +296,16 @@ mjx-container[display="true"] + br {
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2025-01-27 00:00:00 / Modified: 23:09:13" itemprop="dateCreated datePublished" datetime="2025-01-27T00:00:00+08:00">2025-01-27</time>
+              <time title="Created: 2025-01-27 00:00:00" itemprop="dateCreated datePublished" datetime="2025-01-27T00:00:00+08:00">2025-01-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-01-28 09:54:46" itemprop="dateModified" datetime="2025-01-28T09:54:46+08:00">2025-01-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -317,7 +327,21 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Why-Floyd–Warshall-algorithm-works"><a href="#Why-Floyd–Warshall-algorithm-works" class="headerlink" title="Why Floyd–Warshall algorithm works"></a>Why Floyd–Warshall algorithm works</h1><h2 id="Question-Thrown"><a href="#Question-Thrown" class="headerlink" title="Question Thrown"></a>Question Thrown</h2><p>All we know that Floyd–Warshall algorithm is a dynamic programming algorithm aims to solve the all-pairs shortest path problem. the code itself is simple as follows: </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; n; k++) {</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) {</span><br><span class="line">      <span class="keyword">if</span> (dist[i][k] + dist[k][j] &lt; dist[i][j]) {</span><br><span class="line">        dist[i][j] = dist[i][k] + dist[k][j];</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>Shown already in the most common blogs that <code>k</code> standards for the intermediate node. <code>dist[i][j] = dist[i][k] + dist[k][j];</code> updates the shortest path from <code>i</code> to <code>j</code> through <code>k</code>. Now a natural question is why this works since <code>dist[i][k]</code> and <code>dist[k][j]</code> are not necessarily the shortest path from <code>i</code> to <code>k</code> and <code>k</code> to <code>j</code> respectively.</p>
+<h2 id="Takeaway"><a href="#Takeaway" class="headerlink" title="Takeaway"></a>Takeaway</h2><p>The above thought <code>k</code> stands for the intermediate node is 100% correct. It actually stands for all <code>[0, k]</code> can be taked as the intermediate nodes to get the <code>dist[i][j]</code>. so when we traverse to the final k, aka <code>k = n - 1</code>, <code>dist[i][j]</code> would be updated with the meaning: the shortest path from <code>i</code> to <code>j</code> through all nodes <code>[0, n - 1]</code>.</p>
+<h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p><img src="/./FLoyd-Warshall/floyd_steps.jpg" alt="1"></p>
+<ul>
+<li>Initial step: the left pic</li>
+<li>while k == 0: updates all pairs through <code>A</code>. since the in-degree of A equals to 0, so we do not show the pic.</li>
+<li>while k == 1: Since we’ve already passed step2, so implicitly this steps actually updates all pairs through <code>B</code> (and <code>A</code>). Shown in pic2.</li>
+<li>while k == 2: Similarly to step3, Updating all pairs through <code>C</code> (and <code>A, B</code>)<blockquote>
+<p>More about final step. Take <code>A-&gt;D</code> as example. The corrosponding updating code: <code>dist[A][D] = dist[A][C] + dist[C][D];</code>. Answering to the first question in the first of the article. <code>dist[A][C]</code> has already been updated by <code>dist[A][B] + dist[B][C]</code> which means <code>dist[A][C]</code> in this time have already considered the info of <code>A, B, C</code>.</p>
+</blockquote>
+</li>
+</ul>
+
     </div>
 
     
@@ -394,6 +418,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-Floyd%E2%80%93Warshall-algorithm-works"><span class="nav-number">1.</span> <span class="nav-text">Why Floyd–Warshall algorithm works</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Question-Thrown"><span class="nav-number">1.1.</span> <span class="nav-text">Question Thrown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Takeaway"><span class="nav-number">1.2.</span> <span class="nav-text">Takeaway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis"><span class="nav-number">1.3.</span> <span class="nav-text">Analysis</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
